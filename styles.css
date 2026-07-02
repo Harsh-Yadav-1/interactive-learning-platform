@@ -2035,4 +2035,245 @@ body.presenter-focus-mode .content-section .quiz-card:hover {
   color: var(--neon-cyan) !important;
 }
 
+/* ==========================================================================
+   SIDEBAR COLLAPSED RESTORE BUTTON STYLE
+   ========================================================================== */
+.sidebar-restore-btn {
+  position: fixed;
+  top: calc(var(--header-height) + 1.25rem);
+  left: 1.5rem;
+  z-index: 100;
+  display: none;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 12px var(--neon-cyan-glow);
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.sidebar-restore-btn:hover {
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 20px var(--neon-cyan-glow);
+}
+
+/* Show restore button ONLY when sidebar is hidden */
+.sidebar.hidden + main .sidebar-restore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN MEDIA QUERIES
+   ========================================================================== */
+
+/* 1. Large Tablets & Small Laptops (1024px & under) */
+@media (max-width: 1024px) {
+  /* Collapse sidebar and make it overlay */
+  .sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    height: calc(100vh - var(--header-height));
+    z-index: 180;
+    transform: translateX(-100%);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    background: rgba(8, 8, 12, 0.98);
+  }
+  .sidebar:not(.hidden) {
+    transform: translateX(0);
+  }
+  .sidebar.hidden {
+    transform: translateX(-100%);
+  }
+
+  /* Reset main content margins */
+  main {
+    margin-left: 0 !important;
+    padding: 2.5rem 1.5rem !important;
+  }
+  main.wide {
+    padding: 2.5rem 1.5rem !important;
+  }
+  
+  /* Show expand button by default on mobile if sidebar is hidden */
+  .sidebar.hidden + main .sidebar-restore-btn {
+    display: inline-flex;
+  }
+  
+  /* Grids & Cards */
+  .code-analysis-grid,
+  .memory-grid,
+  .mistake-comparison {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .flashcards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+  
+  .speaker-notes-panel {
+    width: 380px;
+  }
+}
+
+/* 2. Tablets & Medium Screen Sizes (900px & under) */
+@media (max-width: 900px) {
+  /* Unfix header to maximize screen height on mobile */
+  header {
+    position: relative !important;
+    height: auto !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    padding: 1.25rem 1rem !important;
+  }
+  
+  .view-pane {
+    min-height: auto !important;
+  }
+  
+  /* Reset top offsets because header is no longer fixed */
+  #view-dashboard,
+  #view-interview,
+  #view-creator {
+    padding-top: 1.5rem !important;
+    padding: 1.5rem 1rem !important;
+  }
+  
+  #view-lesson {
+    padding-top: 0 !important;
+  }
+  
+  .sidebar {
+    top: 0 !important;
+    height: 100vh !important;
+    z-index: 210 !important;
+  }
+  
+  .sidebar-restore-btn {
+    top: 1rem !important;
+    left: 1rem !important;
+  }
+  
+  /* Dashboard Header stats box */
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    text-align: left !important;
+  }
+  
+  .progress-stats-box {
+    text-align: left !important;
+  }
+  
+  /* Debugger and modals */
+  .dry-run-grid,
+  .modal-grid-layout {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    gap: 1.5rem !important;
+  }
+  
+  .debugger-pane {
+    height: 450px !important;
+  }
+  
+  .progress-actions-row {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+  }
+  
+  .cms-stats-box-row {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 1rem !important;
+  }
+}
+
+/* 3. Small Tablets & Portrait Mobiles (768px & under) */
+@media (max-width: 768px) {
+  :root {
+    --fs-h1: 2.25rem;
+    --fs-h2: 1.75rem;
+    --fs-h3: 1.4rem;
+    --fs-body: 1.05rem;
+    --fs-code: 0.95rem;
+  }
+  
+  .speaker-notes-panel {
+    width: calc(100% - 2rem) !important;
+    left: 1rem !important;
+    bottom: 1rem !important;
+  }
+  
+  .view-toggles {
+    width: 100% !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    border-radius: 8px !important;
+    padding: 0.2rem !important;
+  }
+  
+  .view-toggle-btn {
+    flex-grow: 1 !important;
+    justify-content: center !important;
+    font-size: 0.85rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+  
+  .header-controls {
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .phase-card-wrapper {
+    padding: 1.25rem !important;
+  }
+}
+
+/* 4. Ultra Small Mobiles (480px & under) */
+@media (max-width: 480px) {
+  .presenter-nav-controls {
+    bottom: 0.5rem !important;
+    right: 0.5rem !important;
+    left: 0.5rem !important;
+    width: auto !important;
+    border-radius: 12px !important;
+    padding: 0.5rem !important;
+    gap: 0.5rem !important;
+    justify-content: space-around !important;
+  }
+  
+  .presenter-nav-controls button {
+    padding: 0.35rem 0.5rem !important;
+    font-size: 0.85rem !important;
+  }
+  
+  .slide-num-indicator {
+    min-width: auto !important;
+    font-size: 0.95rem !important;
+  }
+  
+  .search-input-box input {
+    font-size: 1.05rem !important;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem !important;
+  }
+  
+  .search-icon {
+    left: 0.85rem !important;
+    font-size: 1.1rem !important;
+  }
+}
+
 
