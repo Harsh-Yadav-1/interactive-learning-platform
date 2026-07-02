@@ -1,5 +1,5 @@
 /**
- * Java Academy - Core LMS Engine
+ * HarshAcademy - Core LMS Engine
  * Dynamically fetches lesson JSON files, builds presenter slides, links stack-heap tracing,
  * manages LocalStorage progress state, and powers the Lesson Generator & Validator modals.
  */
