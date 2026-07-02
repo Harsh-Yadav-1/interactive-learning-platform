@@ -1,0 +1,129 @@
+{
+  "id": "day_9",
+  "dayNum": 9,
+  "title": "Grouping Data (GROUP BY)",
+  "category": "Fundamentals",
+  "difficulty": "Intermediate",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course Day 9 | GROUP BY Clause Explained with Real Business Examples | SQL for Data Analytics",
+  "youtubeDesc": "Welcome to Day 9 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ What is the GROUP BY clause and why it is critical for business dashboards\n✅ Dividing tables into segmented buckets (categories, branches, departments)\n✅ Combining GROUP BY with COUNT(), SUM(), AVG(), MIN(), and MAX()\n✅ Grouping datasets by multiple columns (e.g. Sales by Country AND Category)\n✅ How to filter rows before grouping using WHERE, and how to sort summaries using ORDER BY\n✅ Common errors: Selecting unaggregated fields that aren't in the GROUP BY clause\n\n📚 Topics Covered:\n00:00 Introduction & Classroom Grouping Analogy\n04:30 The GROUP BY Syntax & COUNT example\n11:00 Math aggregations (SUM, AVG, MIN, MAX) per Category\n18:45 Grouping by Multiple Columns\n25:30 Grouping with WHERE and ORDER BY\n33:00 Visual Execution Pipeline & Common Mistakes\n\nDownload the notes and assignments from the description below!",
+  "thumbnails": [
+    "Master GROUP BY 📊",
+    "GROUP BY Made Easy",
+    "SQL Reporting with GROUP BY",
+    "SQL for Data Analytics Day 9",
+    "GROUP BY Interview Questions"
+  ],
+  "scripts": {
+    "opening": "\"Welcome back to Day 9 of the SQL Roadmap. In our last lesson, we summarized tables. Today, we master GROUP BY. This is how we break overall numbers down into categories—calculating total sales per city, average salary per department, or orders per customer. It is the most critical query component for dashboards.\"",
+    "explanation": "\"Think of a school principal. Instead of asking for the average grade of the entire school, they ask: what is the average grade for Class A, Class B, and Class C separately? Each class becomes a separate group. The database GROUP BY clause does the exact same thing.\"",
+    "transition": "\"Before we write multi-column reports, let's look at the basic GROUP BY syntax and count products per category.\"",
+    "closing": "\"In our next lesson, we will explore the HAVING clause, which allows us to filter these grouped results after aggregation—a very common SQL interview topic.\"",
+    "cta": "\"If you found this lesson helpful, click the like button, subscribe, and download the full study notes and exercises below! I'll see you in Day 10.\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 9 Notes\n\n## 1. Learning Objectives\n* Comprehend the role of the `GROUP BY` clause in reporting systems.\n* Group datasets based on single or multiple columns.\n* Combine grouping with aggregate functions (`COUNT`, `SUM`, `AVG`, `MIN`, `MAX`).\n* Apply `WHERE` filtering logic before grouping records.\n* Sort aggregated groups using `ORDER BY` and limit results using `LIMIT`.\n* Debug invalid unaggregated column projections.\n\n## 2. What is GROUP BY?\n* **GROUP BY** groups rows sharing the same values in designated columns into summary blocks. Once partitioned, aggregate calculations operate individually on each block rather than summarizing the entire table.\n\n## 3. SQL Query Clause Order\n* **Written Syntax**: `SELECT` $\\rightarrow$ `FROM` $\\rightarrow$ `WHERE` $\\rightarrow$ `GROUP BY` $\\rightarrow$ `ORDER BY` $\\rightarrow$ `LIMIT`.\n* **Execution Order**: `FROM` $\\rightarrow$ `WHERE` (filters rows) $\\rightarrow$ `GROUP BY` (creates segments) $\\rightarrow$ `SELECT` (aggregates) $\\rightarrow$ `ORDER BY` (sorts groups) $\\rightarrow$ `LIMIT` (caps groups).",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 9</div>\n      <h2>Grouping Datasets with GROUP BY</h2>\n      <p class=\"large-text\">Business queries require summarizing data within specific categories or departments. Today we cover:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-layer-group icon-cyan\"></i>\n          <h4>GROUP BY Clause</h4>\n          <p>Group tables into distinct segments based on matching column values to calculate category-level metrics.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-cubes icon-purple\"></i>\n          <h4>Multi-Column Grouping</h4>\n          <p>Aggregate across multiple dimensions simultaneously (e.g. calculating total sales by country AND product category).</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-filter-list icon-emerald\"></i>\n          <h4>Filters & Sorting</h4>\n          <p>Filter rows before grouping using WHERE, sort summary outputs using ORDER BY, and extract top groups with LIMIT.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. Why Do We Need GROUP BY?",
+      "html": "\n      <h3>DQL Analogy: Class Grade Book Grouping</h3>\n      <p class=\"large-text\">Without grouping, you calculate one overall number. With grouping, you break it down by categories:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> The Grouping Analogy</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>🏫 <strong>Without Grouping:</strong> The teacher calculates the average test score for all 300 students in the school: <code>SELECT AVG(score) FROM students;</code></li>\n            <li>📊 <strong>With Grouping:</strong> The teacher groups by class to compare averages: Class A (75%), Class B (82%), Class C (68%):<br><code>SELECT class, AVG(score) FROM students GROUP BY class;</code></li>\n            <li>🔄 <strong>Result:</strong> Instead of returning a single number, the query returns 3 rows, one summarizing each class group.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. The GROUP BY Clause",
+      "html": "\n      <h3>Basic Grouping: Counting Categories</h3>\n      <p class=\"large-text\">Use <code>GROUP BY</code> to count elements or summarize records in each product category:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Count products per category\nSELECT category, \n       COUNT(*)\nFROM products\nGROUP BY category;\n\n-- Calculate total stock per category\nSELECT category, \n       SUM(stock) AS TotalStock\nFROM products\nGROUP BY category;</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Category grouping</span>\n            <p>Divides the table rows into unique categories (e.g. 'Electronics', 'Furniture') and executes aggregates separately within each group.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">Group Aggregations</span>\n            <p>Computes mathematical totals (SUM) or row counts (COUNT) for each category bucket, producing a structured summary table.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "4. GROUP BY with Numeric Aggregates",
+      "html": "\n      <h3>Calculating Group-Level KPIs</h3>\n      <p class=\"large-text\">You can execute multiple aggregate calculations inside a single GROUP BY query:</p>\n      <div class=\"glass-card\" style=\"padding: 1.25rem; overflow-x: auto;\">\n        <table class=\"cms-table\" style=\"width:100%; border-collapse:collapse;\">\n          <thead>\n            <tr style=\"border-bottom:2px solid var(--border-glow); height:40px;\">\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Category</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Total Products</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Avg Price</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Cheapest</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Costliest</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Electronics</strong></td>\n              <td><code>3</code></td>\n              <td><code>$700.00</code></td>\n              <td><code>$100.00</code></td>\n              <td><code>$1200.00</code></td>\n            </tr>\n            <tr>\n              <td><strong>Furniture</strong></td>\n              <td><code>2</code></td>\n              <td><code>$200.00</code></td>\n              <td><code>$150.00</code></td>\n              <td><code>$250.00</code></td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <pre style=\"margin-top:1rem;\"><code class=\"language-sql\">SELECT category, COUNT(*) AS Products, AVG(price) AS AvgPrice, MIN(price) AS LowestPrice, MAX(price) AS HighestPrice\nFROM products GROUP BY category;</code></pre>\n    "
+    },
+    {
+      "title": "5. Grouping by Multiple Columns",
+      "html": "\n      <h3>Multi-Dimensional Grouping</h3>\n      <p class=\"large-text\">You can specify multiple columns in GROUP BY to calculate sub-groups (e.g. Sales by Country AND Category):</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Group by country AND category\nSELECT country, \n       category, \n       SUM(sales) AS TotalSales\nFROM orders\nGROUP BY country, category;</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Multi-Column Groups</span>\n            <p>Creates groups for every unique combination of country and category, returning sub-totals:</p>\n            <ul style=\"font-size:0.8rem; padding-left:1rem; margin-top:0.4rem;\">\n              <li>India $\\rightarrow$ Electronics</li>\n              <li>India $\\rightarrow$ Furniture</li>\n              <li>USA $\\rightarrow$ Electronics</li>\n              <li>USA $\\rightarrow$ Furniture</li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "6. Grouping with WHERE, ORDER BY, & LIMIT",
+      "html": "\n      <h3>Nesting Filters & Sorts in Groups</h3>\n      <p class=\"large-text\">Combine WHERE, GROUP BY, ORDER BY, and LIMIT in a single query to isolate key insights:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-filter icon-cyan\"></i>\n          <h4>1. Filtering before Grouping</h4>\n          <pre><code class=\"language-sql\">SELECT category, AVG(price)\nFROM products\nWHERE stock > 0\nGROUP BY category;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\"><code>WHERE</code> filters out out-of-stock items before groups are formed.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-arrow-down-9-1 icon-purple\"></i>\n          <h4>2. Sorting Group Summaries</h4>\n          <pre><code class=\"language-sql\">SELECT category, SUM(stock) AS TotalStock\nFROM products\nGROUP BY category\nORDER BY TotalStock DESC;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Sorts the final summarized categories from highest stock to lowest.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-trophy icon-emerald\"></i>\n          <h4>3. Find Top Category</h4>\n          <pre><code class=\"language-sql\">SELECT category, SUM(stock) AS TotalStock\nFROM products\nGROUP BY category\nORDER BY TotalStock DESC\nLIMIT 1;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Finds the single category with the highest stock level.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. DQL Query Processing pipeline",
+      "html": "\n      <h3>GROUP BY Query Processing Order</h3>\n      <p class=\"large-text\">Let's trace how the database executes queries containing grouping and sorting clauses:</p>\n      <div class=\"nested-diagram-container\" style=\"background:rgba(255,255,255,0.02); border-radius:10px; padding:1.5rem;\">\n        <div class=\"feature-grid\" style=\"text-align:center;\">\n          <div class=\"feature-card\" style=\"border-color:var(--neon-cyan);\">\n            <h5 style=\"color:var(--neon-cyan);\">1. FROM</h5>\n            <p style=\"font-size:0.7rem;\">Loads the table.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-purple);\">\n            <h5 style=\"color:var(--neon-purple);\">2. WHERE</h5>\n            <p style=\"font-size:0.7rem;\">Filters out rows.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-emerald);\">\n            <h5 style=\"color:var(--neon-emerald);\">3. GROUP BY</h5>\n            <p style=\"font-size:0.7rem;\">Partitions rows into group buckets.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-orange);\">\n            <h5 style=\"color:var(--neon-orange);\">4. SELECT</h5>\n            <p style=\"font-size:0.7rem;\">Computes aggregates.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:#ef4444;\">\n            <h5 style=\"color:#ef4444;\">5. ORDER / LIMIT</h5>\n            <p style=\"font-size:0.7rem;\">Sorts and caps groups.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "8. Pitfalls & Best Practices",
+      "html": "\n      <h3>Avoid Disasters: GROUP BY Best Practices</h3>\n      <p class=\"large-text\">Study these strict rules to write valid GROUP BY queries:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5>❌ Unaggregated Column Error</h5>\n          <pre><code class=\"language-sql\">SELECT category, name, SUM(stock)\nFROM products\nGROUP BY category;</code></pre>\n          <p style=\"font-size:0.85rem; color:#ef4444; margin-top:0.4rem;\">⚠️ <strong>Syntax Error!</strong> You cannot select <code>name</code> because it is neither grouped by nor wrapped in an aggregate function. The database doesn't know which product name to show for each category row.</p>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5>✔ Correct Multi-Column Group</h5>\n          <pre><code class=\"language-sql\">SELECT category, name, SUM(stock)\nFROM products\nGROUP BY category, name;</code></pre>\n          <p style=\"font-size:0.85rem; color:var(--neon-emerald); margin-top:0.4rem;\">Correct. By adding <code>name</code> to the GROUP BY clause, we group by both category and name, resolving the conflict.</p>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "Which clause is used to partition table rows into logical segments for aggregation?",
+      "options": ["ORDER BY", "GROUP BY", "WHERE", "DISTINCT"],
+      "answer": 1,
+      "explanation": "GROUP BY partitions database rows sharing the same values in specified columns into logical groups for subsequent aggregation."
+    },
+    {
+      "q": "Where does the WHERE clause execute in a query containing GROUP BY?",
+      "options": ["After GROUP BY is completed", "Before GROUP BY is executed", "Concurrently with aggregates", "WHERE is ignored when grouping"],
+      "answer": 1,
+      "explanation": "The WHERE clause is processed first, filtering rows. Only the rows that pass the WHERE filter are grouped by the GROUP BY clause."
+    },
+    {
+      "q": "What happens if you SELECT a column that is neither in the GROUP BY clause nor wrapped in an aggregate function?",
+      "options": ["The query succeeds and duplicates the column", "The database automatically runs a DISTINCT filter", "The query fails with a syntax error", "The database returns NULL for that column"],
+      "answer": 2,
+      "explanation": "Standard SQL engines require that any column in the SELECT clause must be either specified in the GROUP BY clause or wrapped in an aggregate function."
+    },
+    {
+      "q": "What does GROUP BY country, category execute?",
+      "options": ["Groups by country first, then category within each country", "Groups by country and category separately, returning two tables", "Groups alphabetically by country name", "Groups columns matching country with category values"],
+      "answer": 0,
+      "explanation": "Grouping by multiple columns groups rows by the first column first, then creates sub-groups for the second column within each parent group."
+    },
+    {
+      "q": "How would you find the category with the highest total stock?",
+      "options": ["GROUP BY category LIMIT 1", "GROUP BY category ORDER BY SUM(stock) ASC LIMIT 1", "GROUP BY category ORDER BY SUM(stock) DESC LIMIT 1", "ORDER BY stock DESC LIMIT 1"],
+      "answer": 2,
+      "explanation": "Grouping by category, sorting by the sum of stock descending, and limiting output to 1 row returns the category with the highest stock level."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "Why do we use the GROUP BY clause in database queries?",
+      "a": "While aggregate functions summarize an entire table, <code>GROUP BY</code> allows us to break down aggregates by categories (e.g. calculating total sales **per city**, average salary **per department**, or total orders **per customer**)."
+    },
+    {
+      "q": "Explain why the query: SELECT category, name, SUM(stock) FROM products GROUP BY category; fails with a syntax error.",
+      "a": "The <code>SUM(stock)</code> aggregation reduces rows to a single value per category, but <code>name</code> has multiple individual values. Without grouping by <code>name</code> as well, the database engine cannot choose which product name to display next to the category summary row, causing a syntax error."
+    },
+    {
+      "q": "Can you use the GROUP BY clause without using any aggregate functions? What does it do?",
+      "a": "Yes, you can. Running <code>GROUP BY</code> without aggregates acts identically to the <code>DISTINCT</code> keyword, grouping duplicate values together and returning the list of unique categories."
+    },
+    {
+      "q": "What is the logical query execution order for a query containing WHERE, GROUP BY, and ORDER BY?",
+      "a": "The database executes clauses in the following order:<br>1. <b>FROM</b> (loads the table)<br>2. <b>WHERE</b> (filters source rows)<br>3. <b>GROUP BY</b> (partitions remaining rows into groups)<br>4. <b>SELECT</b> (projects columns and computes aggregates)<br>5. <b>ORDER BY</b> (sorts final groups)<br>6. <b>LIMIT</b> (caps the output rows)."
+    },
+    {
+      "q": "How do you group by multiple columns? Provide a real-world analytics example.",
+      "a": "You specify columns separated by commas: <code>GROUP BY country, category</code>. This is useful for multi-dimensional reporting, such as calculating total sales for 'India $\\rightarrow$ Electronics', 'India $\\rightarrow$ Furniture', 'USA $\\rightarrow$ Electronics', etc."
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 9 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Count the number of products in each category.</li>\n          <li><strong>Exercise 2:</strong> Calculate the average price of products in each category.</li>\n          <li><strong>Exercise 3:</strong> Find the highest price in each category.</li>\n          <li><strong>Exercise 4:</strong> Calculate total sales grouped by both country and category.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Business Scenarios</h5>\n        <ul>\n          <li><strong>Scenario 1 (Swiggy):</strong> Write a query to find the total orders processed per restaurant ID.</li>\n          <li><strong>Scenario 2 (HR):</strong> Calculate the average salary of employees in each department, sorted by average salary descending.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: Category Sales Dashboard Report</h5>\n        <p>Using the Products table, write a DQL query to create a dashboard report showing:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li>Product Category.</li>\n          <li>Count of products in that category.</li>\n          <li>Total stock available in that category.</li>\n          <li>Calculated total inventory cost value (price * stock) aliased as <code>InventoryValue</code>.</li>\n          <li>Sort the entire output report by <code>InventoryValue</code> in descending order.</li>\n        </ol>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "Category Sales Dashboard Reporting",
+    "description": "Construct DQL statements using GROUP BY and aggregate functions to generate segmented summaries from e-commerce datasets.",
+    "outputMock": "Category Sales Report:\n- Electronics: 3 products, 145 stock, Inventory Value: $38,000.00\n- Furniture: 2 products, 55 stock, Inventory Value: $2,250.00\nSorted by Inventory Value descending."
+  }
+}

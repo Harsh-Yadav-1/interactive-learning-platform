@@ -1,0 +1,129 @@
+{
+  "id": "day_3",
+  "dayNum": 3,
+  "title": "DDL Commands (CREATE, ALTER, DROP, TRUNCATE)",
+  "category": "Fundamentals",
+  "difficulty": "Beginner",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course for Beginners | Day 3 - DDL Commands (CREATE, ALTER, DROP, TRUNCATE) | Database Schema Design",
+  "youtubeDesc": "Welcome to Day 3 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ What is DDL (Data Definition Language) & Database Schema Design\n✅ Creating databases & tables using the CREATE command\n✅ Modifying tables in production with ALTER (ADD, MODIFY, RENAME, DROP columns)\n✅ The difference between DROP and TRUNCATE (Structure vs Data)\n✅ Real-world analytics scenarios (handling tax changes, adding columns, modifying precision)\n\n📚 Topics Covered:\n00:00 Introduction & School Building Analogy\n04:15 Creating Databases & Tables\n10:30 Modifying Schemas with ALTER\n18:00 DROP vs TRUNCATE (Crucial Interview Topic)\n25:00 Real Business Scenarios (Amazon, Hospitals)\n32:00 Assignment & Projects\n\nDownload the notes and assignments from the description below!",
+  "thumbnails": [
+    "SQL DDL Commands 🏗️",
+    "SQL Full Course Day 3",
+    "DROP vs TRUNCATE Explained",
+    "Mastering ALTER TABLE",
+    "Database Schema Design"
+  ],
+  "scripts": {
+    "opening": "\"Welcome back to Day 3 of the SQL Roadmap. In our last lesson, we mastered constraints. Today, we learn DDL—Data Definition Language. These are the commands used to build, alter, and destroy the database rooms before we put data inside them.\"",
+    "explanation": "\"Think of DDL like building a school. Constructing the classrooms is CREATE. Adding a new wing is ALTER. Demolishing the entire building is DROP, whereas clearing out all desks but keeping the building standing is TRUNCATE.\"",
+    "transition": "\"Now that we have the analogy down, let's look at the syntax for CREATE—our tool for building databases and tables.\"",
+    "closing": "\"In our next lesson, we will move from creating structures to inserting, updating, and deleting actual data rows using DML commands.\"",
+    "cta": "\"If you found this lesson helpful, hit the like button, subscribe, and download the full study notes and exercises below! I'll see you in Day 4.\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 3 Notes\n\n## 1. Learning Objectives\n* Define DDL (Data Definition Language) and its role in schema design.\n* Create databases and tables using `CREATE`.\n* Modify existing table columns and constraints using `ALTER`.\n* Safely clear data rows using `TRUNCATE` and delete structures using `DROP`.\n* Comprehend the structural differences: DROP vs. TRUNCATE.\n\n## 2. What is DDL?\n* **DDL (Data Definition Language)** commands are executed to change the database schema catalog. They define the blueprint structure of tables and databases. Unlike DML, DDL changes are metadata actions and cannot be rolled back easily in many engines.\n\n## 3. Core DDL Command Matrix\n* **CREATE**: Builds databases, tables, views, or indexes.\n* **ALTER**: Modifies the structure of an existing table (e.g. adding columns, changing data types, dropping columns).\n* **TRUNCATE**: Removes all rows from a table instantly. The table structure, indexes, and constraints remain intact.\n* **DROP**: Demolishes both the table structure and its rows from the disk catalog permanently.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 3</div>\n      <h2>DDL Commands & Schema Alterations</h2>\n      <p class=\"large-text\">Before manipulating data, we must build and manage its structure. Today we cover DDL commands:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-compass-drafting icon-cyan\"></i>\n          <h4>CREATE Blueprint</h4>\n          <p>Create databases and tables from scratch using exact data types and key constraints.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-screwdriver-wrench icon-purple\"></i>\n          <h4>ALTER Column Structures</h4>\n          <p>Add new fields, modify size precisions, rename labels, and delete columns dynamically.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-eraser icon-emerald\"></i>\n          <h4>DROP vs. TRUNCATE</h4>\n          <p>Differentiate between clearing records (TRUNCATE) and deleting entire schemas (DROP).</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. DDL Analogy: Building a School",
+      "html": "\n      <h3>Analogy: School Building Lifecycle</h3>\n      <p class=\"large-text\">DDL commands manipulate the structural layout (schema), not the items (data) inside:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> The Construction Analogy</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>🏗 <strong>CREATE:</strong> Building a brand new classroom from bricks.</li>\n            <li>➕ <strong>ALTER ... ADD:</strong> Constructing an extra room on the side of the school.</li>\n            <li>🔧 <strong>ALTER ... MODIFY:</strong> Raising the height of the classroom ceiling.</li>\n            <li>❌ <strong>ALTER ... DROP:</strong> Tearing down a specific storage closet.</li>\n            <li>🧹 <strong>TRUNCATE:</strong> Clearing out all the desks and chairs (data) but keeping the building.</li>\n            <li>💣 <strong>DROP:</strong> Demolishing the entire school building (both desks and bricks disappear!).</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. The CREATE Command",
+      "html": "\n      <h3>CREATE: Databases & Tables</h3>\n      <p class=\"large-text\">The <code>CREATE</code> command is used to instantiate new structures in the catalog:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Create a new database container\nCREATE DATABASE CompanyDB;\n\n-- Create a new table structure\nCREATE TABLE Employees (\n    EmployeeID INT PRIMARY KEY,\n    EmployeeName VARCHAR(100),\n    Salary DECIMAL(10,2),\n    Department VARCHAR(50)\n);</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">CREATE DATABASE</span>\n            <p>Creates a clean logical partition to hold tables and views.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">CREATE TABLE</span>\n            <p>Allocates columns, data types, and primary key metadata constraints in the storage engine catalog.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "4. The ALTER Command",
+      "html": "\n      <h3>ALTER: Modifying Existing Schemas</h3>\n      <p class=\"large-text\">The <code>ALTER</code> command modifies an existing table configuration dynamically without rebuilding it:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-square-plus icon-cyan\"></i>\n          <h4>1. Add Column</h4>\n          <pre><code class=\"language-sql\">ALTER TABLE Employees\nADD Email VARCHAR(100);</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-pen-to-square icon-purple\"></i>\n          <h4>2. Modify Column Type</h4>\n          <pre><code class=\"language-sql\">ALTER TABLE Employees\nMODIFY Salary DECIMAL(12,2);</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-signature icon-emerald\"></i>\n          <h4>3. Rename Column</h4>\n          <pre><code class=\"language-sql\">ALTER TABLE Employees\nRENAME COLUMN Name TO FullName;</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-trash-can icon-orange\"></i>\n          <h4>4. Drop Column</h4>\n          <pre><code class=\"language-sql\">ALTER TABLE Employees\nDROP COLUMN Email;</code></pre>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "5. DROP vs. TRUNCATE",
+      "html": "\n      <h3>DROP vs. TRUNCATE Table Demolition</h3>\n      <p class=\"large-text\">Both delete data, but their structural impacts on database schemas are entirely different:</p>\n      <div class=\"glass-card\" style=\"padding: 1.25rem; overflow-x: auto;\">\n        <table class=\"cms-table\" style=\"width:100%; border-collapse:collapse;\">\n          <thead>\n            <tr style=\"border-bottom:2px solid var(--border-glow); height:40px;\">\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Feature</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">DROP TABLE</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">TRUNCATE TABLE</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Data Impact</strong></td>\n              <td>Deletes all rows stored in the table.</td>\n              <td>Deletes all rows stored in the table.</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Schema Impact</strong></td>\n              <td>**Destroys structure** from the catalog.</td>\n              <td>**Keeps structure**, constraints, and indexes.</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Use After Execution</strong></td>\n              <td>❌ No. The table ceases to exist.</td>\n              <td>✔ Yes. You can insert new rows immediately.</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Speed</strong></td>\n              <td>Fast (removes schema catalog links).</td>\n              <td>Extremely Fast (clears data blocks on disk).</td>\n            </tr>\n            <tr>\n              <td><strong>Rollback (in standard engines)</strong></td>\n              <td>Non-reversible (commits instantly).</td>\n              <td>Non-reversible (bypasses transaction logs).</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    "
+    },
+    {
+      "title": "6. Real Business Scenarios",
+      "html": "\n      <h3>Business Scenarios: Schema Adjustments</h3>\n      <p class=\"large-text\">Let's look at real analytical adjustments companies perform on database schemas:</p>\n      <div class=\"summary-cards\">\n        <div class=\"summary-item\">\n          <i class=\"fa-solid fa-percent summary-icon\" style=\"color: var(--neon-cyan);\"></i>\n          <div>\n            <h5>1. Regulatory Updates (Tax/GST)</h5>\n            <p>Amazon starts collecting sales taxes, requiring tax columns in registries:<br><code>ALTER TABLE Sellers ADD GST_Number VARCHAR(20);</code></p>\n          </div>\n        </div>\n        <div class=\"summary-item\">\n          <i class=\"fa-solid fa-hospital summary-icon\" style=\"color: var(--neon-purple);\"></i>\n          <div>\n            <h5>2. Analytical Expansion</h5>\n            <p>A clinical analytics team decides to store patients' blood types:<br><code>ALTER TABLE Patients ADD BloodGroup VARCHAR(5);</code></p>\n          </div>\n        </div>\n        <div class=\"summary-item\">\n          <i class=\"fa-solid fa-arrow-up-right-dots summary-icon\" style=\"color: var(--neon-emerald);\"></i>\n          <div>\n            <h5>3. Precision Scaling</h5>\n            <p>A bank scales up its database transaction limit, modifying numeric data types:<br><code>ALTER TABLE Accounts MODIFY Balance DECIMAL(15,2);</code></p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. DDL Execution Engine Flow",
+      "html": "\n      <h3>DDL Engine Architecture</h3>\n      <p class=\"large-text\">What happens inside the database parser when you execute DDL statements?</p>\n      <div class=\"nested-diagram-container\" style=\"background:rgba(255,255,255,0.02); border-radius:10px; padding:1.5rem;\">\n        <div class=\"feature-grid\" style=\"text-align:center;\">\n          <div class=\"feature-card\" style=\"border-color:var(--neon-cyan);\">\n            <h5 style=\"color:var(--neon-cyan);\">1. Parser & Validator</h5>\n            <p style=\"font-size:0.8rem;\">Scans query and validates syntax spelling.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-purple);\">\n            <h5 style=\"color:var(--neon-purple);\">2. Schema Manager</h5>\n            <p style=\"font-size:0.8rem;\">Checks table definitions and locks metadata catalog.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-emerald);\">\n            <h5 style=\"color:var(--neon-emerald);\">3. Storage Catalog</h5>\n            <p style=\"font-size:0.8rem;\">Writes schema updates to catalog files on disk.</p>\n          </div>\n        </div>\n      </div>\n      <div class=\"complexity-tip\" style=\"margin-top:1.5rem;\">\n        ⚠️ <strong>Metadata Lock:</strong> DDL locks the targeted table. While an <code>ALTER TABLE</code> statement is modifying columns, standard user queries trying to write rows will wait in a queue to prevent structural crashes!\n      </div>\n    "
+    },
+    {
+      "title": "8. Pitfalls & Best Practices",
+      "html": "\n      <h3>Avoid Disasters: DDL Best Practices</h3>\n      <p class=\"large-text\">DDL commands modify the system's structural blueprint. Follow these strict safety guidelines:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-ban\"></i> Common DDL Mistakes</h5>\n          <ul>\n            <li>❌ Running a <code>DROP TABLE</code> on a production server without checking backup dates.</li>\n            <li>❌ Modifying column data types when the column contains existing data, causing format truncation errors.</li>\n            <li>❌ Using <code>DROP</code> to clear database test records instead of `TRUNCATE`.</li>\n            <li>❌ Forgetting to index columns that act as foreign keys.</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5><i class=\"fa-solid fa-circle-check\"></i> Standard DDL Rules</h5>\n          <ul>\n            <li>✔ Execute and test DDL scripts in a sandbox local database environment first.</li>\n            <li>✔ Use <code>TRUNCATE</code> to reset mock databases without losing table schemas.</li>\n            <li>✔ Backup your database before performing column structural changes.</li>\n            <li>✔ Terminate multiple queries with semicolons (<code>;</code>) explicitly.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "Which SQL command category do schema modifications like adding columns belong to?",
+      "options": ["DML", "DDL", "DQL", "TCL"],
+      "answer": 1,
+      "explanation": "Adding, removing, or modifying columns changes the database blueprint structure, making it a DDL (Data Definition Language) command."
+    },
+    {
+      "q": "What happens to the table structure when a TRUNCATE command is executed?",
+      "options": ["It is deleted", "It remains intact", "It gets converted to a temporary table", "It is archived"],
+      "answer": 1,
+      "explanation": "TRUNCATE deletes all data rows inside the table instantly, but the table structure (blueprint), indexes, and constraints remain intact."
+    },
+    {
+      "q": "Which DDL command is used to permanently remove a table structure and all its rows from the disk catalog?",
+      "options": ["TRUNCATE", "DROP", "DELETE", "ALTER"],
+      "answer": 1,
+      "explanation": "The DROP command demolishes both the data rows and the structural definition of the table from the database catalog."
+    },
+    {
+      "q": "Which ALTER statement modifier is used to add a new column to a table?",
+      "options": ["INSERT", "UPDATE", "ADD", "CREATE"],
+      "answer": 2,
+      "explanation": "The syntax is: 'ALTER TABLE table_name ADD column_name data_type'."
+    },
+    {
+      "q": "Why does a DDL ALTER command lock tables during execution?",
+      "options": ["To speed up writes", "To validate server certificates", "To prevent query inconsistencies while columns are reshuffled", "RDBMS servers do not lock tables"],
+      "answer": 2,
+      "explanation": "DDL commands lock target tables to prevent concurrent queries from reading or writing row values while column architectures are being altered."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "What is DDL, and how does it differ from DML?",
+      "a": "• <b>DDL (Data Definition Language):</b> Modifies database structures (tables, indexes, databases). Examples: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>TRUNCATE</code>.<br>• <b>DML (Data Manipulation Language):</b> Modifies the actual row data inside those structural objects. Examples: <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>."
+    },
+    {
+      "q": "What is the difference between DROP and TRUNCATE?",
+      "a": "• <b>DROP:</b> Deletes the table data **and** removes the table structure from the database catalog entirely.<br>• <b>TRUNCATE:</b> Deletes all data rows inside the table, but **keeps the table structure**, indexes, and constraints, allowing you to insert new rows immediately."
+    },
+    {
+      "q": "What is the difference between TRUNCATE and DELETE (without a WHERE clause)?",
+      "a": "• <b>TRUNCATE:</b> A DDL command. It clears data pages on disk instantly, does not trigger transaction log events, and cannot be rolled back.<br>• <b>DELETE:</b> A DML command. It deletes rows one-by-one, logs each deletion in transaction logs, triggers database rules, and can be rolled back inside transactions."
+    },
+    {
+      "q": "What constraints must you consider when altering column data types in a populated table?",
+      "a": "The existing values in that column must be compatible with the new data type (e.g. converting a column from <code>VARCHAR</code> to <code>INT</code> is only allowed if all rows store digits). If any incompatible string exists, the database throws a type mismatch error and blocks the DDL execution."
+    },
+    {
+      "q": "How do you add a new column with a UNIQUE constraint using ALTER?",
+      "a": "You append the constraint keyword to the end of the add query:<br><code>ALTER TABLE Employees ADD Mobile VARCHAR(15) UNIQUE;</code>"
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 3 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Write an DDL script to create a <code>LibraryDB</code> database and a <code>Books</code> table.</li>\n          <li><strong>Exercise 2:</strong> Alter the <code>Books</code> table to add a new column: <code>PublishedYear INT</code>.</li>\n          <li><strong>Exercise 3:</strong> Modify the datatype of <code>Title</code> from <code>VARCHAR(50)</code> to <code>VARCHAR(150)</code>.</li>\n          <li><strong>Exercise 4:</strong> Write the command to clear all records inside the <code>Books</code> table while keeping its structure.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Analytical Scenarios</h5>\n        <ul>\n          <li><strong>Scenario 1:</strong> A clinical team wants to remove the <code>GuardianOccupation</code> column from a Patient registry. Write the DDL statement.</li>\n          <li><strong>Scenario 2:</strong> A development server needs to be wiped clean of test transactions before production launches. Identify whether you should use DROP or TRUNCATE.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: College Database Schema Alteration</h5>\n        <p>Design a college administrative blueprint schema:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li>Create a table: <code>Students</code> (ID, Name, DateOfBirth).</li>\n          <li>Add a column: <code>Email VARCHAR(100) UNIQUE</code>.</li>\n          <li>Add a column: <code>Mobile VARCHAR(15)</code>.</li>\n          <li>Rename the column: <code>Name</code> to <code>FullName</code>.</li>\n          <li>Drop the column: <code>DateOfBirth</code>.</li>\n        </ol>\n        <p style=\"margin-top:0.75rem;\">Write and verify the sequential ALTER scripts required to achieve this structural transformation.</p>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "College Schema Creation & Alteration",
+    "description": "Write a DDL script to construct a Students table, execute multiple column alterations, rename fields, and clean/drop test objects.",
+    "outputMock": "Steps executed:\n- Table Students created.\n- Column Email added.\n- Column Mobile added.\n- Column Name renamed to FullName.\n- Column DateOfBirth dropped.\n- Table verified in catalog schema."
+  }
+}

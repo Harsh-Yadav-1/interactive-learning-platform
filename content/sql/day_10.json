@@ -1,0 +1,144 @@
+{
+  "id": "day_10",
+  "dayNum": 10,
+  "title": "HAVING Clause (Filtering Groups)",
+  "category": "Fundamentals",
+  "difficulty": "Intermediate",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course Day 10 | HAVING Clause Explained | WHERE vs HAVING (Crucial Interview Topic)",
+  "youtubeDesc": "Welcome to Day 10 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ What is the HAVING clause and why it is essential for group filtering\n✅ The core limitation of the WHERE clause (why WHERE AVG(price) > 500 crashes your database)\n✅ Filtering grouped categories by aggregate computations (SUM, AVG, COUNT, MIN, MAX)\n✅ The Ultimate Comparison: WHERE vs. HAVING (What, When, and How they filter)\n✅ Combining both WHERE and HAVING in a single complex reporting query\n✅ The complete, unalterable order of clauses in a standard SQL query\n\n📚 Topics Covered:\n00:00 Introduction & Roster Recap\n03:45 The Core Problem: Why WHERE fails on Aggregates\n10:15 HAVING in Action (Average Price filters)\n17:30 Inventory Counts: HAVING SUM(stock)\n24:00 The Ultimate Battle: WHERE vs HAVING\n31:30 Combining WHERE & HAVING with full execution flow\n\nDownload the notes and assignments from the description below!",
+  "thumbnails": [
+    "Master HAVING Clause 🔍",
+    "WHERE vs HAVING Explained",
+    "SQL Group Filtering",
+    "SQL for Data Analytics Day 10",
+    "SQL Interview Questions"
+  ],
+  "scripts": {
+    "opening": "\"Welcome back to Day 10 of the SQL Roadmap. Yesterday, we grouped our data into buckets. Today, we unlock the final piece of the grouping puzzle: the HAVING clause. If you already know how to use WHERE, HAVING will feel very familiar—but they have one massive, crucial difference in when they filter your data.\"",
+    "explanation": "\"Imagine your boss asks: which product categories have an average price over 500 dollars? If you try to write a WHERE clause checking AVG price over 500, the database will crash. Why? Because WHERE filters individual rows before grouping happens, and single rows don't have averages. To filter grouped aggregates, you must use HAVING.\"",
+    "transition": "\"Before we compare WHERE and HAVING side-by-side, let's look at the basic HAVING syntax in action.\"",
+    "closing": "\"In our next lesson, we will move into Phase 2 of our roadmap: Joins! We will learn how to connect multiple tables together using INNER JOIN.\"",
+    "cta": "\"If you found this video helpful, click the like button, subscribe to follow along with Phase 2, and download the full notes and practice scripts below! I'll see you in Day 11.\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 10 Notes\n\n## 1. Learning Objectives\n* Comprehend why the `WHERE` clause cannot filter aggregate calculations.\n* Filter grouped categories using the `HAVING` clause.\n* Compare `WHERE` vs. `HAVING` filters (What, When, and Aggregate compatibility).\n* Write queries that combine `WHERE` row filters and `HAVING` group filters.\n* Master the absolute, unalterable order of SQL SELECT clauses.\n\n## 2. Why HAVING is Required\n* Database engines execute the `WHERE` clause *before* performing groupings. Because of this logical flow, unaggregated rows cannot evaluate aggregate expressions (like `AVG(price)`). The `HAVING` clause is executed *after* groups are created, allowing aggregate filters to be safely applied.\n\n## 3. SQL Query Processing Order\n* **Written Sequence**: `SELECT` $\\rightarrow$ `FROM` $\\rightarrow$ `WHERE` $\\rightarrow$ `GROUP BY` $\\rightarrow$ `HAVING` $\\rightarrow$ `ORDER BY` $\\rightarrow$ `LIMIT`.\n* **Execution Flow**: `FROM` $\\rightarrow$ `WHERE` $\\rightarrow$ `GROUP BY` $\\rightarrow$ `HAVING` $\\rightarrow$ `SELECT` $\\rightarrow$ `ORDER BY` $\\rightarrow$ `LIMIT`.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 10</div>\n      <h2>Group Filtering with HAVING</h2>\n      <p class=\"large-text\">Filtering aggregated groups requires a different mechanism than filtering individual rows. Today we cover:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-filter-circle-xmark icon-cyan\"></i>\n          <h4>The WHERE Limitation</h4>\n          <p>Learn why standard WHERE filters crash when referencing aggregates like AVG or SUM, and how to avoid syntax errors.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-filter-circle-dollar icon-purple\"></i>\n          <h4>HAVING Clause</h4>\n          <p>Filter grouped buckets after aggregation has executed (e.g. selecting categories where average pricing exceeds $500).</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-code icon-emerald\"></i>\n          <h4>Combined Filters</h4>\n          <p>Nest row-level WHERE filters and group-level HAVING filters in a single query following the strict order of clauses.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. The Core Problem: Why WHERE Fails",
+      "html": "\n      <h3>The WHERE Clause Limitation</h3>\n      <p class=\"large-text\">Imagine you need to list categories with an average product price greater than $500:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5>❌ Crash-Prone Query</h5>\n          <pre><code class=\"language-sql\">-- This query will crash!\nSELECT category, AVG(price)\nFROM products\nWHERE AVG(price) > 500\nGROUP BY category;</code></pre>\n          <p style=\"font-size:0.85rem; color:#ef4444; margin-top:0.4rem;\">⚠️ <strong>Syntax Error:</strong> Invalid use of group function. The <code>WHERE</code> clause executes before rows are grouped; it cannot evaluate summary calculations like <code>AVG(price)</code>.</p>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5>✔ Correct Group Filtering</h5>\n          <pre><code class=\"language-sql\">-- This query works perfectly!\nSELECT category, AVG(price) AS average_price\nFROM products\nGROUP BY category\nHAVING AVG(price) > 500;</code></pre>\n          <p style=\"font-size:0.85rem; color:var(--neon-emerald); margin-top:0.4rem;\">Correct. The <code>HAVING</code> clause waits until groups are formed, then filters the resulting averages.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. The HAVING Clause in Action",
+      "html": "\n      <h3>HAVING: Filtering Category Summaries</h3>\n      <p class=\"large-text\">Let's examine how <code>HAVING</code> filters aggregates, such as category inventory or pricing limits:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Find categories with avg price > 500\nSELECT category, AVG(price) AS average_price\nFROM products\nGROUP BY category\nHAVING AVG(price) > 500;\n\n-- Find categories with low total stock (< 60)\nSELECT category, SUM(stock) AS total_stock\nFROM products\nGROUP BY category\nHAVING SUM(stock) < 60;</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Example 1 Output</span>\n            <p><strong>Electronics</strong> appears (avg: $700). Furniture is skipped because its avg is $200 (less than $500).</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">Example 2 Output</span>\n            <p><strong>Furniture</strong> appears (stock: 55). Electronics is skipped because its total stock is 145.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "4. The Ultimate Battle: WHERE vs. HAVING",
+      "html": "\n      <h3>WHERE vs. HAVING Comparison</h3>\n      <p class=\"large-text\">Differentiating these filters is a classic data analyst interview question. Memorize their behaviors:</p>\n      <div class=\"glass-card\" style=\"padding: 1.25rem; overflow-x: auto;\">\n        <table class=\"cms-table\" style=\"width:100%; border-collapse:collapse;\">\n          <thead>\n            <tr style=\"border-bottom:2px solid var(--border-glow); height:40px;\">\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Feature</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">WHERE Clause</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">HAVING Clause</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Filters What?</strong></td>\n              <td>Individual raw data rows.</td>\n              <td>Summarized group buckets.</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Execution Order</strong></td>\n              <td>**Before** <code>GROUP BY</code>.</td>\n              <td>**After** <code>GROUP BY</code>.</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Supports Aggregates?</strong></td>\n              <td>❌ No (Cannot use SUM, AVG, COUNT).</td>\n              <td>✔ Yes (Designed for aggregate checks).</td>\n            </tr>\n            <tr>\n              <td><strong>Performance</strong></td>\n              <td>Faster (discards rows early, saving memory).</td>\n              <td>Slower (must group data before discarding).</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    "
+    },
+    {
+      "title": "5. Combining Both Filters",
+      "html": "\n      <h3>Double Filtering: WHERE + HAVING</h3>\n      <p class=\"large-text\">You can combine both filters. SQL will filter rows first, create groups, and then filter those groups:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Filter rows, group, and filter summaries\nSELECT category, SUM(stock) AS total_stock\nFROM products\nWHERE price >= 150\nGROUP BY category\nHAVING SUM(stock) > 20;</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Step 1: WHERE Filter</span>\n            <p>Discards cheap products (under $150) before grouping. Headphones ($100) are removed from calculation.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">Step 2: GROUP BY</span>\n            <p>Groups the remaining products by category.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-emerald\">Step 3: HAVING Filter</span>\n            <p>Removes any category group whose remaining sum of stock is 20 or less.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "6. The Complete SQL Query Order of Clauses",
+      "html": "\n      <h3>Unalterable SQL Select Query Sequence</h3>\n      <p class=\"large-text\">SQL clauses must be written in this exact order. Changing the sequence results in syntax errors:</p>\n      <div class=\"nested-diagram-container\" style=\"background:rgba(255,255,255,0.02); border-radius:10px; padding:1rem; text-align:center;\">\n        <p style=\"font-family:var(--font-mono); font-size:1.15rem; color:var(--neon-cyan); letter-spacing:1px;\">\n          SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT\n        </p>\n      </div>\n      <div class=\"complexity-tip\" style=\"margin-top:1.5rem;\">\n        💡 <strong>Execution Flow Summary:</strong> The database engine locates the table (<code>FROM</code>), filters rows (<code>WHERE</code>), partitions segments (<code>GROUP BY</code>), filters groups (<code>HAVING</code>), selects calculations (<code>SELECT</code>), sorts output (<code>ORDER BY</code>), and truncates rows (<code>LIMIT</code>).\n      </div>\n    "
+    },
+    {
+      "title": "7. Summary Cheat Sheet",
+      "html": "\n      <h3>How to Choose: WHERE vs. HAVING</h3>\n      <p class=\"large-text\">When writing database reports, follow this guide to select the correct filtering clause:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-font icon-cyan\"></i>\n          <h4>Filter by regular column value</h4>\n          <p style=\"font-size:0.85rem; margin-bottom:0.5rem;\">If you are filtering by status, country, dates, or prices:</p>\n          <pre><code class=\"language-sql\">WHERE status = 'Active'\nWHERE country = 'USA'</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">✔ Use <strong>WHERE</strong></p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-sigma icon-purple\"></i>\n          <h4>Filter by calculated summaries</h4>\n          <p style=\"font-size:0.85rem; margin-bottom:0.5rem;\">If you are filtering by sums, averages, or counts:</p>\n          <pre><code class=\"language-sql\">HAVING COUNT(*) > 5\nHAVING SUM(stock) < 100</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">✔ Use <strong>HAVING</strong></p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "8. Pitfalls & Best Practices",
+      "html": "\n      <h3>Avoid Disasters: HAVING Best Practices</h3>\n      <p class=\"large-text\">Keep these guidelines in mind when writing aggregate filters:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-ban\"></i> Common HAVING Mistakes</h5>\n          <ul>\n            <li>❌ Using <code>HAVING</code> to filter regular columns (e.g. <code>HAVING country = 'USA'</code>) instead of <code>WHERE</code>. (This is slow because the database must group rows before filtering them).</li>\n            <li>❌ Forgetting to include the <code>GROUP BY</code> clause when using <code>HAVING</code> in queries that select unaggregated fields.</li>\n            <li>❌ Writing clauses in the wrong order, such as putting <code>HAVING</code> before <code>GROUP BY</code>.</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5><i class=\"fa-solid fa-circle-check\"></i> Standard Practices</h5>\n          <ul>\n            <li>✔ Use <code>WHERE</code> to discard individual rows as early as possible to optimize query speed.</li>\n            <li>✔ Reserve <code>HAVING</code> strictly for filtering summary metrics (e.g. COUNT, SUM, AVG).</li>\n            <li>✔ Alias all calculated metrics in the SELECT block for clear, professional reports.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "What is the primary difference between WHERE and HAVING?",
+      "options": [
+        "WHERE filters columns; HAVING filters tables",
+        "WHERE filters individual rows before grouping; HAVING filters groups after grouping",
+        "HAVING is faster than WHERE in all scenarios",
+        "WHERE supports aggregate functions; HAVING does not"
+      ],
+      "answer": 1,
+      "explanation": "WHERE filters source rows before grouping (GROUP BY) takes place. HAVING filters grouped buckets after the grouping has executed."
+    },
+    {
+      "q": "What happens if you use an aggregate function like AVG(price) in a WHERE clause?",
+      "options": [
+        "The query runs successfully",
+        "The database fails with a syntax error",
+        "The database automatically replaces WHERE with HAVING",
+        "The query returns NULL values"
+      ],
+      "answer": 1,
+      "explanation": "The WHERE clause cannot evaluate aggregate functions because it executes before grouping occurs, resulting in a syntax error."
+    },
+    {
+      "q": "Which clause is executed first during query compilation?",
+      "options": ["SELECT", "WHERE", "GROUP BY", "HAVING"],
+      "answer": 1,
+      "explanation": "In query execution flow, WHERE is processed first to filter rows, then GROUP BY groups them, HAVING filters the groups, and SELECT projects the results."
+    },
+    {
+      "q": "What is the correct unalterable order of clauses in a SQL statement?",
+      "options": [
+        "SELECT, FROM, WHERE, HAVING, GROUP BY, ORDER BY",
+        "SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT",
+        "SELECT, FROM, HAVING, GROUP BY, WHERE, LIMIT",
+        "FROM, SELECT, WHERE, GROUP BY, HAVING, ORDER BY"
+      ],
+      "answer": 1,
+      "explanation": "The standard written order of SQL clauses is: SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT."
+    },
+    {
+      "q": "Suppose you want to find all product categories that contain more than 2 items. Which filter should you use?",
+      "options": ["WHERE COUNT(*) > 2", "HAVING COUNT(*) > 2", "WHERE quantity > 2", "HAVING quantity > 2"],
+      "answer": 1,
+      "explanation": "To filter based on count summaries, you must use HAVING. The query is: GROUP BY category HAVING COUNT(*) > 2."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "Why does SELECT category, AVG(price) FROM products WHERE AVG(price) > 500 GROUP BY category; fail with an error?",
+      "a": "The <code>WHERE</code> clause is evaluated **before** rows are grouped. Because individual rows do not have an 'average price' (only a single price), the engine cannot evaluate <code>AVG(price)</code> in the WHERE clause, resulting in a syntax error. You must use <code>HAVING AVG(price) > 500</code>."
+    },
+    {
+      "q": "What is the difference between WHERE and HAVING? (Detailed Interview Answer)",
+      "a": "• <b>WHERE:</b> Filters individual records before grouping. It cannot contain aggregate functions and is faster because it discards rows early.<br>• <b>HAVING:</b> Filters grouped buckets after grouping. It is designed specifically to check aggregate conditions (e.g. SUM, COUNT) and executes later in the pipeline."
+    },
+    {
+      "q": "Can you use both WHERE and HAVING in the same query? Provide a real-world example.",
+      "a": "Yes! It is a powerful pattern. SQL filters rows first, groups them, and then filters the groups:<br><code>SELECT category, SUM(stock) FROM products WHERE price >= 150 GROUP BY category HAVING SUM(stock) > 20;</code> (Filters out cheap items under $150 first, groups them, and then selects categories with total stock over 20)."
+    },
+    {
+      "q": "What is the unalterable sequence of clauses in a standard SQL select statement?",
+      "a": "The correct written sequence is:<br><code>SELECT</code> $\\rightarrow$ <code>FROM</code> $\\rightarrow$ <code>WHERE</code> $\\rightarrow$ <code>GROUP BY</code> $\\rightarrow$ <code>HAVING</code> $\\rightarrow$ <code>ORDER BY</code> $\\rightarrow$ <code>LIMIT</code>."
+    },
+    {
+      "q": "Is it good practice to use HAVING to filter non-aggregated columns? (e.g. HAVING country = 'USA')",
+      "a": "No, it is bad practice. While some databases allow it, it is inefficient. Filtering via <code>WHERE country = 'USA'</code> discards non-matching rows before grouping, saving CPU and memory. Using HAVING forces the database to group all rows first, only to discard the USA groups later."
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 10 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Find product categories with an average price over $500 using <code>HAVING</code>.</li>\n          <li><strong>Exercise 2:</strong> Find categories with a combined stock less than 60.</li>\n          <li><strong>Exercise 3:</strong> Find departments in an employee database where the count of employees is greater than 5.</li>\n          <li><strong>Exercise 4:</strong> Write a query combining <code>WHERE price >= 150</code> and <code>HAVING SUM(stock) > 20</code>.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Business Scenarios</h5>\n        <ul>\n          <li><strong>Scenario 1 (HR):</strong> Find departments where the average employee salary is greater than $60,000.</li>\n          <li><strong>Scenario 2 (Swiggy):</strong> Find restaurants with an average delivery rating over 4.5 and total orders greater than 100.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: Category Stock Scorecard</h5>\n        <p>Using the Products table, write a DQL query to create a scorecard report showing:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li>Product Category.</li>\n          <li>Total stock available in that category.</li>\n          <li>Exclude items under $100 before performing stock aggregation.</li>\n          <li>Filter output to categories with total stock levels over 40.</li>\n        </ol>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "Category Performance Scorecard",
+    "description": "Construct queries combining WHERE filters, GROUP BY grouping, and HAVING aggregate filters to generate business performance reports.",
+    "outputMock": "Category Stock Scorecard:\n- Electronics: 145 stock (Headphones excluded because price under $100)\n- Furniture: 55 stock\nBoth groups passed the HAVING total stock > 40 filter condition."
+  }
+}

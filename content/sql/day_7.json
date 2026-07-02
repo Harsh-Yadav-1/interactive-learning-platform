@@ -1,0 +1,129 @@
+{
+  "id": "day_7",
+  "dayNum": 7,
+  "title": "Aliases, Comments & Arithmetic Operators",
+  "category": "Fundamentals",
+  "difficulty": "Beginner",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course Day 7 | Aliases, Comments & Arithmetic Operators Explained | SQL for Data Analytics",
+  "youtubeDesc": "Welcome to Day 7 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ What is an Alias (AS keyword) and how it improves report readability\n✅ Column vs. Table aliases and when to use them in complex JOINs\n✅ Performing calculations directly in SQL using arithmetic operators (+, -, *, /)\n✅ Generating calculated columns (GST taxes, total bill amounts, annual salaries)\n✅ Documenting code professionally with single-line (--) and multi-line (/* */) comments\n✅ The SQL processing pipeline & how the parser ignores comment blocks\n\n📚 Topics Covered:\n00:00 Introduction & Excel Rename Analogy\n04:15 Column Aliases (AS Keyword)\n10:45 Table Aliases & JOIN previews\n16:30 Arithmetic Operators & Calculations\n24:00 Real Business Examples (GST, Commissions)\n32:00 Documenting Code with Comments\n\nDownload the notes and assignments from the description below!",
+  "thumbnails": [
+    "SQL Aliases Made Easy 🏷️",
+    "SQL Math Operators",
+    "Professional SQL Reports",
+    "SQL for Data Analytics Day 7",
+    "SQL Interview Questions"
+  ],
+  "scripts": {
+    "opening": "\"Welcome back to Day 7 of the SQL Roadmap. In our last lesson, we filtered records with WHERE. Today, we focus on making our reports professional and documentable using Aliases, Comments, and Arithmetic Operators. This allows us to calculate metrics like GST or annual salary directly inside SQL.\"",
+    "explanation": "\"Renaming columns in SQL is just like renaming headers in an Excel report. Instead of showing a manager raw formulas like base price times quantity minus discount, we use an Alias to rename the output to Final Amount. It's clean, readable, and highly professional.\"",
+    "transition": "\"Before we start calculating values, let's learn how to assign column and table aliases using the AS keyword.\"",
+    "closing": "\"In our next lesson, we will explore Aggregate Functions—COUNT, SUM, AVG, MIN, and MAX—which are among the most frequently used functions in Data Analytics.\"",
+    "cta": "\"If you found this lesson helpful, click the like button, subscribe, and download the full study notes and exercises below! I'll see you in Day 8.\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 7 Notes\n\n## 1. Learning Objectives\n* Assign temporary identifiers using column and table aliases.\n* Execute math equations inside queries using arithmetic operators (`+`, `-`, `*`, `/`).\n* Document complex logical conditions using single-line and multi-line comments.\n* Construct formatted reports with calculated fields.\n* Identify SQL parser behaviors when encountering comment tags.\n\n## 2. What is an Alias?\n* An **Alias** is a temporary name assigned to a column or table for the duration of a query's execution. It does not alter the underlying database structure; it only affects the projected column headers in the result set.\n\n## 3. SQL Arithmetic Operators\n* **+ (Addition)**: Adds values or columns.\n* **- (Subtraction)**: Calculates offsets or discounts.\n* **\\* (Multiplication)**: Computes products (e.g. quantity * price).\n* **/ (Division)**: Calculates averages or distributions.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 7</div>\n      <h2>Aliases, Comments & Calculations</h2>\n      <p class=\"large-text\">SQL queries must be readable, self-documenting, and capable of raw calculations. Today we cover:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-tag icon-cyan\"></i>\n          <h4>SQL Aliases (AS)</h4>\n          <p>Assign clean, temporary names to column headers and table descriptors to simplify relational references.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-calculator icon-purple\"></i>\n          <h4>Arithmetic Operators</h4>\n          <p>Perform basic math (+, -, *, /) directly in database queries to generate calculated columns (e.g. taxes or profits).</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-comment-slash icon-emerald\"></i>\n          <h4>Code Documentation</h4>\n          <p>Write single-line and multi-line comments to document query logic for future analysts and teammates.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. DQL Analogy: Excel Report Renaming",
+      "html": "\n      <h3>DQL Analogy: Formatting a Spread Sheet</h3>\n      <p class=\"large-text\">Imagine you are preparing an executive sales report in Excel. You would not leave raw column formulas exposed:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> The Formatting Analogy</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>🏷 <strong>Column Aliasing:</strong> Renaming a cryptically named cell like <code>EMP_SAL_AMT</code> to <code>Employee Salary</code> so business managers can understand it.</li>\n            <li>📝 <strong>SQL Comments:</strong> Adding yellow sticky notes next to cell formulas to explain why a tax deduction multiplier exists.</li>\n            <li>🧮 <strong>Math Operations:</strong> Writing cell formulas (e.g. <code>Price * Qty</code>) to calculate total costs automatically.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. Column & Table Aliases",
+      "html": "\n      <h3>Assigning Column & Table Aliases</h3>\n      <p class=\"large-text\">Use the <code>AS</code> keyword to assign temporary names (aliases) to columns and tables:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Assigning a Column Alias\nSELECT product_name,\n       base_price AS Price\nFROM orders;\n\n-- Assigning a Table Alias\nSELECT o.product_name\nFROM orders AS o;\n\n-- Column Alias with spaces (Requires double quotes)\nSELECT price * quantity AS \"Total Amount\"\nFROM orders;</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Column Aliases</span>\n            <p>Provides a clean header in the result grid. If the alias contains spaces, it must be wrapped in double quotes (e.g. <code>\"Total Price\"</code>).</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">Table Aliases</span>\n            <p>Saves typing and simplifies syntax when references are combined across multiple tables in JOIN operations (e.g. referencing <code>o.product_name</code>).</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "4. SQL Arithmetic Operators",
+      "html": "\n      <h3>Performing Calculations in SQL</h3>\n      <p class=\"large-text\">SQL supports standard arithmetic operators. You can calculate values dynamically in SELECT blocks:</p>\n      <div class=\"glass-card\" style=\"padding: 1.25rem; overflow-x: auto;\">\n        <table class=\"cms-table\" style=\"width:100%; border-collapse:collapse;\">\n          <thead>\n            <tr style=\"border-bottom:2px solid var(--border-glow); height:40px;\">\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Operator</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Operation</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Query Syntax Example</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><code>+</code> / <code>-</code></td>\n              <td>Addition / Subtraction</td>\n              <td><code>SELECT price + tax AS PriceWithTax FROM products;</code></td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><code>*</code></td>\n              <td>Multiplication</td>\n              <td><code>SELECT price * quantity AS TotalAmount FROM orders;</code></td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><code>/</code></td>\n              <td>Division</td>\n              <td><code>SELECT (price * quantity) / quantity AS UnitCost FROM orders;</code></td>\n            </tr>\n            <tr>\n              <td><code>%</code></td>\n              <td>Modulus (Remainder)</td>\n              <td><code>SELECT id % 2 AS IsEven FROM numbers;</code></td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    "
+    },
+    {
+      "title": "5. Business Calculations Examples",
+      "html": "\n      <h3>Business Scenarios: Calculated Reports</h3>\n      <p class=\"large-text\">Here are standard equations analysts execute to create corporate business intelligence files:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-receipt icon-cyan\"></i>\n          <h4>1. Tax Calculation (18% GST)</h4>\n          <pre><code class=\"language-sql\">SELECT product_name,\n       base_price,\n       base_price * 0.18 AS GST\nFROM orders;</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-tags icon-purple\"></i>\n          <h4>2. Final Bill With Discount</h4>\n          <pre><code class=\"language-sql\">SELECT product_name,\n       (base_price * quantity) - discount \n         AS FinalAmount\nFROM orders;</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-money-bill-trend-up icon-emerald\"></i>\n          <h4>3. HR Annual Salaries</h4>\n          <pre><code class=\"language-sql\">SELECT name,\n       salary * 12 AS AnnualSalary\nFROM employees;</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-coins icon-orange\"></i>\n          <h4>4. Sales Commission (10%)</h4>\n          <pre><code class=\"language-sql\">SELECT employee_name,\n       sales_amount * 0.10 AS Commission\nFROM sales;</code></pre>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "6. SQL Comments & Documentation",
+      "html": "\n      <h3>Documenting Code: Single & Multi-Line Comments</h3>\n      <p class=\"large-text\">Comments help developers understand query logic. The SQL parser completely ignores commented lines:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Single-line comment explaining the next query\nSELECT * FROM orders;\n\n/*\n   Author  : Harsh\n   Purpose : Calculate Annual Revenue\n   Date    : 10 July 2026\n*/\nSELECT name, salary * 12 AS AnnualSalary \nFROM employees;</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Single-Line (--)</span>\n            <p>Begins with two dashes (<code>--</code>) followed by a space. Everything to the right on that line is ignored.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">Multi-Line (/* */)</span>\n            <p>Wrapped inside <code>/*</code> and <code>*/</code>. Extremely useful for block documentation, query headers, and metadata logs.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. DQL Query Processing pipeline",
+      "html": "\n      <h3>SQL Comment Processing Pipeline</h3>\n      <p class=\"large-text\">How does the database parser engine handle comment tags during query compilation?</p>\n      <div class=\"nested-diagram-container\" style=\"background:rgba(255,255,255,0.02); border-radius:10px; padding:1.5rem;\">\n        <div class=\"feature-grid\" style=\"text-align:center;\">\n          <div class=\"feature-card\" style=\"border-color:var(--neon-cyan);\">\n            <h5 style=\"color:var(--neon-cyan);\">1. Read Query</h5>\n            <p style=\"font-size:0.75rem;\">Parser loads SQL code string from console or API.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-purple);\">\n            <h5 style=\"color:var(--neon-purple);\">2. Strip Comments</h5>\n            <p style=\"font-size:0.75rem;\">Tokenizer identifies <code>--</code> and <code>/*</code> blocks and discards them.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-emerald);\">\n            <h5 style=\"color:var(--neon-emerald);\">3. Check Syntax</h5>\n            <p style=\"font-size:0.75rem;\">Query parser checks remaining code blocks for grammatical correctness.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-orange);\">\n            <h5 style=\"color:var(--neon-orange);\">4. Execute & Output</h5>\n            <p style=\"font-size:0.75rem;\">Database engine processes requests and projects aliased results.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "8. Pitfalls & Best Practices",
+      "html": "\n      <h3>Avoid Errors: Alias & Comment Best Practices</h3>\n      <p class=\"large-text\">Follow these guidelines to write readable, robust SQL files:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-ban\"></i> Common SQL Mistakes</h5>\n          <ul>\n            <li>❌ Writing spaces in aliases without double quotes (e.g. <code>SELECT price AS Total Price</code> leads to syntax errors).</li>\n            <li>❌ Forgetting aliases on calculations, resulting in ugly headers like <code>price * qty - discount</code> in reporting tools.</li>\n            <li>❌ Using double slash comments (<code>//</code>) or hash signs (in database systems where <code>#</code> is not supported).</li>\n            <li>❌ Attempting to reference a column alias inside a <code>WHERE</code> clause in the same query (WHERE executes before SELECT).</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5><i class=\"fa-solid fa-circle-check\"></i> Standard Practices</h5>\n          <ul>\n            <li>✔ Wrap aliases containing spaces inside double quotes: <code>AS \"Total Amount\"</code>.</li>\n            <li>✔ Alias every calculated column explicitly for professional reports.</li>\n            <li>✔ Document non-obvious business math (like tax rates or currency rates) using single-line comments.</li>\n            <li>✔ Keep table aliases short (e.g. <code>orders AS o</code>) when referencing fields.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "Which SQL keyword is used to assign a temporary name (alias) to a column or table?",
+      "options": ["ALTER", "AS", "RENAME", "SET"],
+      "answer": 1,
+      "explanation": "The 'AS' keyword is used to create an alias, providing a temporary output name for columns or tables."
+    },
+    {
+      "q": "Which operator is used to perform multiplication in SQL queries?",
+      "options": ["x", "*", "+", "MULT"],
+      "answer": 1,
+      "explanation": "The asterisk (*) is the standard multiplication operator in SQL."
+    },
+    {
+      "q": "What is the correct way to write a single-line comment in SQL?",
+      "options": ["// This is a comment", "/* This is a comment */", "-- This is a comment", "# This is a comment"],
+      "answer": 2,
+      "explanation": "In standard SQL, two dashes followed by a space ('-- ') represent a single-line comment."
+    },
+    {
+      "q": "If you calculate 'base_price * quantity' without an alias, what will the output column header be?",
+      "options": ["TotalAmount", "The formula itself (base_price*quantity)", "No header (blank)", "Syntax Error"],
+      "answer": 1,
+      "explanation": "Without an alias, the database engine defaults the output column header name to the exact expression string itself."
+    },
+    {
+      "q": "Do SQL aliases speed up query execution times?",
+      "options": ["Yes, significantly", "No, they only improve readability and reporting", "Yes, but only in JOIN queries", "Yes, in MySQL only"],
+      "answer": 1,
+      "explanation": "Aliases have zero impact on server execution speeds. They are purely cosmetic, improving readability, join writing, and reporting."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "Why do we use aliases in SQL reporting?",
+      "a": "Aliases give columns and tables temporary, readable names. Column aliases make reports clean (e.g., changing <code>(price * qty) - discount</code> to <code>FinalAmount</code>). Table aliases shorten queries, especially in complex JOINs (e.g., using <code>o.product_name</code> instead of typing <code>orders.product_name</code> every time)."
+    },
+    {
+      "q": "Can you use a column alias inside a WHERE clause in the same query? Why or why not?",
+      "a": "No, you cannot. According to the database logical processing order, the <code>WHERE</code> clause is executed **before** the <code>SELECT</code> clause. Since the column alias is defined in the SELECT block, the database engine does not know that the alias exists yet when it filters rows."
+    },
+    {
+      "q": "How do you write aliases containing spaces or special characters?",
+      "a": "If an alias contains spaces, special characters, or matches a reserved SQL keyword, it must be wrapped inside double quotes:<br><code>SELECT salary * 12 AS \"Annual Employee Salary\" FROM employees;</code>"
+    },
+    {
+      "q": "What is the syntax difference between a single-line comment and a multi-line comment in standard SQL?",
+      "a": "• <b>Single-line comment:</b> Begins with two dashes and a space (<code>-- comment</code>) and ends at the line break.<br>• <b>Multi-line comment:</b> Wrapped inside slash-asterisk brackets (<code>/* comment */</code>) and can span across multiple lines."
+    },
+    {
+      "q": "Why are comments important in database operations?",
+      "a": "Production databases contain hundreds of tables and complex business queries. Comments explain the business logic (e.g. why a specific tax rate is 0.18), log authorship metadata, and document modifications for future developers and analysts."
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 7 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Display product name, renaming the column header to <code>Product</code>.</li>\n          <li><strong>Exercise 2:</strong> Calculate the total sales value (price * quantity), aliasing it as <code>TotalAmount</code>.</li>\n          <li><strong>Exercise 3:</strong> Calculate the final bill after subtracting a discount, aliasing it as <code>FinalAmount</code>.</li>\n          <li><strong>Exercise 4:</strong> Write a query calculating 18% GST on the base price, aliasing the column as <code>GST</code>.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Business Scenarios</h5>\n        <ul>\n          <li><strong>Scenario 1 (HR):</strong> Write a query to display employee names and their calculated annual salary (monthly salary * 12), aliasing the column as <code>AnnualSalary</code>.</li>\n          <li><strong>Scenario 2 (Sales):</strong> Write a query calculating 10% commissions for sales reps, documenting the logic using single-line comments.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: Sales Report Generator</h5>\n        <p>Using the Orders dataset table, write DQL queries to create a comprehensive Sales Report:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li>Select the product name aliased as <code>\"Item Name\"</code>.</li>\n          <li>Retrieve unit price aliased as <code>\"Unit Cost\"</code>.</li>\n          <li>Calculate <code>price * quantity</code> aliased as <code>Subtotal</code>.</li>\n          <li>Calculate <code>(price * quantity) - discount</code> aliased as <code>TotalBill</code>.</li>\n          <li>Add a comment block at the top detailing author details, database version, and query purpose.</li>\n        </ol>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "Sales Report Calculation Tasks",
+    "description": "Construct DQL statements with column/table aliases and arithmetic expressions to generate formatted, business-ready sales summaries.",
+    "outputMock": "Sales Report Columns:\n- Item Name (alias for product_name)\n- Unit Cost (alias for base_price)\n- Subtotal (calculated column price * quantity)\n- TotalBill (calculated column with discount offset)\n- GST (calculated column * 0.18)"
+  }
+}

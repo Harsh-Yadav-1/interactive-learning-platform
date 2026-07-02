@@ -1,0 +1,129 @@
+{
+  "id": "day_2",
+  "dayNum": 2,
+  "title": "Data Types & Database Constraints",
+  "category": "Fundamentals",
+  "difficulty": "Beginner",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course for Beginners | Day 2 - Data Types & Database Constraints (Primary & Foreign Keys, CHECK, UNIQUE)",
+  "youtubeDesc": "Welcome to Day 2 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ Every major SQL Data Type (INT, VARCHAR, DECIMAL, DATETIME)\n✅ Database Constraints: rules that secure your data's accuracy\n✅ Primary Key vs Unique Key differences\n✅ Setting up Foreign Keys to connect relational tables\n✅ Real-world constraints (NOT NULL, DEFAULT, CHECK)\n✅ Designing a robust relational Employee Database\n\n📚 Topics Covered:\n00:00 Introduction & Form Analogy\n04:15 Numeric, Character, Date and Boolean Data Types\n10:30 Primary Keys & Unique Keys\n16:45 Foreign Keys & Relational Links\n24:00 CHECK, DEFAULT & NOT NULL constraints\n32:00 Scenario-based Interview questions\n\nDownload the notes and assignments from the description below!",
+  "thumbnails": [
+    "SQL Data Types & Keys 🔑",
+    "SQL Full Course Day 2",
+    "Primary vs Foreign Keys",
+    "Database Constraints Explained",
+    "Relational Schema Design"
+  ],
+  "scripts": {
+    "opening": "\"Welcome back to Day 2 of the SQL Roadmap. In our first lesson, we learned what databases are. Today, we are taking the next step: understanding how SQL defines data types and enforces business rules using database constraints like primary and foreign keys.\"",
+    "explanation": "\"Think of constraints as the validation rules on an admission form. The phone number field must contain numbers; the email must be unique; and the age must be within valid limits. Database constraints prevent garbage data from entering your tables.\"",
+    "transition": "\"Now that we've mapped out constraints, let's dive into SQL data types—starting with numeric and character structures.\"",
+    "closing": "\"In our next lesson, we will write DDL statements to create, modify, and drop databases and tables directly in MySQL.\"",
+    "cta": "\"If you found this lesson helpful, click the like button, subscribe to the channel, and download the full study notes and exercises below! See you in the next lesson.\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 2 Notes\n\n## 1. Learning Objectives\n* Identify primary SQL Data Types (Numeric, Character, Date, Boolean).\n* Understand how database constraints protect data integrity.\n* Differentiate Primary Key vs. UNIQUE constraints.\n* Link tables dynamically using Foreign Keys.\n* Apply CHECK, NOT NULL, and DEFAULT rules to tables.\n\n## 2. SQL Data Types\n* **Numeric**: `INT` (integers), `BIGINT` (large numbers like phone numbers), `DECIMAL(precision, scale)` (money and exact numbers), `FLOAT`/`DOUBLE` (floating fractions).\n* **Character**: `CHAR(N)` (fixed length, pads with spaces), `VARCHAR(N)` (variable length, does not pad), `TEXT` (unlimited length description data).\n* **Date & Time**: `DATE` (YYYY-MM-DD), `TIME` (HH:MM:SS), `DATETIME` (combined timestamp).\n\n## 3. The Constraints Matrix\n* **PRIMARY KEY**: Uniquely identifies a row. Unique + NOT NULL. One per table.\n* **FOREIGN KEY**: References a Primary Key in another table, enforcing relational consistency.\n* **UNIQUE**: Prevents duplicates. Allows NULLs. Multiple allowed per table.\n* **NOT NULL**: Prevents blank null values in columns.\n* **CHECK**: Validates condition values (e.g. `Price > 0`).\n* **DEFAULT**: Standard value fallback if left empty during insertion.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 2</div>\n      <h2>Data Types & Database Constraints</h2>\n      <p class=\"large-text\">Columns require a defined data type and integrity rules. Today we explore data typing and constraints:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-table icon-cyan\"></i>\n          <h4>SQL Data Types</h4>\n          <p>Learn numeric, variable-length text, and date-time data types, and when to apply them.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-key icon-purple\"></i>\n          <h4>Primary & Foreign Keys</h4>\n          <p>Establish unique identifiers and connect tables to maintain relational integrity.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-circle-check icon-emerald\"></i>\n          <h4>Data Validation</h4>\n          <p>Implement CHECK, UNIQUE, NOT NULL, and DEFAULT constraints to prevent bad data entries.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. Real-World Form Analogy",
+      "html": "\n      <h3>Analogy: The College Admission Form</h3>\n      <p class=\"large-text\">Think of constraints as the rules written on a university enrollment sheet:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> Admission Form Constraints</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>🆔 <strong>Roll Number (Primary Key):</strong> Must be unique and cannot be left blank.</li>\n            <li>📝 <strong>Full Name (Not Null):</strong> Must be filled out; cannot submit a blank box.</li>\n            <li>📱 <strong>Phone Number (Unique):</strong> No two students can enroll with the exact same cell number.</li>\n            <li>🔞 <strong>Age Limit (Check):</strong> Must be greater than 17 (e.g. <code>Age >= 18</code>).</li>\n            <li>🏢 <strong>Branch ID (Foreign Key):</strong> The engineering branch selected must exist in the college department database.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. Categories of SQL Data Types",
+      "html": "\n      <h3>SQL Data Types Matrix</h3>\n      <p class=\"large-text\">A data type determines what type of value can be stored inside a database column:</p>\n      <div class=\"glass-card\" style=\"padding: 1.25rem; overflow-x: auto;\">\n        <table class=\"cms-table\" style=\"width:100%; border-collapse:collapse;\">\n          <thead>\n            <tr style=\"border-bottom:2px solid var(--border-glow); height:40px;\">\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Category</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Data Type</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Description</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Example Value</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Numeric</strong></td>\n              <td><code>INT</code> / <code>BIGINT</code></td>\n              <td>Whole integers (ID key, phone numbers).</td>\n              <td><code>101</code> / <code>9876543210</code></td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Decimals</strong></td>\n              <td><code>DECIMAL(10,2)</code></td>\n              <td>Exact fixed points (Salary, Price).</td>\n              <td><code>25000.75</code></td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Character</strong></td>\n              <td><code>VARCHAR(100)</code></td>\n              <td>Variable-length text string. Fits size dynamically.</td>\n              <td><code>'Harsh Yadav'</code></td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Date / Time</strong></td>\n              <td><code>DATE</code> / <code>DATETIME</code></td>\n              <td>Year-month-day / combined timestamps.</td>\n              <td><code>'2026-07-02 10:30:45'</code></td>\n            </tr>\n            <tr>\n              <td><strong>Boolean</strong></td>\n              <td><code>BOOLEAN</code></td>\n              <td>Stores truth conditions.</td>\n              <td><code>TRUE</code> / <code>FALSE</code></td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    "
+    },
+    {
+      "title": "4. Primary Keys vs. Unique Keys",
+      "html": "\n      <h3>Unique Row Identifiers: Primary vs. Unique Key</h3>\n      <p class=\"large-text\">Both constraints ensure column uniqueness, but they have major functional differences:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n          <h5><i class=\"fa-solid fa-fingerprint icon-cyan\"></i> PRIMARY KEY</h5>\n          <ul>\n            <li>✔ Uniquely identifies every record row.</li>\n            <li>✔ **Strictly cannot contain NULL values** (empty cells).</li>\n            <li>✔ Capped at **only one** Primary Key per table schema.</li>\n            <li>✔ Standard example: <code>EmployeeID INT PRIMARY KEY</code>.</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n          <h5><i class=\"fa-solid fa-certificate icon-purple\"></i> UNIQUE KEY</h5>\n          <ul>\n            <li>✔ Prevents duplicate values from entering the column.</li>\n            <li>✔ **Allows NULL values** (empty values are allowed).</li>\n            <li>✔ You can define **multiple** UNIQUE constraints inside a single table.</li>\n            <li>✔ Standard example: <code>Email VARCHAR(100) UNIQUE</code>.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "5. Foreign Keys & Relationships",
+      "html": "\n      <h3>Connecting Tables: Foreign Keys</h3>\n      <p class=\"large-text\">A Foreign Key creates a link between two tables by referencing the Primary Key of a parent table:</p>\n      <div class=\"nested-diagram-container\" style=\"background:rgba(255,255,255,0.02); border-radius:10px; padding:1.5rem;\">\n        <div class=\"feature-grid\">\n          <div class=\"feature-card\" style=\"border-color:var(--neon-purple);\">\n            <h4 style=\"color:var(--neon-purple);\"><i class=\"fa-solid fa-building\"></i> Departments (Parent)</h4>\n            <p style=\"font-family:var(--font-mono); font-size:0.9rem;\"><strong>DepartmentID (PK)</strong> | DeptName</p>\n            <p style=\"font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted);\">101 | 'IT'<br>102 | 'HR'</p>\n          </div>\n          <div style=\"display:flex; justify-content:center; align-items:center; color:var(--neon-cyan); font-size:1.5rem;\">\n            <i class=\"fa-solid fa-circle-arrow-right\"></i>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-cyan);\">\n            <h4 style=\"color:var(--neon-cyan);\"><i class=\"fa-solid fa-user-tie\"></i> Employees (Child)</h4>\n            <p style=\"font-family:var(--font-mono); font-size:0.9rem;\">EmpID (PK) | Name | <strong>DepartmentID (FK)</strong></p>\n            <p style=\"font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted);\">1 | 'Harsh' | <strong>101</strong> (References PK)<br>2 | 'Yadav' | <strong>102</strong> (References PK)</p>\n          </div>\n        </div>\n      </div>\n      <div class=\"complexity-tip\" style=\"margin-top:1.5rem;\">\n        💡 <strong>Referential Integrity:</strong> The database engine will block you if you try to insert an employee with <code>DepartmentID = 999</code> because Department 999 does not exist in the parent Departments table!\n      </div>\n    "
+    },
+    {
+      "title": "6. CHECK, NOT NULL, DEFAULT",
+      "html": "\n      <h3>Standard Field Constraints</h3>\n      <p class=\"large-text\">These rules are applied to columns to shape data inputs:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-triangle-exclamation icon-cyan\"></i>\n          <h4>NOT NULL</h4>\n          <p>Ensures that a column cannot store a NULL value. Forces a value to be entered.</p>\n          <pre><code class=\"language-sql\">Name VARCHAR(50) NOT NULL</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-shield-halved icon-purple\"></i>\n          <h4>CHECK Constraint</h4>\n          <p>Validates value ranges or text requirements. Rejects data if evaluations fail.</p>\n          <pre><code class=\"language-sql\">Age INT CHECK(Age >= 18)</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-clock-rotate-left icon-emerald\"></i>\n          <h4>DEFAULT</h4>\n          <p>Fills in a standard value if none is specified during insertions.</p>\n          <pre><code class=\"language-sql\">Status VARCHAR(20) DEFAULT 'Pending'</code></pre>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. Designing a Robust Employee Schema",
+      "html": "\n      <h3>Combining Constraints: Employee Database Design</h3>\n      <p class=\"large-text\">Let's look at a complete query definition combining constraints for a commercial Amazon HR database:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">CREATE TABLE Employees (\n    EmployeeID INT PRIMARY KEY,\n    EmployeeName VARCHAR(100) NOT NULL,\n    Email VARCHAR(100) UNIQUE,\n    Salary DECIMAL(10,2),\n    Age INT CHECK(Age >= 18),\n    DepartmentID INT,\n    FOREIGN KEY (DepartmentID) \n      REFERENCES Departments(DepartmentID)\n);</code></pre>\n        </div>\n        <div class=\"analysis-list\" style=\"max-height:280px; overflow-y:auto;\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">EmployeeID</span>\n            <p><strong>Primary Key:</strong> Keeps IDs unique and prevents null IDs.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">EmployeeName</span>\n            <p><strong>Not Null:</strong> Rejects records without employee names.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Email</span>\n            <p><strong>Unique:</strong> Blocks attempts to reuse an email address.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">Age</span>\n            <p><strong>CHECK:</strong> Asserts that age is 18 or older.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-emerald\">FOREIGN KEY</span>\n            <p>Connects <code>DepartmentID</code> to the department registry table.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "8. Common Junior Mistakes & Best Practices",
+      "html": "\n      <h3>Junior Pitfalls & DB Design Best Practices</h3>\n      <p class=\"large-text\">Familiarize yourself with standard patterns when structuring database tables:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-ban\"></i> Common Junior Mistakes</h5>\n          <ul>\n            <li>❌ Storing phone numbers inside <code>INT</code> (Use <code>BIGINT</code> or <code>VARCHAR</code> to avoid overflows).</li>\n            <li>❌ Inserting duplicate Primary Keys, triggering a database execution crash.</li>\n            <li>❌ Creating tables without referencing Foreign Keys, leading to orphaned records.</li>\n            <li>❌ Storing prices as floating-point floats instead of exact <code>DECIMAL</code>.</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5><i class=\"fa-solid fa-circle-check\"></i> Schema Best Practices</h5>\n          <ul>\n            <li>✔ Always set your Primary Keys to integer data types (like <code>INT</code>).</li>\n            <li>✔ Favor <code>VARCHAR</code> over <code>CHAR</code> to save storage space.</li>\n            <li>✔ Implement <code>CHECK</code> to filter invalid numeric data at database level.</li>\n            <li>✔ Enforce <code>NOT NULL</code> on mandatory columns (e.g. name, date of birth).</li>\n          </ul>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "Which constraint uniquely identifies every row inside an RDBMS table?",
+      "options": ["UNIQUE", "PRIMARY KEY", "FOREIGN KEY", "CHECK"],
+      "answer": 1,
+      "explanation": "A PRIMARY KEY uniquely identifies every record in a table. It cannot be NULL and there can only be one per table."
+    },
+    {
+      "q": "Can a PRIMARY KEY column contain NULL values?",
+      "options": ["Yes, if configured", "No", "Yes, up to one NULL", "Depends on RDBMS settings"],
+      "answer": 1,
+      "explanation": "No, a primary key cannot contain NULL values. By definition, a primary key enforces both uniqueness and non-null values."
+    },
+    {
+      "q": "Which constraint is used to link child tables to parent tables in relational database designs?",
+      "options": ["UNIQUE", "CHECK", "FOREIGN KEY", "DEFAULT"],
+      "answer": 2,
+      "explanation": "A FOREIGN KEY references a Primary Key in another table, creating a relational connection and enforcing referential integrity."
+    },
+    {
+      "q": "Which data type is best suited to store a variable-length customer email address up to 100 characters?",
+      "options": ["CHAR(100)", "VARCHAR(100)", "INT", "TEXT"],
+      "answer": 1,
+      "explanation": "VARCHAR(100) is the best choice because it adapts storage based on the email's length, unlike CHAR which wastes space by padding."
+    },
+    {
+      "q": "Which constraint would you use to ensure a transaction quantity is always greater than zero?",
+      "options": ["NOT NULL", "UNIQUE", "CHECK", "FOREIGN KEY"],
+      "answer": 2,
+      "explanation": "The CHECK constraint allows you to specify a logical condition (e.g., CHECK (quantity > 0)) that all input values must pass."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "What is the difference between a Primary Key and a Unique Key?",
+      "a": "1. <b>Primary Key:</b> Strictly cannot contain NULLs, and you are limited to only one Primary Key per table.<br>2. <b>Unique Key:</b> Allows NULL values, and you can define multiple UNIQUE constraints inside a single table."
+    },
+    {
+      "q": "What is the difference between CHAR and VARCHAR data types?",
+      "a": "• <b>CHAR(N):</b> A fixed-length string. If you store 'abc' in a CHAR(10) column, the database pads it with spaces to use all 10 characters.<br>• <b>VARCHAR(N):</b> A variable-length string. If you store 'abc' in a VARCHAR(10) column, it dynamically shrinks to use only 3 characters, saving memory."
+    },
+    {
+      "q": "Why is DECIMAL preferred over FLOAT/DOUBLE for currency and banking systems?",
+      "a": "FLOAT and DOUBLE are approximate data types using floating-point math, which can introduce small rounding errors (e.g. 0.0000001). <b>DECIMAL(10,2)</b> stores numbers as exact decimals, preventing rounding discrepancies during banking calculations."
+    },
+    {
+      "q": "What is referential integrity, and how is it enforced in SQL databases?",
+      "a": "Referential integrity ensures that relationships between tables remain consistent. It is enforced using <b>Foreign Keys</b>, which prevent orphans by ensuring that value inserts in a child table must exist in the parent table's Primary Key column."
+    },
+    {
+      "q": "What is the purpose of the DEFAULT constraint?",
+      "a": "The DEFAULT constraint inserts a preset fallback value into a column if no value is provided during an <code>INSERT</code> statement (e.g., setting an order status to 'Pending' by default)."
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 2 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Write an SQL statement to create a <code>Departments</code> table with a Primary Key and a non-null department name.</li>\n          <li><strong>Exercise 2:</strong> Write a query creating a <code>Products</code> table with a check constraint ensuring <code>Price > 0</code>.</li>\n          <li><strong>Exercise 3:</strong> Create a <code>Users</code> table where the <code>Email</code> column must be unique.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Database Designs</h5>\n        <ul>\n          <li><strong>Design 1: School Management</strong> - Outline tables for Students and Classes, identifying Primary Keys and Foreign Keys.</li>\n          <li><strong>Design 2: Online Bookstore</strong> - Sketch columns for Books and Orders, applying NOT NULL, CHECK, and DEFAULT rules.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: Employee Management Schema</h5>\n        <p>Design a relational database system containing three tables:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li><code>Departments</code>: <code>DeptID</code> (PK), <code>DeptName</code> (NOT NULL).</li>\n          <li><code>Employees</code>: <code>EmpID</code> (PK), <code>Name</code> (NOT NULL), <code>Email</code> (UNIQUE), <code>Salary</code> (DECIMAL, default 15000), <code>DeptID</code> (FK).</li>\n          <li><code>Projects</code>: <code>ProjID</code> (PK), <code>ProjName</code> (NOT NULL), <code>Budget</code> (CHECK budget > 1000).</li>\n        </ol>\n        <p style=\"margin-top:0.75rem;\">Sketch the relational links between these tables and write down their create syntax.</p>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "Employee Management Schema Design",
+    "description": "Create the structural DDL code for Departments, Employees, and Projects tables, using keys and checks to model a corporate hierarchy.",
+    "outputMock": "Tables created:\n- Departments (DeptID primary key)\n- Employees (EmpID primary key, DeptID foreign key references Departments)\n- Projects (ProjID primary key, budget CHECK > 1000)"
+  }
+}

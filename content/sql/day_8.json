@@ -1,0 +1,129 @@
+{
+  "id": "day_8",
+  "dayNum": 8,
+  "title": "Aggregate Functions (COUNT, SUM, AVG, MIN, MAX)",
+  "category": "Fundamentals",
+  "difficulty": "Beginner",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course Day 8 | COUNT, SUM, AVG, MIN & MAX Explained | SQL Aggregate Functions | Data Analytics",
+  "youtubeDesc": "Welcome to Day 8 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ What are SQL Aggregate Functions & how they summarize records\n✅ The COUNT() function (COUNT(*), column checks, and COUNT(DISTINCT))\n✅ Adding up values with SUM() & finding averages with AVG()\n✅ Spotting boundary values with MIN() and MAX()\n✅ Mixing Aggregates with WHERE filters and calculations (Inventory values, annual salaries)\n✅ Common junior developer pitfalls (Mixing columns with aggregates without GROUP BY)\n\n📚 Topics Covered:\n00:00 Introduction & Classroom Marks Analogy\n04:15 Row Counts & COUNT Types\n11:30 Numeric Aggregates: SUM and AVG\n18:45 Boundaries: MIN and MAX\n25:15 Aggregates with WHERE Filters & Math\n33:00 SQL Parsing Order & Common Mistakes\n\nDownload the notes and assignments from the description below!",
+  "thumbnails": [
+    "SQL Aggregate Functions 📊",
+    "COUNT vs SUM vs AVG",
+    "Master SQL Aggregates",
+    "SQL for Data Analytics Day 8",
+    "SQL Interview Questions"
+  ],
+  "scripts": {
+    "opening": "\"Welcome back to Day 8 of the SQL Roadmap. In our last lesson, we learned math calculations in rows. Today, we step up to Aggregate Functions: COUNT, SUM, AVG, MIN, and MAX. This is how we compile millions of rows into a single key business KPI, like total revenue or average delivery times.\"",
+    "explanation": "\"Think of a teacher in a classroom. Instead of grading every student one-by-one, the principal asks: how many students took the test? What was the class average? Who scored the highest? Aggregate functions perform these summaries on database rows instantly.\"",
+    "transition": "\"Before we write complex KPIs, let's learn how to count rows using the different variations of the COUNT function.\"",
+    "closing": "\"In our next lesson, we will explore the GROUP BY clause, which allows us to calculate these aggregates for each category, department, or branch instead of the entire table.\"",
+    "cta": "\"If you found this lesson helpful, click the like button, subscribe, and download the full study notes and exercises in the description below! I'll see you in Day 9.\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 8 Notes\n\n## 1. Learning Objectives\n* Define SQL Aggregate Functions and their role in summarizing datasets.\n* Apply `COUNT()`, `SUM()`, `AVG()`, `MIN()`, and `MAX()` to database columns.\n* Filter source rows using `WHERE` before running aggregation.\n* Calculate compound KPIs (e.g. inventory value = SUM(price * stock)).\n* Understand why mixing normal columns and aggregates without `GROUP BY` fails.\n\n## 2. What are Aggregate Functions?\n* **Aggregate Functions** collect data values across multiple rows and condense them into a single, summarized value. They are the backbone of analytical reports, dashboards, and KPI scorecards.\n\n## 3. Core Aggregate Functions Matrix\n* `COUNT(*)`: Counts every row in the table, including NULLs and duplicates.\n* `COUNT(column)`: Counts only rows containing non-NULL values in that column.\n* `COUNT(DISTINCT column)`: Counts the number of unique, non-NULL entries in that column.\n* `SUM(column)`: Calculates the sum of a numeric column. Ignores NULLs.\n* `AVG(column)`: Calculates the arithmetic mean of a numeric column. Ignores NULLs.\n* `MIN(column)` / `MAX(column)`: Finds the minimum / maximum value in a column.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 8</div>\n      <h2>Data Aggregation & KPI Calculations</h2>\n      <p class=\"large-text\">Data analysts rarely show raw rows to managers. We summarize databases using aggregate functions:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-calculator icon-cyan\"></i>\n          <h4>Numeric Summaries</h4>\n          <p>Calculate sums (SUM) and averages (AVG) across columns to construct business performance scorecards.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-arrow-up-9-1 icon-purple\"></i>\n          <h4>Row Counting</h4>\n          <p>Count database records using COUNT(*), specify columns to check nulls, and deduplicate counts with DISTINCT.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-arrows-up-down icon-emerald\"></i>\n          <h4>Boundary Identification</h4>\n          <p>Isolate lowest values (MIN) and highest values (MAX) to find pricing extremes or low-stock items.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. DQL Analogy: Class Performance Scorecard",
+      "html": "\n      <h3>DQL Analogy: The Teacher's Grade Book</h3>\n      <p class=\"large-text\">Instead of reviewing every student's grades individually, a school principal asks summary questions:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> The Classroom Analogy</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>📝 <strong>Total Students:</strong> Counting the total names written on the roster $\\rightarrow$ <code>COUNT(*)</code>.</li>\n            <li>📈 <strong>Class Average:</strong> Adding all test scores and dividing by headcount $\\rightarrow$ <code>AVG(marks)</code>.</li>\n            <li>🏆 <strong>Highest Mark:</strong> Scanning the sheet to find the top score $\\rightarrow$ <code>MAX(marks)</code>.</li>\n            <li>📉 <strong>Lowest Mark:</strong> Finding the single lowest score in the class $\\rightarrow$ <code>MIN(marks)</code>.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. The COUNT() Variations",
+      "html": "\n      <h3>Counting Records: COUNT(*), COUNT(col), DISTINCT</h3>\n      <p class=\"large-text\">The <code>COUNT()</code> function computes headcounts. Choose the correct variation:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Count every row, including NULLs and duplicates\nSELECT COUNT(*)\nFROM products;\n\n-- Count only non-NULL stock entries\nSELECT COUNT(stock)\nFROM products;\n\n-- Count unique product categories\nSELECT COUNT(DISTINCT category)\nFROM products;</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">COUNT(*)</span>\n            <p>Counts every row in the target table regardless of cell contents. Faster on many transactional storage systems.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">COUNT(column)</span>\n            <p>Checks the specified column and **ignores NULL values** (empty cells) in its count total.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-emerald\">COUNT(DISTINCT col)</span>\n            <p>Combines deduplication and counting to return the count of unique, non-null categories.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "4. SUM() & AVG() Mathematical Aggregates",
+      "html": "\n      <h3>Calculating Totals & Averages</h3>\n      <p class=\"large-text\">Use <code>SUM()</code> to add values and <code>AVG()</code> to calculate arithmetic means:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-calculator icon-cyan\"></i>\n          <h4>Simple Column Sum</h4>\n          <pre><code class=\"language-sql\">SELECT SUM(stock) \nFROM products;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Returns the sum of all stock columns.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-receipt icon-purple\"></i>\n          <h4>Calculated Value Sum</h4>\n          <pre><code class=\"language-sql\">SELECT SUM(price * stock) \n  AS InventoryValue\nFROM products;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Computes stock value per product and aggregates them.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-chart-line icon-emerald\"></i>\n          <h4>Average Value Calculation</h4>\n          <pre><code class=\"language-sql\">SELECT AVG(price) \n  AS AveragePrice\nFROM products;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Calculates the mean price of all products. Ignores NULLs.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "5. MIN() & MAX() Boundary Aggregates",
+      "html": "\n      <h3>MIN & MAX: Finding Boundary Values</h3>\n      <p class=\"large-text\">Isolate the lowest and highest values in a column using <code>MIN()</code> and <code>MAX()</code>:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Find the cheapest product price\nSELECT MIN(price) AS LowestPrice\nFROM products;\n\n-- Find the highest product price\nSELECT MAX(price) AS HighestPrice\nFROM products;\n\n-- Find the lowest stock level\nSELECT MIN(stock) AS OutOfStockLevel\nFROM products;</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">MIN / MAX Bounds</span>\n            <p>Scans the column to return the absolute smallest (MIN) or largest (MAX) value. Works on numbers, dates (earliest vs latest), and strings (alphabetical extremes).</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">Combined Aggregates</span>\n            <p>You can run all aggregate functions in a single query:<br><code>SELECT COUNT(*), SUM(stock), AVG(price), MIN(price), MAX(price) FROM products;</code></p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "6. Aggregations with WHERE Filters & Math",
+      "html": "\n      <h3>Filtering & Calculating Before Aggregating</h3>\n      <p class=\"large-text\">Database engines filter rows using the WHERE clause **before** calculations run:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-filter icon-cyan\"></i>\n          <h4>1. Filtered Averages</h4>\n          <pre><code class=\"language-sql\">SELECT AVG(price) \nFROM products\nWHERE category = 'Furniture';</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Calculates average price only for Furniture items.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-list-check icon-purple\"></i>\n          <h4>2. In-Stock Product Counts</h4>\n          <pre><code class=\"language-sql\">SELECT COUNT(*)\nFROM products\nWHERE stock > 0;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Counts rows where stock exceeds zero.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-scale-balanced icon-emerald\"></i>\n          <h4>3. Average Annual Salaries</h4>\n          <pre><code class=\"language-sql\">SELECT AVG(salary * 12) \n  AS AvgAnnualSalary\nFROM employees;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Multiplies salary by 12 per row, then averages.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. SQL Aggregation Query Processing",
+      "html": "\n      <h3>Logical Aggregation Execution Flow</h3>\n      <p class=\"large-text\">Let's trace how the database executes aggregate queries step-by-step:</p>\n      <div class=\"nested-diagram-container\" style=\"background:rgba(255,255,255,0.02); border-radius:10px; padding:1.5rem;\">\n        <div class=\"feature-grid\" style=\"text-align:center;\">\n          <div class=\"feature-card\" style=\"border-color:var(--neon-cyan);\">\n            <h5 style=\"color:var(--neon-cyan);\">1. FROM</h5>\n            <p style=\"font-size:0.75rem;\">Identifies source table.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-purple);\">\n            <h5 style=\"color:var(--neon-purple);\">2. WHERE</h5>\n            <p style=\"font-size:0.75rem;\">Filters out rows that do not match conditions.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-emerald);\">\n            <h5 style=\"color:var(--neon-emerald);\">3. AGGREGATE</h5>\n            <p style=\"font-size:0.75rem;\">Performs SUM, COUNT, AVG computations on remaining values.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-orange);\">\n            <h5 style=\"color:var(--neon-orange);\">4. RETURN</h5>\n            <p style=\"font-size:0.75rem;\">Returns a single summarized output row.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "8. Pitfalls & Best Practices",
+      "html": "\n      <h3>Avoid Errors: Aggregation Best Practices</h3>\n      <p class=\"large-text\">Aggregation has strict structural rules. Study these guidelines to write valid SQL:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5>❌ Invalid Column Mixing</h5>\n          <pre><code class=\"language-sql\">SELECT name, MAX(price)\nFROM products;</code></pre>\n          <p style=\"font-size:0.85rem; color:#ef4444; margin-top:0.4rem;\">⚠️ <strong>Syntax Error!</strong> You cannot select a normal column (like name) alongside an aggregate function (MAX) without a <code>GROUP BY</code> clause. The database does not know which name to associate with the max price.</p>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5>✔ Correct Aggregate Aliasing</h5>\n          <pre><code class=\"language-sql\">SELECT MAX(price) AS HighestPrice\nFROM products;</code></pre>\n          <p style=\"font-size:0.85rem; color:var(--neon-emerald); margin-top:0.4rem;\">Correct. Returns a single column containing the maximum price, aliased properly for reporting tools.</p>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "Which aggregate function is used to calculate the total sum of a numeric column?",
+      "options": ["COUNT()", "SUM()", "AVG()", "ADD()"],
+      "answer": 1,
+      "explanation": "SUM() is the standard SQL aggregate function used to calculate the mathematical total of a numeric column."
+    },
+    {
+      "q": "What does the COUNT(column_name) function do?",
+      "options": ["Counts every row, including NULLs", "Counts only unique rows", "Counts only non-NULL values in that column", "Throws a syntax error"],
+      "answer": 2,
+      "explanation": "Unlike COUNT(*), COUNT(column_name) evaluates each cell in that column and ignores rows containing NULL values."
+    },
+    {
+      "q": "Which SQL function is used to find the arithmetic mean of a column?",
+      "options": ["MEAN()", "SUM()", "AVG()", "COUNT()"],
+      "answer": 2,
+      "explanation": "AVG() calculates the arithmetic mean of a numeric column, ignoring any NULL values."
+    },
+    {
+      "q": "What will happen if you run: SELECT name, MAX(price) FROM products; on a standard SQL database without a GROUP BY clause?",
+      "options": ["It returns the product name with the highest price", "It returns the first product name and the max price", "It fails with a syntax error", "It returns all product names and the max price duplicated"],
+      "answer": 2,
+      "explanation": "Standard SQL engines reject mixing unaggregated columns (name) with aggregate functions (MAX) unless the unaggregated column is specified in a GROUP BY clause."
+    },
+    {
+      "q": "How does the database execute queries containing both WHERE and Aggregate Functions?",
+      "options": ["Aggregates first, then applies WHERE to the summary", "Applies WHERE filters first to narrow rows, then aggregates the remaining dataset", "Runs both concurrently in separate engines", "WHERE filters are ignored when aggregating"],
+      "answer": 1,
+      "explanation": "The WHERE clause is evaluated first, filtering out records that do not meet the criteria. The aggregate function is then computed on the remaining filtered rows."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "What is the difference between COUNT(*) and COUNT(column_name)?",
+      "a": "• <b>COUNT(*):</b> Counts every single row in the table, including rows with NULL values and duplicate entries.<br>• <b>COUNT(column_name):</b> Evaluates the specified column and counts only rows containing non-NULL values in that column."
+    },
+    {
+      "q": "How do aggregate functions handle NULL values in database columns?",
+      "a": "All aggregate functions (<code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code>, and <code>COUNT(column)</code>) **ignore NULL values** during execution. The only exception is <code>COUNT(*)</code>, which counts raw rows regardless of cell contents."
+    },
+    {
+      "q": "Why can you not mix normal columns and aggregate functions in a SELECT clause without a GROUP BY? (e.g. SELECT name, MAX(price))",
+      "a": "An aggregate function summarizes multiple rows into a single row. A normal column (like <code>name</code>) contains individual row values. Without a <code>GROUP BY</code> clause, the engine cannot reconcile returning 50 individual names alongside a single maximum price value, resulting in a syntax error."
+    },
+    {
+      "q": "What is the difference between finding the cheapest product using MIN(price) vs. using ORDER BY price ASC LIMIT 1?",
+      "a": "• <code>MIN(price)</code> is an aggregate function returning **only the numeric value** of the lowest price in a single cell.<br>• <code>ORDER BY price LIMIT 1</code> sorts the table and returns the **entire record row** (ID, name, category, price) associated with that cheapest product."
+    },
+    {
+      "q": "How would you calculate the total inventory value of a warehouse in SQL?",
+      "a": "You perform arithmetic multiplication within the SUM aggregate function:<br><code>SELECT SUM(price * stock) AS TotalInventoryValue FROM products;</code>"
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 8 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Write an SQL statement to count the total number of products in the database.</li>\n          <li><strong>Exercise 2:</strong> Write a query to find the total stock of all products in category 'Electronics'.</li>\n          <li><strong>Exercise 3:</strong> Write a query to calculate the average price of all Furniture products.</li>\n          <li><strong>Exercise 4:</strong> Find the highest price and lowest stock level in a single query.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Business KPIs</h5>\n        <ul>\n          <li><strong>Scenario 1 (HR):</strong> Write a query calculating the highest salary, lowest salary, and average monthly salary of all employees.</li>\n          <li><strong>Scenario 2 (Swiggy):</strong> Write a query calculating the average delivery time of all completed orders.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: Inventory Performance Report</h5>\n        <p>Using the Products table, write DQL queries to create a comprehensive scorecard report:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li>Calculate total inventory cost value (price * stock) aliased as <code>\"Total Inventory Value\"</code>.</li>\n          <li>Count the number of unique categories.</li>\n          <li>Retrieve the average price of items in stock (stock > 0).</li>\n          <li>Calculate all aggregate stats (COUNT, SUM, AVG, MIN, MAX) inside a single report query.</li>\n        </ol>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "Inventory KPI Reporting",
+    "description": "Construct DQL statements using COUNT, SUM, AVG, MIN, and MAX to generate summarized KPIs from warehouse datasets.",
+    "outputMock": "Inventory KPI Report:\n- Total Products: 5\n- Total Categories: 2\n- Total Stock: 190\n- Inventory Value: $40,250.00\n- Average Product Price: $500.00"
+  }
+}

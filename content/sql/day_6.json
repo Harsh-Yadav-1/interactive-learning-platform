@@ -1,0 +1,129 @@
+{
+  "id": "day_6",
+  "dayNum": 6,
+  "title": "Filtering Data (WHERE, BETWEEN, IN, LIKE, IS NULL, Logical Operators)",
+  "category": "Fundamentals",
+  "difficulty": "Beginner",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course Day 6 | WHERE Clause, AND, OR, LIKE, IN, BETWEEN & NULL Explained | SQL for Data Analytics",
+  "youtubeDesc": "Welcome to Day 6 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ How to filter rows dynamically using the WHERE clause\n✅ Comparison operators (=, !=, <, >, <=, >=)\n✅ Combining multiple filters using AND, OR, and NOT logical operators\n✅ Filtering numerical and date ranges with BETWEEN\n✅ Wiping out multiple ORs with the cleaner and faster IN operator\n✅ Pattern matching using LIKE with % (multi-char) and _ (single-char) wildcards\n✅ Querying missing dataset values using IS NULL vs. IS NOT NULL\n\n📚 Topics Covered:\n00:00 Introduction & Supermarket Filter Analogy\n04:15 Comparison Operators\n10:30 Logical Operators (AND, OR, NOT)\n18:00 Sets and Ranges: IN and BETWEEN\n26:00 Wildcards & Pattern Matching (LIKE)\n34:00 Null Values (IS NULL vs IS NOT NULL)\n\nDownload the notes and assignments from the description below!",
+  "thumbnails": [
+    "Master SQL WHERE Clause 🔍",
+    "SQL Filtering Made Easy",
+    "LIKE, IN & BETWEEN Explained",
+    "SQL for Data Analytics Day 6",
+    "WHERE Clause Interview Questions"
+  ],
+  "scripts": {
+    "opening": "\"Welcome back to Day 6 of the SQL Roadmap. In our last lesson, we retrieved columns using SELECT. Today, we focus on row filtering using the WHERE clause. This is how we filter down millions of rows of data to answer specific questions, like finding only Gold members in the USA.\"",
+    "explanation": "\"Think of WHERE like asking a supermarket clerk to show you only the red apples, or only products below 500 rupees. The clerk filters out the rest and brings you what you asked for. The WHERE clause does the exact same thing in our database queries.\"",
+    "transition": "\"Before we write complex conditions, let's start with basic comparison operators like equal, greater than, and less than.\"",
+    "closing": "\"In our next lesson, we will explore aliases, comments, and arithmetic operators to make our SQL queries cleaner, more readable, and more professional.\"",
+    "cta": "\"If you found this lesson helpful, click the like button, subscribe, and download the full study notes and exercises below! I'll see you in Day 7.\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 6 Notes\n\n## 1. Learning Objectives\n* Filter rows dynamically using the `WHERE` clause.\n* Compare values using standard operators (`=`, `!=`, `<>`, `>`, `<`, `>=`, `<=`).\n* Combine multiple criteria logically using `AND`, `OR`, and `NOT`.\n* Perform range scans using `BETWEEN` and set lookups using `IN`.\n* Execute pattern-matching lookups using `LIKE` with wildcards (`%` and `_`).\n* Retrieve rows with missing values using `IS NULL` and `IS NOT NULL`.\n\n## 2. SQL Query Processing Order\n* **Written Syntax**: `SELECT` $\\rightarrow$ `FROM` $\\rightarrow$ `WHERE` $\\rightarrow$ `ORDER BY` $\\rightarrow$ `LIMIT`.\n* **Execution Flow**: `FROM` (table sources) $\\rightarrow$ `WHERE` (filter rows) $\\rightarrow$ `SELECT` (project columns) $\\rightarrow$ `ORDER BY` (sort) $\\rightarrow$ `LIMIT` (cap output).\n\n## 3. Comparison & Logical Operators\n* **AND**: Returns rows matching both conditions.\n* **OR**: Returns rows matching either condition.\n* **NOT**: Inverts the condition (returns rows that do not match the criteria).\n* **BETWEEN**: Evaluates ranges (inclusive of endpoints).\n* **IN**: Matches values against a set list.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 6</div>\n      <h2>Filtering Datasets with WHERE</h2>\n      <p class=\"large-text\">Analytical questions require selecting specific subsets of data. Today we cover filtering logic:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-calculator icon-cyan\"></i>\n          <h4>Comparisons & Logic</h4>\n          <p>Filter rows using comparison operators (=, &gt;, &lt;) and combine criteria using AND, OR, and NOT logical operators.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-arrows-left-right icon-purple\"></i>\n          <h4>Ranges & Sets</h4>\n          <p>Scan ranges cleanly using BETWEEN, and match items against list sets using the IN operator to write readable code.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-magnifying-glass-chart icon-emerald\"></i>\n          <h4>Patterns & NULLs</h4>\n          <p>Search string patterns using LIKE wildcards (% and _), and query missing values using IS NULL.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. Why Do We Need WHERE?",
+      "html": "\n      <h3>DQL Analogy: Supermarket Product Filters</h3>\n      <p class=\"large-text\">Amazon has over 50 million customers. Scanning through all of them manually is impossible. The WHERE clause acts as a filter:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> The Supermarket Filter</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>🍎 <strong>Show only red apples:</strong> <code>WHERE fruit_color = 'Red'</code></li>\n            <li>💵 <strong>Show products below ₹500:</strong> <code>WHERE price < 500</code></li>\n            <li>💻 <strong>Show electronics only:</strong> <code>WHERE category = 'Electronics'</code></li>\n            <li>📦 <strong>Show items in stock:</strong> <code>WHERE stock > 0</code></li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. Comparison Operators",
+      "html": "\n      <h3>SQL Comparison Operators</h3>\n      <p class=\"large-text\">Use comparison operators to filter records based on numerical or text values:</p>\n      <div class=\"glass-card\" style=\"padding: 1.25rem; overflow-x: auto;\">\n        <table class=\"cms-table\" style=\"width:100%; border-collapse:collapse;\">\n          <thead>\n            <tr style=\"border-bottom:2px solid var(--border-glow); height:40px;\">\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Operator</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Meaning</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Analytical Query Example</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><code>=</code></td>\n              <td>Equal to</td>\n              <td><code>SELECT * FROM customers WHERE country = 'USA';</code></td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><code>!=</code> or <code>&lt;&gt;</code></td>\n              <td>Not equal to</td>\n              <td><code>SELECT * FROM customers WHERE status != 'Inactive';</code></td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><code>&gt;</code> / <code>&lt;</code></td>\n              <td>Greater / Less than</td>\n              <td><code>SELECT * FROM customers WHERE age &gt; 30;</code></td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><code>&gt;=</code> / <code>&lt;=</code></td>\n              <td>Greater / Less than or Equal</td>\n              <td><code>SELECT * FROM orders WHERE amount &gt;= 1000;</code></td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    "
+    },
+    {
+      "title": "4. Logical Operators (AND, OR, NOT)",
+      "html": "\n      <h3>Combining Filters: AND, OR, NOT</h3>\n      <p class=\"large-text\">Use logical operators to evaluate multiple filter conditions inside a query:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-circle-check icon-cyan\"></i>\n          <h4>AND Operator</h4>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-bottom:0.5rem;\">Returns rows only where **both** conditions evaluate to true.</p>\n          <pre><code class=\"language-sql\">SELECT * FROM customers\nWHERE country = 'USA'\n  AND status = 'Active';</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-circle-check icon-purple\"></i>\n          <h4>OR Operator</h4>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-bottom:0.5rem;\">Returns rows if **either** condition evaluates to true.</p>\n          <pre><code class=\"language-sql\">SELECT * FROM customers\nWHERE country = 'USA'\n   OR country = 'Canada';</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-ban icon-emerald\"></i>\n          <h4>NOT Operator</h4>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-bottom:0.5rem;\">Inverts conditions, selecting everything *except* matching rows.</p>\n          <pre><code class=\"language-sql\">SELECT * FROM customers\nWHERE NOT country = 'USA';</code></pre>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "5. Ranges & Set Filters: BETWEEN & IN",
+      "html": "\n      <h3>Optimized Filters: BETWEEN & IN</h3>\n      <p class=\"large-text\">Use specialized range and set operators to write cleaner, faster-executing SQL queries:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n          <h5><i class=\"fa-solid fa-arrows-left-right icon-cyan\"></i> BETWEEN Range Scan</h5>\n          <p style=\"font-size:0.85rem; margin-bottom:0.5rem;\">Replaces verbose <code>AND</code> comparison limits with a single range check (inclusive of endpoints):</p>\n          <pre><code class=\"language-sql\">SELECT * FROM customers\nWHERE age BETWEEN 20 AND 30;</code></pre>\n        </div>\n        <div class=\"mistake-card good\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n          <h5><i class=\"fa-solid fa-list-ol icon-purple\"></i> IN Set Lookup</h5>\n          <p style=\"font-size:0.85rem; margin-bottom:0.5rem;\">Replaces multiple stacked <code>OR</code> checks. Easier to read and optimized internally by query engines:</p>\n          <pre><code class=\"language-sql\">SELECT * FROM customers\nWHERE country IN ('USA', 'UK', 'Germany');</code></pre>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "6. Pattern Matching with LIKE & Wildcards",
+      "html": "\n      <h3>LIKE: Searching String Patterns</h3>\n      <p class=\"large-text\">Use the <code>LIKE</code> operator along with SQL wildcards to filter matching text values:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-square-caret-right icon-cyan\"></i>\n          <h4>Starts With (%)</h4>\n          <pre><code class=\"language-sql\">WHERE name LIKE 'A%';</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8;\">Matches: <code>'Alice', 'Arthur'</code> (Zero or more characters after A).</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-square-caret-left icon-purple\"></i>\n          <h4>Ends With (%)</h4>\n          <pre><code class=\"language-sql\">WHERE name LIKE '%e';</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8;\">Matches: <code>'Alice', 'Eve'</code> (Zero or more characters before e).</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-magnifying-glass icon-emerald\"></i>\n          <h4>Contains (%...%)</h4>\n          <pre><code class=\"language-sql\">WHERE name LIKE '%ar%';</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8;\">Matches: <code>'Charlie', 'Arthur'</code> (Contains 'ar' anywhere).</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-underline icon-orange\"></i>\n          <h4>Single Character (_)</h4>\n          <pre><code class=\"language-sql\">WHERE name LIKE 'B__';</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8;\">Matches: <code>'Bob'</code> (Exactly 3 letters starting with B).</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. Handling Missing Data: NULL checks",
+      "html": "\n      <h3>Querying Missing Values: IS NULL</h3>\n      <p class=\"large-text\">In databases, empty values are represented by <code>NULL</code>. You cannot compare NULL using standard mathematical signs:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5>❌ Wrong Comparison Syntax</h5>\n          <pre><code class=\"language-sql\">SELECT * FROM customers \nWHERE status = NULL;</code></pre>\n          <p style=\"font-size:0.85rem; color:#ef4444; margin-top:0.4rem;\">Returns zero rows! The database cannot compare NULL using mathematical equal signs.</p>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5>✔ Correct NULL Check Syntax</h5>\n          <pre><code class=\"language-sql\">SELECT * FROM customers \nWHERE status IS NULL;</code></pre>\n          <p style=\"font-size:0.85rem; color:var(--neon-emerald); margin-top:0.4rem;\">Correctly filters and displays rows where status values are blank/missing.</p>\n        </div>\n      </div>\n      <div class=\"complexity-tip\" style=\"margin-top:1.5rem;\">\n        💡 To find rows with values, use the inverse filter: <code>WHERE status IS NOT NULL;</code>\n      </div>\n    "
+    },
+    {
+      "title": "8. Pitfalls & Query Execution Order",
+      "html": "\n      <h3>Syntax Mistakes & Execution Priority</h3>\n      <p class=\"large-text\">Engines process filters early during query loops. Keep order of operations in mind:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-ban\"></i> Common SQL Errors</h5>\n          <ul>\n            <li>❌ Writing <code>WHERE name LIKE 'John'</code> when you only want an exact match (use <code>WHERE name = 'John'</code>).</li>\n            <li>❌ Omitting parenthesis when nesting OR conditions inside AND checks: <code>WHERE A OR B AND C</code> (AND evaluates first).</li>\n            <li>❌ Searching ranges by writing <code>WHERE age BETWEEN 30 AND 20</code> (must go from low to high).</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5><i class=\"fa-solid fa-circle-check\"></i> Standard Practices</h5>\n          <ul>\n            <li>✔ Force logic precedence using parentheses: <code>WHERE (country='USA' OR country='Canada') AND membership='Gold'</code>.</li>\n            <li>✔ Prefer <code>IN</code> over multiple OR queries to leverage database index searches.</li>\n            <li>✔ Use <code>IS NULL</code> instead of mathematical operators to check empty columns.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "Which SQL clause is used to filter records so that only matching rows are returned?",
+      "options": ["SELECT", "FROM", "WHERE", "ORDER BY"],
+      "answer": 2,
+      "explanation": "The WHERE clause acts as a filter on rows, evaluating conditional parameters before columns are selected."
+    },
+    {
+      "q": "Which operator would you use to filter rows where a value falls within a specific range?",
+      "options": ["IN", "LIKE", "BETWEEN", "DISTINCT"],
+      "answer": 2,
+      "explanation": "The BETWEEN operator checks if a value is within a range, inclusive of the low and high endpoints."
+    },
+    {
+      "q": "What is the correct way to query rows where the column 'email' is empty/missing?",
+      "options": ["WHERE email = NULL", "WHERE email IS NULL", "WHERE email = ''", "WHERE email IS EMPTY"],
+      "answer": 1,
+      "explanation": "In SQL, NULL represents a missing value. Since NULL is not a value, you cannot use '='. You must use 'IS NULL'."
+    },
+    {
+      "q": "Which wildcard symbol matches exactly one character in a LIKE query?",
+      "options": ["%", "_", "*", "?"],
+      "answer": 1,
+      "explanation": "The underscore (_) matches exactly one character, whereas the percent (%) symbol matches zero or more characters."
+    },
+    {
+      "q": "What is the output of: WHERE name LIKE '%ar%'?",
+      "options": ["Matches names starting with 'ar'", "Matches names ending with 'ar'", "Matches names containing 'ar' anywhere", "Matches names exactly 4 letters long"],
+      "answer": 2,
+      "explanation": "Surrounding characters with '%' wildcards filters columns containing that sequence anywhere inside the text."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "Why can we not check for NULL values using the '=' sign? (e.g. WHERE status = NULL)",
+      "a": "In SQL, <code>NULL</code> represents the absence of a value (unknown). Since it is not a defined value, you cannot compare it mathematically. Any comparison using <code>= NULL</code> will return NULL (unknown) instead of TRUE/FALSE, causing the query to return zero rows. You must use <code>IS NULL</code>."
+    },
+    {
+      "q": "What is the difference between IN and multiple OR statements? Which is preferred?",
+      "a": "• <b>OR:</b> Checks conditions sequentially. Hard to read when checking many values.<br>• <b>IN:</b> Matches values against a set list. It is cleaner, easier to read, and optimized by RDBMS engines to execute faster using index search plans."
+    },
+    {
+      "q": "How do wildcards % and _ differ when using the LIKE pattern matching operator?",
+      "a": "• <b>% (Percent):</b> Matches zero or more characters. For example, <code>'A%'</code> matches 'Alice' and 'Al'.<br>• <b>_ (Underscore):</b> Matches exactly one character. For example, <code>'B__'</code> matches 'Bob' (exactly 3 characters starting with B)."
+    },
+    {
+      "q": "Explain operator precedence when mixing AND and OR logical conditions.",
+      "a": "The <code>AND</code> operator has higher precedence than <code>OR</code>. If you write <code>WHERE country='USA' OR country='Canada' AND membership='Gold'</code>, SQL will evaluate <code>Canada AND Gold</code> first, then OR that with USA. To override this, use parentheses: <code>WHERE (country='USA' OR country='Canada') AND membership='Gold'</code>."
+    },
+    {
+      "q": "What does the BETWEEN operator cover? Is it inclusive or exclusive?",
+      "a": "The <code>BETWEEN</code> operator is **fully inclusive** of its boundary values. For example, <code>age BETWEEN 20 AND 30</code> includes students who are exactly 20 and exactly 30 years old."
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 6 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Display all customers from the <code>customers</code> table who are older than 30.</li>\n          <li><strong>Exercise 2:</strong> Display all customer profiles where the country is either 'USA' or 'Germany'.</li>\n          <li><strong>Exercise 3:</strong> Write a query to find all customers between ages 20 and 40 using <code>BETWEEN</code>.</li>\n          <li><strong>Exercise 4:</strong> Find all customers whose names start with the letter 'A'.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Business Scenarios</h5>\n        <ul>\n          <li><strong>Scenario 1 (Netflix):</strong> Find users who have an inactive account status.</li>\n          <li><strong>Scenario 2 (Amazon):</strong> Find all product orders priced between 500 and 5000 rupees.</li>\n          <li><strong>Scenario 3 (Bank):</strong> Retrieve high-value customer transactions above 100,000 rupees.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: Customer Target Filtering</h5>\n        <p>Using the Customers dataset table, write DQL queries to filter lists:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li>Select all active Gold tier members.</li>\n          <li>Find all customers with missing/NULL membership values.</li>\n          <li>Retrieve customers from USA or Canada with age under 40.</li>\n          <li>Find names containing the letters 'ar' anywhere inside their name.</li>\n        </ol>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "Customer Target Group Analytics",
+    "description": "Construct conditional filters using comparison and logical operators to segment customer databases for targeted marketing reports.",
+    "outputMock": "Filtered rows returned:\n- 3 Gold members under 40 years old found.\n- 2 Canadian customers active.\n- 1 Customer record with missing phone number returned."
+  }
+}

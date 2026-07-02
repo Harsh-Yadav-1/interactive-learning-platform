@@ -1,0 +1,198 @@
+{
+  "id": "day_1",
+  "dayNum": 1,
+  "title": "Introduction to Java",
+  "category": "Fundamentals",
+  "difficulty": "Beginner",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "Java Full Course for Beginners 2026 | Day 1 - Introduction to Java, JDK, JRE & JVM | Complete Java Masterclass",
+  "youtubeDesc": "Welcome to Day 1 of the Complete Java Masterclass!\n\nIn this lesson, you'll learn:\n✅ What is Java?\n✅ History of Java\n✅ Features of Java\n✅ Applications of Java\n✅ JDK vs JRE vs JVM\n✅ Java Compilation Process\n✅ First Java Program\n✅ Common Interview Questions\n\nThis course is designed for beginners, college students, MCA/B.Tech students, placement preparation, and aspiring Java developers.\n\n📚 Topics Covered:\n00:00 Introduction\n02:15 What is Java?\n06:40 History of Java\n10:30 Features\n18:00 Applications\n22:30 JDK vs JRE vs JVM\n30:00 Compilation Process\n35:00 Interview Questions\n40:00 Practice & Assignment\n\n👍 Like the video if you found it helpful.\n🔔 Subscribe for the next lesson in the Java Masterclass.",
+  "thumbnails": [
+    "Learn Java in 2026 🚀",
+    "Java Full Course Day 1",
+    "Java Basics for Beginners",
+    "Start Java Today",
+    "Introduction to Java Explained",
+    "Java Masterclass Episode 1"
+  ],
+  "scripts": {
+    "opening": "\"Welcome everyone! Today we're starting our complete Java Masterclass. If you've never written a line of code before, don't worry. By the end of this lesson, you'll understand what Java is, why millions of developers use it, and how Java code runs behind the scenes.\"",
+    "explanation": "\"Did you know that the same Java program can run on Windows, Linux, and macOS without changing a single line of code? In this video, I'll show you how that's possible and why Java is still one of the most demanded programming languages.\"",
+    "transition": "\"Now that you know what Java is, let's understand why it was created.\"",
+    "closing": "\"In our next lesson, we'll install Java, set up IntelliJ IDEA and VS Code, and write our very first Java program.\"",
+    "cta": "\"If you found this lesson helpful, like the video, subscribe to the channel, and turn on notifications. Our next lesson covers Java installation and your first program.\""
+  },
+  
+  "downloadMarkdown": "# Day 1: Introduction to Java - Study Notes\n\n## 1. Learning Objectives\n* Understand what Java is & why it was created.\n* Identify features: Object-Oriented, Platform-Independent, Secure, Robust, High-Performance.\n* Differentiate JDK, JRE, and JVM.\n* Understand Java's Compilation & JVM execution pipelines.\n\n## 2. Java History & Background\n* Developed by James Gosling at Sun Microsystems in 1991 (initially named 'Oak').\n* Released in 1995 with the Write Once, Run Anywhere (WORA) premise.\n* Acquired by Oracle Corporation in 2010.\n\n## 3. Platform Independence & Analogy\n* Analogy: Writing a letter in Hindi. Anyone who knows Hindi can read it. Similarly, Java compiles code to Bytecode. Any OS with a JVM installed can read and run that Bytecode.\n* JDK = Development kit (javac compiler + tools).\n* JRE = Execution runtime environment (libraries + JVM).\n* JVM = Virtual engine interpreting bytecode to native binary instructions.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> Day 1</div>\n      <h2>Introduction to Java</h2>\n      <p class=\"large-text\">Java is a high-level, robust, and platform-independent language. Let's outline the core target goals for today's lesson:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-circle-check icon-cyan\"></i>\n          <h4>Core Basics</h4>\n          <p>Understand Java background, features, history, and where it is applied in the industry.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-server icon-purple\"></i>\n          <h4>Execution Architecture</h4>\n          <p>Deconstruct the roles and nested relationship of JDK, JRE, and the JVM.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-gears icon-emerald\"></i>\n          <h4>Compilation Flow</h4>\n          <p>Learn how javac compiler and bytecode operate to provide platform portability.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. Why Java Exists & History",
+      "html": "\n      <h3>Problems Before Java & Its History</h3>\n      <p class=\"large-text\">In the early 1990s, languages like C and C++ ruled the industry. However, they suffered from critical paint points:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-ban icon-purple\"></i>\n          <h4>Platform Dependency</h4>\n          <p>Programs compiled directly to native machine code. Windows binaries could not execute on Unix/Mac machines without massive rewrites.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-circle-exclamation icon-cyan\"></i>\n          <h4>Memory Safety Concerns</h4>\n          <p>Manual memory management using pointers led to memory leaks, buffer overflows, and security vulnerabilities.</p>\n        </div>\n      </div>\n      <div class=\"analogy-box\" style=\"margin-top: 2rem;\">\n        <p><strong>🕒 The History:</strong> In 1991, James Gosling and the 'Green Team' at Sun Microsystems set out to build a language for digital consumer devices. Named <strong>Oak</strong> (after a tree outside Gosling's office), it was refactored, renamed to <strong>Java</strong> in 1995, and built around safety and portability.</p>\n      </div>\n    "
+    },
+    {
+      "title": "3. Real-World Analogy",
+      "html": "\n      <h3>Real-World Analogy: Hindi Letter Translation</h3>\n      <p class=\"large-text\">How does Java achieve platform independence? Let's use a language translation analogy:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> The Hindi Letter Concept</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>Suppose you write a letter in <strong>Hindi (Java Code)</strong>.</li>\n            <li>If you send this letter directly to people around the world, only those who speak Hindi can read it.</li>\n            <li><strong>The Java Solution:</strong> We translate our letter into <strong>Bytecode (Esperanto)</strong>—a universal intermediate format.</li>\n            <li>Now, we install a local <strong>Interpreter (JVM)</strong> in every region (Windows, macOS, Linux). The Windows JVM translates Esperanto to Windows-ese, the macOS JVM translates it to Mac-ese, and so on.</li>\n            <li>You only compile your code to Bytecode once, and it runs anywhere a JVM exists: <strong>Write Once, Run Anywhere (WORA)</strong>!</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "4. Compilation & Execution Flow",
+      "html": "\n      <h3>The Interactive Compilation Pipeline</h3>\n      <p class=\"large-text\">Hover or click on each step of the pipeline below to inspect Java's runtime execution stages:</p>\n      <div class=\"interactive-diagram-container\">\n        <svg id=\"compilation-flow-svg\" viewBox=\"0 0 800 200\" width=\"100%\">\n          <defs>\n            <linearGradient id=\"cyanGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n              <stop offset=\"0%\" stop-color=\"#06b6d4\" />\n              <stop offset=\"100%\" stop-color=\"#3b82f6\" />\n            </linearGradient>\n            <linearGradient id=\"purpleGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n              <stop offset=\"0%\" stop-color=\"#a855f7\" />\n              <stop offset=\"100%\" stop-color=\"#ec4899\" />\n            </linearGradient>\n            <linearGradient id=\"emeraldGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n              <stop offset=\"0%\" stop-color=\"#10b981\" />\n              <stop offset=\"100%\" stop-color=\"#14b8a6\" />\n            </linearGradient>\n          </defs>\n          \n          <!-- Nodes -->\n          <g class=\"diag-node\" data-target=\"step-source\" transform=\"translate(30, 50)\">\n            <rect width=\"130\" height=\"80\" rx=\"10\" fill=\"url(#cyanGrad)\" />\n            <text x=\"65\" y=\"45\" fill=\"white\" font-weight=\"bold\" text-anchor=\"middle\" font-size=\"14\">Source Code</text>\n            <text x=\"65\" y=\"65\" fill=\"white\" opacity=\"0.8\" text-anchor=\"middle\" font-size=\"11\">(.java file)</text>\n          </g>\n          <g class=\"diag-arrow\" transform=\"translate(170, 90)\">\n            <line x1=\"0\" y1=\"0\" x2=\"40\" y2=\"0\" stroke=\"#4b5563\" stroke-width=\"3\" marker-end=\"url(#arrow)\" />\n          </g>\n          <g class=\"diag-node\" data-target=\"step-compiler\" transform=\"translate(220, 50)\">\n            <rect width=\"130\" height=\"80\" rx=\"10\" fill=\"#1e293b\" stroke=\"#06b6d4\" stroke-width=\"2\" />\n            <text x=\"65\" y=\"45\" fill=\"#06b6d4\" font-weight=\"bold\" text-anchor=\"middle\" font-size=\"14\">Compiler</text>\n            <text x=\"65\" y=\"65\" fill=\"white\" opacity=\"0.8\" text-anchor=\"middle\" font-size=\"11\">(javac)</text>\n          </g>\n          <g class=\"diag-arrow\" transform=\"translate(360, 90)\">\n            <line x1=\"0\" y1=\"0\" x2=\"40\" y2=\"0\" stroke=\"#4b5563\" stroke-width=\"3\" />\n          </g>\n          <g class=\"diag-node\" data-target=\"step-bytecode\" transform=\"translate(410, 50)\">\n            <rect width=\"130\" height=\"80\" rx=\"10\" fill=\"url(#purpleGrad)\" />\n            <text x=\"65\" y=\"45\" fill=\"white\" font-weight=\"bold\" text-anchor=\"middle\" font-size=\"14\">Bytecode</text>\n            <text x=\"65\" y=\"65\" fill=\"white\" opacity=\"0.8\" text-anchor=\"middle\" font-size=\"11\">(.class file)</text>\n          </g>\n          <g class=\"diag-arrow\" transform=\"translate(550, 90)\">\n            <line x1=\"0\" y1=\"0\" x2=\"40\" y2=\"0\" stroke=\"#4b5563\" stroke-width=\"3\" />\n          </g>\n          <g class=\"diag-node\" data-target=\"step-jvm\" transform=\"translate(600, 50)\">\n            <rect width=\"170\" height=\"80\" rx=\"10\" fill=\"url(#emeraldGrad)\" />\n            <text x=\"85\" y=\"38\" fill=\"white\" font-weight=\"bold\" text-anchor=\"middle\" font-size=\"14\">JVM & Execution</text>\n            <text x=\"85\" y=\"58\" fill=\"white\" opacity=\"0.8\" text-anchor=\"middle\" font-size=\"11\">(Interpreter + JIT)</text>\n            <text x=\"85\" y=\"72\" fill=\"white\" font-weight=\"bold\" opacity=\"0.9\" text-anchor=\"middle\" font-size=\"10\">→ Machine Code</text>\n          </g>\n          <marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"5\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n            <path d=\"M 0 0 L 10 5 L 0 10 z\" fill=\"#4b5563\" />\n          </marker>\n        </svg>\n      </div>\n      <div id=\"diagram-detail-panel\" class=\"detail-panel glass-card\">\n        <h4 id=\"detail-title\"><i class=\"fa-solid fa-circle-info\"></i> Click a node above to inspect</h4>\n        <p id=\"detail-desc\">Trace step-by-step from human-written code to the native binary instructions that the operating system executes.</p>\n      </div>\n    "
+    },
+    {
+      "title": "5. JDK vs JRE vs JVM",
+      "html": "\n      <h3>JDK, JRE, and JVM Nested Structure</h3>\n      <p class=\"large-text\">These three components represent the core of the Java platform. Click on any box to see its contents:</p>\n      <div class=\"nested-diagram-container\">\n        <svg id=\"nested-architecture-svg\" viewBox=\"0 0 800 350\" width=\"100%\">\n          <!-- JDK Container -->\n          <rect x=\"20\" y=\"20\" width=\"760\" height=\"310\" rx=\"15\" fill=\"rgba(15, 23, 42, 0.5)\" stroke=\"#a855f7\" stroke-width=\"3\" class=\"arch-box\" data-target=\"arch-jdk\" />\n          <text x=\"40\" y=\"50\" fill=\"#a855f7\" font-weight=\"bold\" font-size=\"18\">JDK (Java Development Kit)</text>\n          <text x=\"40\" y=\"70\" fill=\"white\" opacity=\"0.6\" font-size=\"12\">Development Tools + JRE</text>\n\n          <!-- JRE Container -->\n          <rect x=\"50\" y=\"90\" width=\"700\" height=\"210\" rx=\"12\" fill=\"rgba(15, 23, 42, 0.7)\" stroke=\"#06b6d4\" stroke-width=\"3\" class=\"arch-box\" data-target=\"arch-jre\" />\n          <text x=\"70\" y=\"120\" fill=\"#06b6d4\" font-weight=\"bold\" font-size=\"16\">JRE (Java Runtime Environment)</text>\n          <text x=\"70\" y=\"140\" fill=\"white\" opacity=\"0.6\" font-size=\"12\">JVM + Core Libraries (rt.jar)</text>\n\n          <!-- JVM Container -->\n          <rect x=\"80\" y=\"160\" width=\"400\" height=\"120\" rx=\"10\" fill=\"url(#emeraldGrad)\" stroke=\"white\" stroke-width=\"1\" class=\"arch-box\" data-target=\"arch-jvm\" />\n          <text x=\"100\" y=\"200\" fill=\"white\" font-weight=\"bold\" font-size=\"16\">JVM (Java Virtual Machine)</text>\n          <text x=\"100\" y=\"225\" fill=\"white\" opacity=\"0.9\" font-size=\"12\">• ClassLoader System & Bytecode Verifier</text>\n          <text x=\"100\" y=\"245\" fill=\"white\" opacity=\"0.9\" font-size=\"12\">• Interpreter & JIT Compiler Execution Engine</text>\n\n          <!-- Development tools floating labels in JDK -->\n          <g transform=\"translate(530, 180)\" class=\"arch-sub-box\" data-target=\"arch-tools\">\n            <rect width=\"180\" height=\"80\" rx=\"8\" fill=\"#1e293b\" stroke=\"#ec4899\" stroke-width=\"1\" />\n            <text x=\"90\" y=\"30\" fill=\"#ec4899\" font-weight=\"bold\" font-size=\"12\" text-anchor=\"middle\">Development Tools</text>\n            <text x=\"90\" y=\"50\" fill=\"white\" opacity=\"0.8\" font-size=\"10\" text-anchor=\"middle\">javac (Compiler)</text>\n            <text x=\"90\" y=\"65\" fill=\"white\" opacity=\"0.8\" font-size=\"10\" text-anchor=\"middle\">jdb (Debugger) / javadoc</text>\n          </g>\n        </svg>\n      </div>\n      <div id=\"arch-detail-panel\" class=\"detail-panel glass-card\">\n        <h4 id=\"arch-title\"><i class=\"fa-solid fa-circle-info\"></i> Click zones of the layout to explore</h4>\n        <p id=\"arch-desc\">Discover what resides in each layer of the platform ecosystem.</p>\n      </div>\n    "
+    },
+    {
+      "title": "6. Class Code Syntax & Keywords",
+      "html": "\n      <h3>Anatomy of a Hello World Class</h3>\n      <p class=\"large-text\">Let's dissect every single word in Java's entry point structure:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-java\">public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello World\");\n    }\n}</code></pre>\n        </div>\n        <div class=\"analysis-list\" style=\"max-height: 280px; overflow-y: auto;\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">public</span>\n            <p>Access modifier. Makes the class or method visible to the outer JVM JVM loader.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">class</span>\n            <p>Keyword used to declare a class in Java.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Main</span>\n            <p>The name of the class. Must exactly match the filename: <code>Main.java</code>.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">static</span>\n            <p>Allows the JVM to call this method without creating an object instance of class Main.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">void</span>\n            <p>The return type. Indicates this method does not return any value to the JVM.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-emerald\">main</span>\n            <p>The entry point method name. JVM looks for this exact signature to begin program execution.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-emerald\">String[] args</span>\n            <p>An array of Strings storing command-line arguments passed when booting the program.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-orange\">System.out.println</span>\n            <p>System utility class, console output stream, and printing routine to output a line of text.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. Basic Coding Examples",
+      "html": "\n      <h3>Code Syntaxes: Day 1 Code Examples</h3>\n      <p class=\"large-text\">Review these standard output scenarios using the print utilities:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-code icon-cyan\"></i>\n          <h4>1. Hello World</h4>\n          <pre><code class=\"language-java\">System.out.println(\"Hello World\");</code></pre>\n          <p style=\"font-size:0.9rem; margin-top:0.5rem;\">Outputs: <code>Hello World</code> and moves cursor to a new line.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-align-left icon-purple\"></i>\n          <h4>2. Multiple Lines</h4>\n          <pre><code class=\"language-java\">System.out.print(\"A \");\nSystem.out.println(\"B\");</code></pre>\n          <p style=\"font-size:0.9rem; margin-top:0.5rem;\">Outputs: <code>A B</code> (print does not start a new line).</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-calculator icon-emerald\"></i>\n          <h4>3. Printing Numbers</h4>\n          <pre><code class=\"language-java\">System.out.println(10 + 20);\nSystem.out.println(\"10\" + 20);</code></pre>\n          <p style=\"font-size:0.9rem; margin-top:0.5rem;\">Outputs: <code>30</code> (addition) and <code>1020</code> (string concatenation).</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "8. Memory Allocation (Stack vs Heap)",
+      "html": "\n      <h3>Memory Spaces: Stack vs Heap Allocation</h3>\n      <p class=\"large-text\">The JVM partitions its memory into distinct logical regions. Let's compare the Stack and Heap:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n          <h5><i class=\"fa-solid fa-layer-group icon-cyan\"></i> Stack Memory</h5>\n          <ul>\n            <li>Stores local variables (primitive values like <code>int</code>, <code>double</code>).</li>\n            <li>Stores reference variables (memory address pointers).</li>\n            <li>Managed using LIFO (Last-In-First-Out) execution stacks.</li>\n            <li>Memory is allocated and cleared automatically as methods enter/exit execution.</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n          <h5><i class=\"fa-solid fa-cubes icon-purple\"></i> Heap Memory</h5>\n          <ul>\n            <li>Stores all objects and instances (like String constants).</li>\n            <li>Stores arrays.</li>\n            <li>Shared across all threads.</li>\n            <li>Managed by the automatic Garbage Collector, which deallocates unused references.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "9. Under the Hood: JVM Interpreter & JIT",
+      "html": "\n      <h3>JVM Subsystems: ClassLoader & Execution Engine</h3>\n      <p class=\"large-text\">How does the JVM execute bytecode? Let's look at the internal subsystems:</p>\n      <div class=\"summary-cards\">\n        <div class=\"summary-item\">\n          <i class=\"fa-solid fa-folder-open summary-icon\"></i>\n          <div>\n            <h5>1. ClassLoader</h5>\n            <p>Loads class files, linking static variables and loading parent references.</p>\n          </div>\n        </div>\n        <div class=\"summary-item\">\n          <i class=\"fa-solid fa-shield summary-icon\"></i>\n          <div>\n            <h5>2. Bytecode Verifier</h5>\n            <p>Secures runtime execution by checking that incoming classes follow language formatting and do not bypass memory bounds.</p>\n          </div>\n        </div>\n        <div class=\"summary-item\">\n          <i class=\"fa-solid fa-bolt summary-icon\"></i>\n          <div>\n            <h5>3. Interpreter & JIT Compiler</h5>\n            <p>The **Interpreter** executes bytecode instructions sequentially. If a method is called repeatedly (hot code), the **Just-In-Time (JIT) Compiler** compiles that bytecode block directly into native machine code, accelerating execution speeds.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "10. Common Mistakes & Best Practices",
+      "html": "\n      <h3>Avoid Bugs: Mistakes vs Best Practices</h3>\n      <p class=\"large-text\">Familiarize yourself with basic syntax constraints to speed up local compilation loops:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-ban\"></i> Common Junior Mistakes</h5>\n          <ul>\n            <li>❌ <code>System.out.println(\"Hello\")</code> (Forgetting the closing semicolon).</li>\n            <li>❌ Declaring class <code>public class Main</code> in file <code>App.java</code> (Filename mismatch).</li>\n            <li>❌ Writing <code>void Main(String args)</code> (Wrong entry point signature).</li>\n            <li>❌ Mismatching brackets: forgetting to close class or method block braces.</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5><i class=\"fa-solid fa-circle-check\"></i> Standard Industry Best Practices</h5>\n          <ul>\n            <li>✔ Use meaningful, UpperCamelCase class names (e.g. <code>StudentProfiler</code>).</li>\n            <li>✔ Restrict class files to only one public class declaration.</li>\n            <li>✔ Apply proper indentation inside block bodies to improve readability.</li>\n            <li>✔ Write clear single-line (<code>//</code>) comments explaining core operations.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "Which component executes Java bytecode?",
+      "options": ["Compiler", "JVM", "JDK", "IDE"],
+      "answer": 1,
+      "explanation": "The JVM (Java Virtual Machine) executes intermediate bytecode (.class files) by converting it to native machine instructions."
+    },
+    {
+      "q": "Which command is used to compile a Java file?",
+      "options": ["java Run", "java compile", "javac", "java -c"],
+      "answer": 2,
+      "explanation": "The command 'javac' is the Java Compiler executable. It compiles your .java source code files into .class bytecode files."
+    },
+    {
+      "q": "Who created Java?",
+      "options": ["Dennis Ritchie", "Bjarne Stroustrup", "James Gosling", "Guido van Rossum"],
+      "answer": 2,
+      "explanation": "James Gosling created Java while working at Sun Microsystems in the early 1990s."
+    },
+    {
+      "q": "In which year was Java first released?",
+      "options": ["1989", "1991", "1995", "2000"],
+      "answer": 2,
+      "explanation": "Java was officially released to the public in 1995."
+    },
+    {
+      "q": "What does the slogan 'WORA' stand for in Java?",
+      "options": ["Write Once, Run Anywhere", "Write Only, Read Always", "Windows Operating System Registry Allocation", "Web Object Request Architecture"],
+      "answer": 0,
+      "explanation": "WORA stands for 'Write Once, Run Anywhere', referencing Java's platform-independent design."
+    },
+    {
+      "q": "If a public class is named 'Student', what must the filename be?",
+      "options": ["student.java", "Student.class", "Student.java", "Main.java"],
+      "answer": 2,
+      "explanation": "In Java, public classes must be declared in files matching the class name exactly (case-sensitive) with a '.java' extension."
+    },
+    {
+      "q": "Which OS environment variable is used to locate JDK compiler executables?",
+      "options": ["CLASSPATH", "PATH", "TEMP", "SYSTEM"],
+      "answer": 1,
+      "explanation": "The PATH variable stores bin folder system directions, letting the terminal run compiler commands from any workspace directory."
+    },
+    {
+      "q": "What is the output of: System.out.println(10 + 20);",
+      "options": ["1020", "30", "10 + 20", "Syntax Error"],
+      "answer": 1,
+      "explanation": "Since both operands are numbers, the '+' operator performs addition, resulting in '30'."
+    },
+    {
+      "q": "What is the output of: System.out.println(\"10\" + 20);",
+      "options": ["30", "1020", "Syntax Error", "10"],
+      "answer": 1,
+      "explanation": "If one operand is a String, the '+' operator acts as a string concatenator, outputting '1020'."
+    },
+    {
+      "q": "What is the output of: System.out.println('A' + 1);",
+      "options": ["B", "A1", "66", "Syntax Error"],
+      "answer": 2,
+      "explanation": "The character constant 'A' represents decimal value 65 (Unicode ASCII code). Adding 1 promotes it to integer 66."
+    },
+    {
+      "q": "Which JVM execution engine component accelerates code by compiling bytecode to native instructions?",
+      "options": ["ClassLoader", "Bytecode Verifier", "JIT Compiler", "Garbage Collector"],
+      "answer": 2,
+      "explanation": "The Just-In-Time (JIT) compiler compiles frequently executed bytecode blocks directly into native machine code to speed up runtime execution."
+    },
+    {
+      "q": "Is the JVM platform-independent?",
+      "options": ["Yes", "No", "Only on Windows", "Only on macOS"],
+      "answer": 1,
+      "explanation": "The JVM is platform-dependent because it must translate bytecode into CPU-specific native instructions (which vary between Windows, macOS, and Linux)."
+    },
+    {
+      "q": "Which memory region holds local variables and method call stack frames?",
+      "options": ["Heap", "Stack", "Method Area", "Registries"],
+      "answer": 1,
+      "explanation": "Method stacks and local variables are allocated sequentially inside Stack memory frames."
+    },
+    {
+      "q": "Which memory region holds dynamically instantiated objects and arrays?",
+      "options": ["Stack", "Heap", "Class Loader", "Registers"],
+      "answer": 1,
+      "explanation": "Heap memory holds all dynamically instantiated objects, String pools, and array structures."
+    },
+    {
+      "q": "Which file extension represents compiled Java bytecode?",
+      "options": [".java", ".class", ".exe", ".jar"],
+      "answer": 1,
+      "explanation": "Compiled bytecode files end with the '.class' extension."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "Why is Java platform-independent but the JVM is platform-dependent?",
+      "a": "Java compiles source code (.java) into intermediate universal bytecode (.class). The JVM executes this bytecode. Since operating systems compile binary calls differently, JVM configurations are tailored natively for each target OS (Windows, macOS, Linux). Thus, bytecode is portable, but the JVM is native."
+    },
+    {
+      "q": "What is the difference between path and classpath variables?",
+      "a": "• <b>PATH:</b> An OS environment variable pointing to executable commands (like `java`, `javac`).<br>• <b>CLASSPATH:</b> A JVM environment variable indicating where compiled classes or third-party library files reside."
+    },
+    {
+      "q": "What is the role of the JIT Compiler in the JVM?",
+      "a": "The Just-In-Time (JIT) Compiler accelerates code execution speeds. The JVM interpreter reads bytecode lines sequentially. If a segment of code is repeatedly executed (a hot spot), the JIT compiler compiles it into native hardware instructions, caching it for direct execution."
+    },
+    {
+      "q": "What happens if you omit the String[] args argument from the main method?",
+      "a": "The program compiles successfully, but the JVM will throw a runtime error (NoSuchMethodError) indicating it cannot locate the standard program entry point, which requires the exact signature: <code>public static void main(String[] args)</code>."
+    },
+    {
+      "q": "Why is Java considered highly secure?",
+      "a": "Java has several built-in security features:<br>1. No raw pointers: Users cannot access memory addresses directly.<br>2. Sandboxed execution: The JVM acts as a buffer layer to protect the underlying OS.<br>3. Bytecode Verifier: Checks class syntax and memory safety before loading instructions."
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 1 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Print \"Hello Java\" to the console.</li>\n          <li><strong>Exercise 2:</strong> Print your name and current college branch on separate lines.</li>\n          <li><strong>Exercise 3:</strong> Print an ASCII Art boundary square block: <br>\n            <code>[-----]</code><br>\n            <code>|JAVA |</code><br>\n            <code>[-----]</code>\n          </li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Research Topics</h5>\n        <ul>\n          <li><strong>Topic 1:</strong> Research James Gosling and the Sun Green Project.</li>\n          <li><strong>Topic 2:</strong> Review historical versions of Java and identify features introduced in JDK 17 vs JDK 21.</li>\n          <li><strong>Topic 3:</strong> Sketch a structural diagram comparing the nested components of JDK, JRE, and the JVM.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: Student Introduction Program</h5>\n        <p>Create an executable Java class that prints a formatted student introduction profile card. Make sure it outputs details matching the following template format:</p>\n        <pre style=\"background:#000; padding:1rem; border-radius:6px; font-family:var(--font-mono); font-size:1.05rem; margin-top:0.75rem; border: 1px dashed var(--border-glow); color:#fff;\">\n-----------------------------------\nSTUDENT PROFILE CARD\n-----------------------------------\nName    : Harsh Vardhan\nCollege : B.Tech Academy\nBranch  : Computer Science\nAge     : 21\n-----------------------------------</pre>\n      </div>\n    </div>\n    <div class=\"complexity-tip\" style=\"margin-top: 1.5rem;\">\n      <strong>💡 Assignment submission guidelines:</strong> Save your source code files as <code>Day1Assignment.java</code>, compile them using your local terminal, and record console outputs.\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "Student Introduction Profiler",
+    "description": "Build an executable program that outputs a structured student profile card to the console.",
+    "outputMock": "-----------------------------------\nSTUDENT profile CARD\n-----------------------------------\nName    : harsh vardhan\nCollege : B.Tech Academy\nBranch  : Computer Science\nAge     : 21\n-----------------------------------"
+  }
+}

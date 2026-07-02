@@ -1,0 +1,129 @@
+{
+  "id": "day_5",
+  "dayNum": 5,
+  "title": "DQL Basics (SELECT, DISTINCT, LIMIT, ORDER BY)",
+  "category": "Fundamentals",
+  "difficulty": "Beginner",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course Day 5 | SELECT, DISTINCT, ORDER BY & LIMIT Explained | SQL for Data Analytics",
+  "youtubeDesc": "Welcome to Day 5 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ What is DQL (Data Query Language) & how to retrieve data\n✅ Specifying column lists vs selecting all columns (SELECT *)\n✅ Why you must avoid SELECT * in high-performance production databases\n✅ Removing duplicate entries using the DISTINCT keyword\n✅ Sorting records alphabetically and numerically with ORDER BY (ASC vs DESC)\n✅ Capping result sets with LIMIT (finding top and bottom elements)\n✅ The logical processing order of SQL query execution\n\n📚 Topics Covered:\n00:00 Introduction & Supermarket Analogy\n03:45 Retrieving Columns with SELECT\n10:15 Deduplication with DISTINCT\n16:00 Sorting Lists with ORDER BY\n23:30 Capping Results with LIMIT\n29:45 Query Execution Order & Performance Tips\n\nDownload the notes and assignments from the description below!",
+  "thumbnails": [
+    "Master SQL SELECT 🔍",
+    "SELECT vs DISTINCT",
+    "ORDER BY & LIMIT Explained",
+    "SQL for Data Analytics Day 5",
+    "SQL Query Basics Made Easy"
+  ],
+  "scripts": {
+    "opening": "\"Welcome back to Day 5 of the SQL Roadmap. In our first four lessons, we built structures and inserted records. Today, we focus on DQL—Data Query Language—and master the SELECT statement. This is how we extract, sort, and cap datasets to answer real business questions.\"",
+    "explanation": "\"Think of SELECT like walking into a supermarket. There are thousands of items, but you ask the clerk to show you only the laptops, or show you the top 5 most expensive products. The clerk filters and brings you exactly what you asked for, just like a SELECT statement.\"",
+    "transition": "\"Before we start sorting and limiting, let's learn how to choose columns and understand why SELECT * is a major performance bottleneck in production.\"",
+    "closing": "\"In our next lesson, we will add another key tool to our queries—the WHERE clause—allowing us to filter data based on strict logical conditions.\"",
+    "cta": "\"If you found this lesson helpful, click the like button, subscribe, and download the full study notes and exercises below! I'll see you in Day 6.\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 5 Notes\n\n## 1. Learning Objectives\n* Comprehend DQL (Data Query Language) and the `SELECT` statement.\n* Extract specific columns to reduce memory overhead.\n* Identify why `SELECT *` should be avoided in production environments.\n* Deduplicate datasets using `DISTINCT`.\n* Sort records alphabetically and numerically using `ORDER BY`.\n* Limit output rows using `LIMIT` to isolate top or bottom records.\n* Master the logical processing order of SQL clauses.\n\n## 2. Spreadsheet vs. Database Query\n* In Excel, you filter rows manually and copy columns to a new sheet. In SQL, you write a single query expressing what you want, and the RDBMS optimizer retrieves it in milliseconds.\n\n## 3. SQL Clause Syntax & Execution Order\n* **Written Syntax**: `SELECT` $\\rightarrow$ `FROM` $\\rightarrow$ `ORDER BY` $\\rightarrow$ `LIMIT`.\n* **Logical Execution Order**: `FROM` $\\rightarrow$ `SELECT` $\\rightarrow$ `DISTINCT` $\\rightarrow$ `ORDER BY` $\\rightarrow$ `LIMIT`.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 5</div>\n      <h2>DQL Basics: Extracting Data</h2>\n      <p class=\"large-text\">Retrieving data is the core job of a Data Analyst. Today we explore Data Query Language (DQL):</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-magnifying-glass icon-cyan\"></i>\n          <h4>SELECT Columns</h4>\n          <p>Extract specific columns to save network bandwidth, and learn why <code>SELECT *</code> is a production anti-pattern.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-filter icon-purple\"></i>\n          <h4>DISTINCT deduplication</h4>\n          <p>Retrieve unique values from categories, departments, or country listings, eliminating duplicate rows.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-sort icon-emerald\"></i>\n          <h4>ORDER BY & LIMIT</h4>\n          <p>Sort queries ascending or descending, and cap result sets to retrieve top or bottom values (e.g. highest salaries).</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. Why Do We Need SELECT?",
+      "html": "\n      <h3>DQL Analogy: The Supermarket Clerk</h3>\n      <p class=\"large-text\">Imagine you run a retail warehouse with millions of products. You would not open the entire warehouse box-by-box to check prices:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> The Supermarket Analogy</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>🛒 <strong>The Warehouse:</strong> The database table storing all records.</li>\n            <li>💁‍♂️ <strong>The Clerk:</strong> The SQL query execution engine.</li>\n            <li>🔍 <strong>Your Requests:</strong>\n              <ul>\n                <li>\"Show me names of all laptops.\" $\\rightarrow$ <code>SELECT name FROM products...</code></li>\n                <li>\"Show me unique brands.\" $\\rightarrow$ <code>SELECT DISTINCT brand FROM products...</code></li>\n                <li>\"Show me the cheapest product.\" $\\rightarrow$ <code>SELECT * FROM products ORDER BY price ASC LIMIT 1;</code></li>\n              </ul>\n            </li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. The SELECT Column Extractors",
+      "html": "\n      <h3>SELECT: Columns Extraction & Best Practices</h3>\n      <p class=\"large-text\">The <code>SELECT</code> statement extracts column data. Avoid wildcards in production codes:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Retrieve a single column\nSELECT name FROM products;\n\n-- Retrieve multiple specific columns\nSELECT name, price FROM products;\n\n-- Retrieve everything (anti-pattern in production)\nSELECT * FROM products;</code></pre>\n        </div>\n        <div class=\"analysis-list\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Explicit Columns</span>\n            <p><strong>Best Practice:</strong> Querying only named columns consumes less memory and reduces network usage between DB servers and analytics apps.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">SELECT * Wildcard</span>\n            <p><strong>Anti-Pattern:</strong> Fetching all fields (including heavy text and indexes) slows query times and wastes server memory.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "4. The DISTINCT Keyword",
+      "html": "\n      <h3>DISTINCT: Eliminating Duplicate Rows</h3>\n      <p class=\"large-text\">The <code>DISTINCT</code> keyword filters duplicate values, returning unique categories or categories:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-database icon-cyan\"></i>\n          <h4>Raw Category Query</h4>\n          <pre><code class=\"language-sql\">SELECT category FROM products;</code></pre>\n          <p style=\"font-size:0.85rem; opacity:0.8; margin-top:0.5rem;\">Outputs: <code>'Electronics', 'Electronics', 'Furniture', 'Furniture'</code>.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-gem icon-purple\"></i>\n          <h4>Deduplicated Query</h4>\n          <pre><code class=\"language-sql\">SELECT DISTINCT category \nFROM products;</code></pre>\n          <p style=\"font-size:0.85rem; opacity:0.8; margin-top:0.5rem;\">Outputs only unique entries: <code>'Electronics', 'Furniture'</code>.</p>\n        </div>\n      </div>\n      <div class=\"complexity-tip\" style=\"margin-top:1.5rem;\">\n        📊 <strong>Business Use Case:</strong> Determining exactly how many unique product categories exist or listing countries where active customers reside. \n      </div>\n    "
+    },
+    {
+      "title": "5. ORDER BY Sorting Clause",
+      "html": "\n      <h3>ORDER BY: Alphabetical & Numeric Sorting</h3>\n      <p class=\"large-text\">The <code>ORDER BY</code> clause sorts result sets. Defaults to Ascending (ASC). Use DESC for descending:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Sort alphabetically by name (A-Z)\nSELECT * FROM products ORDER BY name;\n\n-- Sort by highest price first (Descending)\nSELECT * FROM products ORDER BY price DESC;\n\n-- Multi-Column sort\nSELECT * FROM products \nORDER BY category ASC, price DESC;</code></pre>\n        </div>\n        <div class=\"analysis-list\" style=\"max-height:280px; overflow-y:auto;\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">ASC vs DESC</span>\n            <p>ASC sorts from smallest to largest (1-100, A-Z). DESC sorts from largest to smallest (100-1, Z-A).</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-purple\">Multi-Column Sorting</span>\n            <p>Sorts by the first column first. If there are duplicates, it sorts those duplicates by the second column (e.g. grouping by category, then sorting within each group by price).</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "6. LIMIT: Capping Row Count Results",
+      "html": "\n      <h3>LIMIT: Extracting Top & Bottom Values</h3>\n      <p class=\"large-text\">The <code>LIMIT</code> clause caps the total rows returned. Combine it with <code>ORDER BY</code> to retrieve top stats:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-list-ol icon-cyan\"></i>\n          <h4>1. Simple Row Limit</h4>\n          <pre><code class=\"language-sql\">SELECT * FROM products \nLIMIT 5;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Returns only the first 5 records in the table.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-circle-arrow-up icon-purple\"></i>\n          <h4>2. Top 3 Expensive Items</h4>\n          <pre><code class=\"language-sql\">SELECT * FROM products \nORDER BY price DESC \nLIMIT 3;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Sorts by price descending, then grabs top 3.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-circle-arrow-down icon-emerald\"></i>\n          <h4>3. Find Cheapest Item</h4>\n          <pre><code class=\"language-sql\">SELECT * FROM products \nORDER BY price ASC \nLIMIT 1;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Sorts ascending and returns the single cheapest row.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. SQL Logical Query Execution Order",
+      "html": "\n      <h3>Written Syntax vs. Logical Execution Flow</h3>\n      <p class=\"large-text\">The database engine executes clauses in a different order than how they are written in the query string:</p>\n      <div class=\"nested-diagram-container\" style=\"background:rgba(255,255,255,0.02); border-radius:10px; padding:1.5rem;\">\n        <div class=\"feature-grid\" style=\"text-align:center;\">\n          <div class=\"feature-card\" style=\"border-color:var(--neon-cyan);\">\n            <h5 style=\"color:var(--neon-cyan);\">1. FROM</h5>\n            <p style=\"font-size:0.75rem;\">Specifies table datasource.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-purple);\">\n            <h5 style=\"color:var(--neon-purple);\">2. SELECT</h5>\n            <p style=\"font-size:0.75rem;\">Extracts and projects columns.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-emerald);\">\n            <h5 style=\"color:var(--neon-emerald);\">3. DISTINCT</h5>\n            <p style=\"font-size:0.75rem;\">Deduplicates row values.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-orange);\">\n            <h5 style=\"color:var(--neon-orange);\">4. ORDER BY</h5>\n            <p style=\"font-size:0.75rem;\">Sorts output row order.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:#ef4444;\">\n            <h5 style=\"color:#ef4444;\">5. LIMIT</h5>\n            <p style=\"font-size:0.75rem;\">Truncates output row count.</p>\n          </div>\n        </div>\n      </div>\n      <p style=\"margin-top:1rem; font-size:0.9rem; text-align:center;\">\n        📝 <strong>Written Syntax:</strong> <code>SELECT ... FROM ... ORDER BY ... LIMIT ...</code>\n      </p>\n    "
+    },
+    {
+      "title": "8. Pitfalls & Performance Guidelines",
+      "html": "\n      <h3>Avoid Query Errors: SELECT Best Practices</h3>\n      <p class=\"large-text\">Follow these analytical guidelines to write high-performance SELECT queries:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-ban\"></i> Common SELECT Mistakes</h5>\n          <ul>\n            <li>❌ Running <code>LIMIT 5 ORDER BY price;</code> (Writing LIMIT before ORDER BY causes syntax errors).</li>\n            <li>❌ Querying <code>SELECT *</code> when only two columns are needed, causing high network usage.</li>\n            <li>❌ Forgetting <code>DESC</code> when trying to find top metrics, returning lowest values instead.</li>\n            <li>❌ Applying DISTINCT on columns that are already unique primary keys (e.g. <code>SELECT DISTINCT id</code> is redundant).</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5><i class=\"fa-solid fa-circle-check\"></i> Standard DQL Rules</h5>\n          <ul>\n            <li>✔ Explicitly name columns (e.g. <code>SELECT name, price</code>) for better index caching.</li>\n            <li>✔ Apply sorting (<code>ORDER BY</code>) before limiting rows (<code>LIMIT</code>).</li>\n            <li>✔ Use multi-column sorting to build structured hierarchies inside reports.</li>\n            <li>✔ Leverage DISTINCT on categories or status codes to verify unique options.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "Which SQL command category does the SELECT statement belong to?",
+      "options": ["DDL", "DML", "DQL", "TCL"],
+      "answer": 2,
+      "explanation": "SELECT is the core command of DQL (Data Query Language) because its sole purpose is to query and retrieve data rows."
+    },
+    {
+      "q": "Which keyword is used to remove duplicate values from a query's output?",
+      "options": ["LIMIT", "ORDER BY", "DISTINCT", "UNIQUE"],
+      "answer": 2,
+      "explanation": "The DISTINCT keyword deduplicates output rows, returning only unique values."
+    },
+    {
+      "q": "Which clause is used to sort the output of a SQL query numerically or alphabetically?",
+      "options": ["LIMIT", "ORDER BY", "SORT", "GROUP BY"],
+      "answer": 1,
+      "explanation": "ORDER BY is used to sort outputs. It defaults to ascending (ASC), and can be switched to descending using DESC."
+    },
+    {
+      "q": "What is the correct syntax order when combining ORDER BY and LIMIT in a query?",
+      "options": ["LIMIT 5 ORDER BY price DESC", "ORDER BY price DESC LIMIT 5", "LIMIT 5, ORDER BY price DESC", "ORDER BY price DESC, LIMIT=5"],
+      "answer": 1,
+      "explanation": "The sorting clause (ORDER BY) must always precede the row truncation clause (LIMIT) in standard SQL syntax."
+    },
+    {
+      "q": "Which clause is processed first during query execution?",
+      "options": ["SELECT", "FROM", "ORDER BY", "LIMIT"],
+      "answer": 1,
+      "explanation": "The FROM clause is processed first because the database engine must identify the source table before performing projections or sorting."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "Why is it considered bad practice to use SELECT * in production applications?",
+      "a": "1. <b>Performance:</b> It loads all columns into memory, causing high disk I/O and network overhead.<br>2. <b>Index Coverage:</b> It prevents index-only scans, slowing execution.<br>3. <b>Fragility:</b> If the table schema changes (columns added/removed), database mappings inside app codes can break."
+    },
+    {
+      "q": "Explain the difference between ORDER BY ASC and ORDER BY DESC.",
+      "a": "• <b>ASC (Ascending):</b> Sorts values from lowest to highest (1 to 100, A to Z). This is the default setting.<br>• <b>DESC (Descending):</b> Sorts values from highest to lowest (100 to 1, Z to A)."
+    },
+    {
+      "q": "How does a multi-column ORDER BY query execute? For example: ORDER BY category ASC, price DESC",
+      "a": "The engine first sorts all rows alphabetically by <code>category</code> (A-Z). If there are multiple rows with the exact same category, the engine then sorts *only those duplicates* by <code>price</code> in descending order (highest to lowest)."
+    },
+    {
+      "q": "What is the logical query execution order of SQL clauses?",
+      "a": "The database executes clauses in the following order:<br>1. <b>FROM</b> (reads datasource)<br>2. <b>SELECT</b> (projects columns)<br>3. <b>DISTINCT</b> (deduplicates)<br>4. <b>ORDER BY</b> (sorts)<br>5. <b>LIMIT</b> (truncates output rows)."
+    },
+    {
+      "q": "How would you write a query to find the employee with the single highest salary?",
+      "a": "You sort the table by salary descending and limit the output to 1 row:<br><code>SELECT name, salary FROM employees ORDER BY salary DESC LIMIT 1;</code>"
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 5 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Write an SQL statement to display only the product name and price of all items in the <code>products</code> table.</li>\n          <li><strong>Exercise 2:</strong> Write a query to find all unique product categories.</li>\n          <li><strong>Exercise 3:</strong> Write a query to display all products sorted by price in descending order.</li>\n          <li><strong>Exercise 4:</strong> Write a query to show the top 5 products with the lowest stock.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Business Scenarios</h5>\n        <ul>\n          <li><strong>Scenario 1 (Netflix):</strong> Write a query to list all unique movie genres, sorted alphabetically.</li>\n          <li><strong>Scenario 2 (Amazon):</strong> Write a query to retrieve the 3 most expensive products from the warehouse.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: E-commerce Catalog Query Builder</h5>\n        <p>Using the E-commerce products table, write SQL statements to extract key metrics:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li>Select the single cheapest product name and price.</li>\n          <li>Retrieve all unique departments/categories.</li>\n          <li>Sort products by category alphabetically, then by stock descending.</li>\n          <li>Retrieve the 5 most expensive products.</li>\n        </ol>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "E-commerce Products Query Builder",
+    "description": "Construct DQL SELECT statements to retrieve columns, deduplicate catalog categories, perform ascending/descending sorts, and apply row limits.",
+    "outputMock": "Queries run successfully:\n- SELECT name, price FROM products LIMIT 5;\n- SELECT DISTINCT category FROM products ORDER BY category;\n- SELECT * FROM products ORDER BY price DESC LIMIT 1;"
+  }
+}

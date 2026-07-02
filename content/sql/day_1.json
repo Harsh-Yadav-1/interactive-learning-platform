@@ -1,0 +1,129 @@
+{
+  "id": "day_1",
+  "dayNum": 1,
+  "title": "Introduction to Databases & SQL Commands",
+  "category": "Fundamentals",
+  "difficulty": "Beginner",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course for Beginners | Day 1 - Introduction to Databases, DBMS vs RDBMS & SQL Commands",
+  "youtubeDesc": "Welcome to Day 1 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ What is Data & what is a Database?\n✅ Why Excel isn't enough for large datasets\n✅ DBMS vs RDBMS (Relational Databases)\n✅ What is SQL & why is it crucial for Data Analytics?\n✅ The 5 Types of SQL Commands (DDL, DML, DQL, DCL, TCL)\n✅ Popular Database Engines (MySQL, PostgreSQL, SQLite)\n\n📚 Topics Covered:\n00:00 Introduction\n03:15 What is a Database?\n08:30 DBMS vs RDBMS\n14:00 Introduction to SQL\n20:30 SQL Command Categories\n28:00 Analytical Workflow & Output Queries\n34:00 Interview Questions & Assignment\n\nDownload the notes and try the assignment in the description below!",
+  "thumbnails": [
+    "SQL for Data Analytics 📊",
+    "SQL Full Course Day 1",
+    "DBMS vs RDBMS Explained",
+    "Start SQL Today!",
+    "Introduction to SQL Primitives"
+  ],
+  "scripts": {
+    "opening": "\"Every app you use today—from Instagram storing your profile to Amazon tracking your purchases—relies on databases. In this lesson, we will explore database fundamentals, compare RDBMS systems, and learn the categories of SQL commands you'll use every day as a Data Analyst.\"",
+    "explanation": "\"A lot of people ask: why can't we just store all our data inside Excel spreadsheets? As data grows to millions of rows, Excel becomes extremely slow, insecure, and difficult to query. Databases solve all of these problems by structuring data electronically in tables connected by relationships.\"",
+    "transition": "\"Now that we understand what a database is, let's explore the difference between a standard DBMS and a Relational DBMS.\"",
+    "closing": "\"In our next lesson, we will install MySQL, set up MySQL Workbench on your local machine, and write our very first database and table query.\"",
+    "cta": "\"If you found this video helpful, make sure to hit that like button, subscribe to the channel, and check out the downloadable PDF study notes in the description below! Let's get querying.\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 1 Notes\n\n## 1. Learning Objectives\n* Understand the concept of Data and Databases.\n* Explain why databases are preferred over flat-file spreadsheets like Excel.\n* Differentiate between Database Management Systems (DBMS) and Relational DBMS (RDBMS).\n* Comprehend SQL (Structured Query Language) and its role in Data Analytics.\n* Identify SQL command categories: DDL, DML, DQL, DCL, and TCL.\n\n## 2. Spreadsheet vs Database\n* **Spreadsheets (Excel)**: Best for small datasets, local calculations, and one-off charts. Fails on multi-user concurrency, scaling beyond 1 million rows, and strict data validation.\n* **Databases**: Built to scale to billions of rows, support hundreds of simultaneous users, maintain security constraints, and query data in fractions of a second.\n\n## 3. DBMS vs RDBMS\n* **DBMS (Database Management System)**: Software that stores data as files. Does not enforce relationships between records (e.g. XML, File systems, MS Access).\n* **RDBMS (Relational DBMS)**: Stores data in organized tables (relations) with rows (tuples) and columns (attributes). Enforces constraints like Primary Keys and Foreign Keys.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 1</div>\n      <h2>Introduction to Databases & SQL Overview</h2>\n      <p class=\"large-text\">SQL is the universal language of data. Today we build the foundations of databases and query commands:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-database icon-cyan\"></i>\n          <h4>Databases & DBMS</h4>\n          <p>Understand what data is, why databases are needed, and the limits of spreadsheets like Excel.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-network-wired icon-purple\"></i>\n          <h4>Relational Models</h4>\n          <p>Differentiate DBMS and RDBMS, and explore how tables connect through relational keys.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-terminal icon-emerald\"></i>\n          <h4>SQL Overview</h4>\n          <p>Learn the categories of SQL commands (DDL, DML, DQL) and how they fit into the Data Analyst workflow.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. Why Databases & Excel Limitations",
+      "html": "\n      <h3>Why Databases? (Excel vs. Database)</h3>\n      <p class=\"large-text\">Every modern application stores data. While spreadsheets like Excel are great for small calculations, they break down at scale:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-file-excel\"></i> Spreadsheet Limitations</h5>\n          <ul>\n            <li>❌ <strong>Scaling Limits:</strong> Excel is capped at 1,048,576 rows.</li>\n            <li>❌ <strong>Performance:</strong> Large files become extremely slow and laggy.</li>\n            <li>❌ <strong>Redundancy:</strong> Data gets duplicated, leading to inconsistencies.</li>\n            <li>❌ <strong>Concurrency:</strong> Hard for multiple users to write simultaneously.</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n          <h5><i class=\"fa-solid fa-database icon-cyan\"></i> Database Strengths</h5>\n          <ul>\n            <li>✔ <strong>Massive Scale:</strong> Handles billions of rows with ease.</li>\n            <li>✔ <strong>Indexing Speed:</strong> Searches millions of records in milliseconds.</li>\n            <li>✔ <strong>Data Integrity:</strong> Constraints prevent invalid entries.</li>\n            <li>✔ <strong>Multi-User Access:</strong> Supports transactional locks for concurrent queries.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. Real-World Analogy",
+      "html": "\n      <h3>Real-World Analogy: The Library Concept</h3>\n      <p class=\"large-text\">To understand how databases operate behind the scenes, think of a massive city library:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> The Library Mapping</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>📖 <strong>Books = Raw Data:</strong> The raw items containing information.</li>\n            <li>🏢 <strong>Library = Database:</strong> The organized physical space housing all books.</li>\n            <li>🧙‍♂️ <strong>Librarian = DBMS Software:</strong> The manager who files, retrieves, and updates books.</li>\n            <li>📑 <strong>Catalog System = Database Schema:</strong> The rules for arranging books by genre, author, and aisle.</li>\n            <li>🔍 <strong>Borrowing Slip = SQL Query:</strong> The request you hand the librarian to fetch a specific book.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "4. DBMS vs RDBMS",
+      "html": "\n      <h3>DBMS vs. Relational DBMS (RDBMS)</h3>\n      <p class=\"large-text\">Not all database software is created equal. Let's compare standard DBMS with Relational RDBMS:</p>\n      <div class=\"glass-card\" style=\"padding: 1.5rem; overflow-x: auto;\">\n        <table class=\"cms-table\" style=\"width:100%; border-collapse:collapse;\">\n          <thead>\n            <tr style=\"border-bottom:2px solid var(--border-glow); height:40px;\">\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Feature</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Standard DBMS</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Relational RDBMS</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05); height:45px;\">\n              <td><strong>Data Model</strong></td>\n              <td>Stores data as flat files or hierarchies.</td>\n              <td>Stores data in tabular grids (Rows & Columns).</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05); height:45px;\">\n              <td><strong>Relationships</strong></td>\n              <td>Not enforced programmatically.</td>\n              <td>Enforced using Primary Keys & Foreign Keys.</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05); height:45px;\">\n              <td><strong>Normalization</strong></td>\n              <td>Not supported, leading to high redundancy.</td>\n              <td>Supported to reduce redundancy and save space.</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05); height:45px;\">\n              <td><strong>Security & Concurrency</strong></td>\n              <td>Low security, single-user system locks.</td>\n              <td>High security, multi-user transaction control.</td>\n            </tr>\n            <tr style=\"height:45px;\">\n              <td><strong>Popular Systems</strong></td>\n              <td>XML Files, MS Access, File Systems.</td>\n              <td>MySQL, PostgreSQL, Oracle, SQL Server.</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    "
+    },
+    {
+      "title": "5. Categories of SQL Commands",
+      "html": "\n      <h3>The 5 Standard Types of SQL Commands</h3>\n      <p class=\"large-text\">SQL commands are grouped into five logical sub-languages. Learn this grouping:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-wrench icon-cyan\"></i>\n          <h4>DDL (Definition)</h4>\n          <p style=\"font-size:0.85rem; opacity:0.8;\">Defines schema structure.</p>\n          <pre><code class=\"language-sql\">CREATE, ALTER, DROP, TRUNCATE</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-pen icon-purple\"></i>\n          <h4>DML (Manipulation)</h4>\n          <p style=\"font-size:0.85rem; opacity:0.8;\">Modifies data values.</p>\n          <pre><code class=\"language-sql\">INSERT, UPDATE, DELETE</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-magnifying-glass icon-emerald\"></i>\n          <h4>DQL (Query)</h4>\n          <p style=\"font-size:0.85rem; opacity:0.8;\">Retrieves data rows.</p>\n          <pre><code class=\"language-sql\">SELECT</code></pre>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-user-shield icon-orange\"></i>\n          <h4>DCL / TCL (Control)</h4>\n          <p style=\"font-size:0.85rem; opacity:0.8;\">Permissions & Transactions.</p>\n          <pre><code class=\"language-sql\">GRANT, COMMIT, ROLLBACK</code></pre>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "6. SQL in Data Analytics Workflow",
+      "html": "\n      <h3>SQL in the Data Analytics Lifecycle</h3>\n      <p class=\"large-text\">How does SQL fit into a Data Analyst's day-to-day work?</p>\n      <div class=\"summary-cards\">\n        <div class=\"summary-item\">\n          <i class=\"fa-solid fa-cloud-arrow-down summary-icon\" style=\"color: var(--neon-cyan);\"></i>\n          <div>\n            <h5>1. Data Extraction</h5>\n            <p>Pulling raw transactional customer records from enterprise relational databases (PostgreSQL/MySQL).</p>\n          </div>\n        </div>\n        <div class=\"summary-item\">\n          <i class=\"fa-solid fa-filter summary-icon\" style=\"color: var(--neon-purple);\"></i>\n          <div>\n            <h5>2. Data Aggregation & Cleaning</h5>\n            <p>Using joins, window functions, and group queries to clean null values and calculate critical KPIs like Monthly Active Users (MAU).</p>\n          </div>\n        </div>\n        <div class=\"summary-item\">\n          <i class=\"fa-solid fa-chart-line summary-icon\" style=\"color: var(--neon-emerald);\"></i>\n          <div>\n            <h5>3. Visualization Integration</h5>\n            <p>Feeding the optimized query output dataset into visualization platforms (Power BI, Tableau, or Python Pandas) to build clean business executive dashboards.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. First SQL Query Examples",
+      "html": "\n      <h3>Writing Your First SQL Queries</h3>\n      <p class=\"large-text\">Let's inspect basic SELECT statements that can run directly without any table data:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-message icon-cyan\"></i>\n          <h4>1. String Literal Output</h4>\n          <pre><code class=\"language-sql\">SELECT 'Hello SQL';</code></pre>\n          <p style=\"font-size:0.85rem; margin-top:0.5rem;\">Returns a single cell containing: <code>Hello SQL</code>.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-calculator icon-purple\"></i>\n          <h4>2. Arithmetic Calculation</h4>\n          <pre><code class=\"language-sql\">SELECT 100 + 50;</code></pre>\n          <p style=\"font-size:0.85rem; margin-top:0.5rem;\">The execution engine computes the expression and outputs: <code>150</code>.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-clock icon-emerald\"></i>\n          <h4>3. Server System Time</h4>\n          <pre><code class=\"language-sql\">SELECT NOW();</code></pre>\n          <p style=\"font-size:0.85rem; margin-top:0.5rem;\">Calls a built-in function to return the current system timestamp.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "8. Common Mistakes & Best Practices",
+      "html": "\n      <h3>Avoid SQL Errors: Mistakes vs Best Practices</h3>\n      <p class=\"large-text\">Keep these guidelines in mind as we start writing SQL query strings:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-ban\"></i> Common SQL Pitfalls</h5>\n          <ul>\n            <li>❌ <strong>Missing Semicolon:</strong> Forgetting to terminate statements in multi-query files.</li>\n            <li>❌ <strong>Misspelled Keywords:</strong> Typing <code>SELET</code> instead of <code>SELECT</code>.</li>\n            <li>❌ <strong>Case Confusion:</strong> Storing table names as case-sensitive on Unix systems but calling them lowercased.</li>\n            <li>❌ <strong>Production SELECT *:</strong> Fetching every single column in production, causing unnecessary memory load.</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5><i class=\"fa-solid fa-circle-check\"></i> SQL Best Practices</h5>\n          <ul>\n            <li>✔ <strong>Capitalize Keywords:</strong> Write keywords in UPPERCASE (<code>SELECT</code>, <code>FROM</code>) for readability.</li>\n            <li>✔ <strong>Descriptive Names:</strong> Use underscore names for columns (e.g. <code>customer_id</code>).</li>\n            <li>✔ <strong>Use Comments:</strong> Document complex queries using single-line (<code>--</code>) comments.</li>\n            <li>✔ <strong>Explicit Column Names:</strong> Only query the specific columns required.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "What does SQL stand for?",
+      "options": ["Structured Query Language", "Standard Query List", "Sequential Query Language", "Simple Query Language"],
+      "answer": 0,
+      "explanation": "SQL stands for Structured Query Language. It is the international standard language used to interact with Relational Databases."
+    },
+    {
+      "q": "Which type of software manages databases using relational tables?",
+      "options": ["DBMS", "RDBMS", "Browser", "Compiler"],
+      "answer": 1,
+      "explanation": "RDBMS (Relational Database Management System) organizes data inside related tabular sheets (rows and columns)."
+    },
+    {
+      "q": "Which SQL command category does the CREATE table query belong to?",
+      "options": ["DML", "DQL", "DDL", "TCL"],
+      "answer": 2,
+      "explanation": "CREATE belongs to DDL (Data Definition Language) because it defines or alters the database schema structure."
+    },
+    {
+      "q": "What is the row limit of an Excel spreadsheet?",
+      "options": ["10,000 rows", "100,000 rows", "1,048,576 rows", "Unlimited"],
+      "answer": 2,
+      "explanation": "Excel is strictly limited to 1,048,576 rows, making it unsuitable for large transactional datasets."
+    },
+    {
+      "q": "Which of the following is a Relational Database Management System?",
+      "options": ["Microsoft Paint", "Microsoft Notepad", "MySQL", "Excel"],
+      "answer": 2,
+      "explanation": "MySQL is a popular open-source Relational Database Management System (RDBMS)."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "What is the difference between a Database and a DBMS?",
+      "a": "A <b>Database</b> is the actual collection of files containing raw data stored on physical disks. A <b>DBMS</b> (Database Management System) is the software application (like MySQL or Oracle) that provides the user interface and APIs to read, write, secure, and manage that raw database."
+    },
+    {
+      "q": "What are the limitations of using spreadsheets (like Excel) for large-scale data systems?",
+      "a": "1. <b>Scale:</b> Excel is capped at ~1.04M rows.<br>2. <b>Performance:</b> Complex lookups on large files cause lag/crashes.<br>3. <b>Data Integrity:</b> Hard to enforce relational foreign keys.<br>4. <b>Concurrency:</b> Excel locks up if multiple people write simultaneously, whereas databases support safe concurrent writes."
+    },
+    {
+      "q": "Explain the difference between DDL and DML commands, giving examples.",
+      "a": "• <b>DDL (Data Definition Language):</b> Manages the structural schema (tables, databases, columns). Examples: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>TRUNCATE</code>.<br>• <b>DML (Data Manipulation Language):</b> Manages the actual data rows stored inside those tables. Examples: <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>."
+    },
+    {
+      "q": "What is the role of a Foreign Key in RDBMS?",
+      "a": "A Foreign Key is a column or group of columns in one table that links to the Primary Key of another table. It enforces referential integrity, ensuring that relationships between tables remain consistent and invalid orphan references cannot be inserted."
+    },
+    {
+      "q": "Why is SQL essential for a Data Analytics career?",
+      "a": "Data analysts need to query large business transactional databases (often containing millions of customer transactions). Excel cannot handle this volume. SQL allows analysts to extract, filter, clean, and aggregate raw database values directly on the server before feeding clean data into Power BI or Python."
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 1 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Write an SQL query to display your name as a string literal.</li>\n          <li><strong>Exercise 2:</strong> Write an SQL query to add two numbers: <code>50</code> and <code>25</code>.</li>\n          <li><strong>Exercise 3:</strong> Write an SQL query to check the current date and time on your DBMS server.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Research Topics</h5>\n        <ul>\n          <li><strong>Topic 1:</strong> Research Edgar F. Codd and his 12 rules defining relational database systems.</li>\n          <li><strong>Topic 2:</strong> Compare MySQL vs. PostgreSQL. Document their licensing, dialect differences, and core speed strengths.</li>\n          <li><strong>Topic 3:</strong> Identify what DCL (GRANT/REVOKE) and TCL (COMMIT/ROLLBACK) commands represent in high-volume banking transaction databases.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: Local Database Server Installation</h5>\n        <p>Your main assignment is to prepare your local developer workspace for writing SQL queries:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li>Download and install <strong>MySQL Community Server</strong> (or PostgreSQL) on your computer.</li>\n          <li>Install <strong>MySQL Workbench</strong> (or pgAdmin) as the desktop graphical visual interface.</li>\n          <li>Establish a local connection to the database server using the username <code>root</code>.</li>\n          <li>Open a SQL editor tab and execute the command: <code>SHOW DATABASES;</code> to display standard system databases.</li>\n        </ol>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "Local Database Setup & Database Exploration",
+    "description": "Install MySQL database engine and MySQL Workbench GUI client, connect to your local server, and run a status check query to inspect default database schemas.",
+    "outputMock": "+--------------------+\n| Database           |\n+--------------------+\n| information_schema |\n| mysql              |\n| performance_schema |\n| sys                |\n+--------------------+"
+  }
+}

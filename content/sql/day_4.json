@@ -1,0 +1,129 @@
+{
+  "id": "day_4",
+  "dayNum": 4,
+  "title": "DML Commands (INSERT, UPDATE, DELETE)",
+  "category": "Fundamentals",
+  "difficulty": "Beginner",
+  "isInterviewImportant": true,
+  "status": "Complete",
+  "isRecordingReady": true,
+  "codeType": "basic",
+  
+  "youtubeTitle": "SQL Full Course Day 4 | DML Commands (INSERT, UPDATE, DELETE) & The Dangerous WHERE Clause",
+  "youtubeDesc": "Welcome to Day 4 of the Complete SQL Roadmap for Data Analytics!\n\nIn this lesson, you'll learn:\n✅ What is DML (Data Manipulation Language) and how it differs from DDL\n✅ Inserting single, custom, and multi-row records with INSERT\n✅ Modifying rows safely using UPDATE (and what happens if you forget WHERE)\n✅ Deleting records based on conditions using DELETE\n✅ DELETE vs TRUNCATE differences (Crucial Interview Question)\n✅ Why you should run SELECT preview checks before any UPDATE or DELETE\n✅ Performance tips: Why updating via primary key index is faster than text matches\n\n📚 Topics Covered:\n00:00 Introduction & School Register Analogy\n04:15 Inserting Data Rows (INSERT INTO)\n11:30 Updating Records Safely (UPDATE SET)\n19:00 Deleting Records (DELETE FROM)\n26:00 DELETE vs TRUNCATE (Logging & Speed)\n32:00 Scenario-based Questions & Homework\n\nDownload the notes and assignments from the description below!",
+  "thumbnails": [
+    "SQL DML Commands ✍️",
+    "SQL Full Course Day 4",
+    "Dangerous WHERE Clauses",
+    "DELETE vs TRUNCATE",
+    "Data Row Management"
+  ],
+  "scripts": {
+    "opening": "\"Welcome back to Day 4 of the SQL Roadmap. In our last lesson, we built database tables using DDL. Today, we focus on DML—Data Manipulation Language. These are the daily transactional operations like registering new users, updating prices, and deleting accounts.\"",
+    "explanation": "\"Think of DML like managing a school register. When a new student takes admission, that's INSERT. When a student changes their address, that's UPDATE. When a student leaves the school, that's DELETE. DDL builds the register; DML manages the entries inside it.\"",
+    "transition": "\"Before we start editing data, let's learn how to add records using the INSERT INTO syntax.\"",
+    "closing": "\"In our next lesson, we will explore DQL and learn the powerful SELECT statement to retrieve and filter our database records—one of the most critical skills for any Data Analyst.\"",
+    "cta": "\"If you found this video helpful, hit that like button, subscribe for Day 5, and download the full study guide and practice SQL scripts in the description below. Happy coding!\""
+  },
+  
+  "downloadMarkdown": "# SQL for Data Analytics - Day 4 Notes\n\n## 1. Learning Objectives\n* Comprehend DML (Data Manipulation Language) and its difference from DDL.\n* Insert single and multiple records using `INSERT INTO`.\n* Modify row data values safely using `UPDATE`.\n* Delete specific records using `DELETE FROM` with conditional matching.\n* Differentiate between `DELETE` and `TRUNCATE` log handling.\n\n## 2. What is DML?\n* **DML (Data Manipulation Language)** commands work with the actual data rows stored inside tables. Unlike DDL, which alters the table structural blueprint, DML changes the values within the cells. DML operations are transaction-tracked and can be rolled back.\n\n## 3. Core DML Command Matrix\n* **INSERT**: Adds one or more rows to a table.\n* **UPDATE**: Modifies existing columns for rows matching a filter criteria.\n* **DELETE**: Deletes specific matching rows from the table.",
+  
+  "contentSlides": [
+    {
+      "title": "1. Learning Objectives",
+      "html": "\n      <div class=\"visual-badge\"><i class=\"fa-solid fa-graduation-cap\"></i> SQL Day 4</div>\n      <h2>DML Commands & Row Management</h2>\n      <p class=\"large-text\">Once table blueprints are created, we manipulate data rows inside them. Today we master DML commands:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-folder-plus icon-cyan\"></i>\n          <h4>INSERT Records</h4>\n          <p>Add single, specific, or multi-row record values cleanly using explicit column mappings.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-pen-to-square icon-purple\"></i>\n          <h4>UPDATE Safely</h4>\n          <p>Modify row values based on conditions. Prevent catastrophic update errors by using filters.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-trash icon-emerald\"></i>\n          <h4>DELETE Filters</h4>\n          <p>Remove specific columns or departments, and understand how DELETE differs from TRUNCATE.</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "2. DML Analogy: The Register Book",
+      "html": "\n      <h3>Analogy: Managing a School Register</h3>\n      <p class=\"large-text\">DDL designs the ledger layout. DML manages the student records written inside it:</p>\n      <div class=\"analogy-box\" style=\"border-left-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <div class=\"analogy-header\" style=\"color: var(--neon-cyan);\"><i class=\"fa-solid fa-lightbulb\"></i> The Register Analogy</div>\n        <div class=\"analogy-content\">\n          <ul>\n            <li>📝 <strong>INSERT:</strong> A new student takes admission $\\rightarrow$ Writing their name and details on a clean row.</li>\n            <li>📈 <strong>UPDATE:</strong> A student changes their address $\\rightarrow$ Modifying the address column in their row.</li>\n            <li>❌ <strong>DELETE:</strong> A student leaves the school $\\rightarrow$ Erasing their row from the active roster.</li>\n            <li>⚠️ <strong>The WHERE Clause:</strong> The rule specifying *which* row to modify or erase. Forgetting the WHERE clause in an update is like crossing out the address column for *every* student in the entire book!</li>\n          </ul>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "3. The INSERT Command",
+      "html": "\n      <h3>INSERT: Single & Multiple Rows</h3>\n      <p class=\"large-text\">The <code>INSERT</code> command appends new entries to a table. You can insert single or multiple rows:</p>\n      <div class=\"code-analysis-grid\">\n        <div class=\"code-block-display\">\n          <pre><code class=\"language-sql\">-- Insert a single full record row\nINSERT INTO employees \nVALUES (104, 'David', 'IT', 65000);\n\n-- Insert into specific columns only\nINSERT INTO employees (emp_id, name, department) \nVALUES (105, 'Eve', 'HR');\n\n-- Insert multiple records in one statement\nINSERT INTO employees (emp_id, name, department, salary) \nVALUES \n    (106, 'Frank', 'Marketing', 58000),\n    (107, 'Grace', 'IT', 72000);</code></pre>\n        </div>\n        <div class=\"analysis-list\" style=\"max-height:280px; overflow-y:auto;\">\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Full Insert</span>\n            <p>Requires values for *all* columns in the exact order they are defined in the schema.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-cyan\">Specific Insert</span>\n            <p>Allows skipping columns (like salary). Skipped fields default to <code>NULL</code> or default values.</p>\n          </div>\n          <div class=\"analysis-item\">\n            <span class=\"badge-emerald\">Multi-Row Insert</span>\n            <p>Comma-separated tuples allow inserting thousands of rows in a single server transaction, saving network overhead.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "4. INSERT Execution Flow",
+      "html": "\n      <h3>INSERT Query Execution Flow</h3>\n      <p class=\"large-text\">What happens inside the database engine when you execute an INSERT statement?</p>\n      <div class=\"nested-diagram-container\" style=\"background:rgba(255,255,255,0.02); border-radius:10px; padding:1.5rem;\">\n        <div class=\"feature-grid\" style=\"text-align:center;\">\n          <div class=\"feature-card\" style=\"border-color:var(--neon-cyan);\">\n            <h5 style=\"color:var(--neon-cyan);\">1. Parse & Check</h5>\n            <p style=\"font-size:0.75rem;\">Read query, verify syntax, and confirm the target table exists.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-purple);\">\n            <h5 style=\"color:var(--neon-purple);\">2. Validate Types</h5>\n            <p style=\"font-size:0.75rem;\">Ensure input values match column datatypes (e.g. integer vs string).</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-emerald);\">\n            <h5 style=\"color:var(--neon-emerald);\">3. Check Constraints</h5>\n            <p style=\"font-size:0.75rem;\">Assert constraints like Primary Key uniqueness and check parameters.</p>\n          </div>\n          <div class=\"feature-card\" style=\"border-color:var(--neon-orange);\">\n            <h5 style=\"color:var(--neon-orange);\">4. Commit</h5>\n            <p style=\"font-size:0.75rem;\">Write row data to disk pages and commit the transaction.</p>\n          </div>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "5. The UPDATE Command & WHERE Warning",
+      "html": "\n      <h3>UPDATE: Modifying Columns Safely</h3>\n      <p class=\"large-text\">The <code>UPDATE</code> command modifies existing table values. **Always use a WHERE clause**:</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-filter icon-cyan\"></i>\n          <h4>1. Single Row Update</h4>\n          <pre><code class=\"language-sql\">UPDATE employees\nSET salary = 60000\nWHERE emp_id = 102;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Updates only Bob (ID 102).</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-list-check icon-purple\"></i>\n          <h4>2. Multi-Column Update</h4>\n          <pre><code class=\"language-sql\">UPDATE employees\nSET department = 'IT', salary = 68000\nWHERE name = 'Charlie';</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Changes Charlie's department and salary.</p>\n        </div>\n        <div class=\"feature-card\">\n          <i class=\"fa-solid fa-calculator icon-emerald\"></i>\n          <h4>3. Conditional Batch Update</h4>\n          <pre><code class=\"language-sql\">UPDATE employees\nSET salary = salary + 5000\nWHERE department = 'IT';</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem;\">Increases salary of all IT employees.</p>\n        </div>\n        <div class=\"feature-card\" style=\"border-color: #ef4444; background: rgba(239, 68, 68, 0.02);\">\n          <h4 style=\"color: #ef4444;\"><i class=\"fa-solid fa-triangle-exclamation\"></i> 4. The Catastrophe</h4>\n          <pre><code class=\"language-sql\">UPDATE employees\nSET salary = 100000;</code></pre>\n          <p style=\"font-size:0.8rem; opacity:0.8; margin-top:0.4rem; color: #ef4444;\">⚠️ Wipes out salaries for EVERY employee in the database!</p>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "6. UPDATE & DELETE Execution Flows",
+      "html": "\n      <h3>UPDATE & DELETE Internal Execution</h3>\n      <p class=\"large-text\">How does the RDBMS engine execute update and delete queries behind the scenes?</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <h4><i class=\"fa-solid fa-pen-to-square icon-purple\"></i> UPDATE Execution Flow</h4>\n          <ol style=\"padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.6;\">\n            <li>🔍 <strong>Find Matching Rows:</strong> Scans rows matching the WHERE criteria.</li>\n            <li>🔒 <strong>Lock Rows:</strong> Acquires write locks to prevent concurrent modifications.</li>\n            <li>✍️ <strong>Modify Values:</strong> Rewrites column values in memory buffer pages.</li>\n            <li>💾 <strong>Commit:</strong> Writes changes to transactional logs and updates disk storage.</li>\n          </ol>\n        </div>\n        <div class=\"feature-card\">\n          <h4><i class=\"fa-solid fa-trash icon-emerald\"></i> DELETE Execution Flow</h4>\n          <ol style=\"padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.6;\">\n            <li>🔍 <strong>Find Rows:</strong> Locates rows matching the WHERE filter.</li>\n            <li>🔒 <strong>Lock Rows:</strong> Acquires lock blocks to isolate target data rows.</li>\n            <li>❌ <strong>Delete Records:</strong> Marks rows as deleted in index pages.</li>\n            <li>💾 <strong>Commit:</strong> Commits transactions, writing changes to redologs.</li>\n          </ol>\n        </div>\n      </div>\n    "
+    },
+    {
+      "title": "7. DELETE vs. TRUNCATE Comparison",
+      "html": "\n      <h3>DELETE vs. TRUNCATE Comparison</h3>\n      <p class=\"large-text\">Though both commands remove data rows, their engine classifications are different:</p>\n      <div class=\"glass-card\" style=\"padding: 1.25rem; overflow-x: auto;\">\n        <table class=\"cms-table\" style=\"width:100%; border-collapse:collapse;\">\n          <thead>\n            <tr style=\"border-bottom:2px solid var(--border-glow); height:40px;\">\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">Feature</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">DELETE FROM</th>\n              <th style=\"color:var(--neon-cyan); padding:0.5rem;\">TRUNCATE TABLE</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Command Type</strong></td>\n              <td>DML (Data Manipulation Language).</td>\n              <td>DDL (Data Definition Language).</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Filters (WHERE)</strong></td>\n              <td>✔ Supported (delete specific rows).</td>\n              <td>❌ Not supported (removes all data).</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Speed</strong></td>\n              <td>Slower (deletes and logs row-by-row).</td>\n              <td>Extremely fast (deallocates data pages).</td>\n            </tr>\n            <tr style=\"border-bottom:1px solid rgba(255,255,255,0.05);\">\n              <td><strong>Transaction Logging</strong></td>\n              <td>Logs each deleted row. Can be rolled back.</td>\n              <td>Bypasses row logs. Cannot be easily rolled back.</td>\n            </tr>\n            <tr>\n              <td><strong>Identity Reset</strong></td>\n              <td>Does not reset auto-increment counters.</td>\n              <td>Resets auto-increment counters to 1.</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    "
+    },
+    {
+      "title": "8. Pitfalls, Indexing & Best Practices",
+      "html": "\n      <h3>DML Best Practices & Performance Tips</h3>\n      <p class=\"large-text\">Follow these analytical guidelines to ensure your updates are safe and fast:</p>\n      <div class=\"mistake-comparison\">\n        <div class=\"mistake-card bad\">\n          <h5><i class=\"fa-solid fa-ban\"></i> Common DML Pitfalls</h5>\n          <ul>\n            <li>❌ Running an <code>UPDATE</code> or <code>DELETE</code> statement without double-checking the <code>WHERE</code> clause.</li>\n            <li>❌ Inserting values in the wrong column order (e.g. putting name in email field).</li>\n            <li>❌ Inserting duplicate values into primary key columns, causing transaction crashes.</li>\n          </ul>\n        </div>\n        <div class=\"mistake-card good\">\n          <h5><i class=\"fa-solid fa-circle-check\"></i> Standard DML Rules</h5>\n          <ul>\n            <li>✔ <strong>Preview Rows:</strong> Run a <code>SELECT</code> with your target <code>WHERE</code> clause first to verify matching rows.</li>\n            <li>✔ <strong>Index-Key Updates:</strong> Prefer updating using primary keys (<code>WHERE emp_id = 102</code>) instead of text columns (<code>WHERE name = 'Bob'</code>). Index searches are exponentially faster!</li>\n            <li>✔ Leverage SQL transactions (<code>START TRANSACTION</code>) for high-risk modifications.</li>\n          </ul>\n        </div>\n      </div>\n    "
+    }
+  ],
+  
+  "quizQuestions": [
+    {
+      "q": "Which SQL command category does UPDATE belong to?",
+      "options": ["DDL", "DML", "DQL", "TCL"],
+      "answer": 1,
+      "explanation": "UPDATE modifies the values inside database rows, which is a DML (Data Manipulation Language) operation."
+    },
+    {
+      "q": "What happens if you run an UPDATE query without specifying a WHERE clause?",
+      "options": ["The query fails with a syntax error", "Only the first row is updated", "Every row in the table is updated", "The database automatically rolls back"],
+      "answer": 2,
+      "explanation": "Without a WHERE clause, the UPDATE statement applies its changes to every single record row in the table."
+    },
+    {
+      "q": "Which command is used to add new records into a table?",
+      "options": ["CREATE", "ADD", "INSERT", "SELECT"],
+      "answer": 2,
+      "explanation": "INSERT INTO is the standard DML command used to write new rows into a database table."
+    },
+    {
+      "q": "Which command classification best describes the DELETE query?",
+      "options": ["DML", "DDL", "DQL", "TCL"],
+      "answer": 0,
+      "explanation": "DELETE is a DML command because it manipulates existing rows. Unlike TRUNCATE (DDL), it deletes records row-by-row and can be rolled back."
+    },
+    {
+      "q": "Which data modification command resets auto-increment primary key counters back to 1?",
+      "options": ["DELETE FROM table_name;", "TRUNCATE TABLE table_name;", "UPDATE table_name SET id = 1;", "DROP TABLE table_name;"],
+      "answer": 1,
+      "explanation": "TRUNCATE (DDL) resets identity seed values (auto-increment counters) back to their default starting values, whereas DELETE (DML) does not."
+    }
+  ],
+  
+  "interviewCards": [
+    {
+      "q": "What is DML, and how does it differ from DDL?",
+      "a": "• <b>DDL (Data Definition Language):</b> Defines or alters structural blueprints (tables, databases). Examples: <code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>.<br>• <b>DML (Data Manipulation Language):</b> Edits or removes data rows stored inside those structures. Examples: <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>."
+    },
+    {
+      "q": "Why is the WHERE clause critical in UPDATE and DELETE statements?",
+      "a": "The <code>WHERE</code> clause acts as a filter targeting specific rows. If omitted, the UPDATE or DELETE will execute on <b>every row in the table</b>, causing catastrophic data losses or massive invalid updates (e.g. setting every employee's salary to 0)."
+    },
+    {
+      "q": "What is the difference between DELETE and TRUNCATE?",
+      "a": "• <b>DELETE:</b> A DML command. It deletes rows one-by-one, logs each deletion in transaction logs, is slower, and supports WHERE filters.<br>• <b>TRUNCATE:</b> A DDL command. It deallocates entire data blocks, bypasses row-level logging (much faster), does not support WHERE, and resets auto-increment keys."
+    },
+    {
+      "q": "Why is updating by indexed keys (like Primary Key) faster than updating by name?",
+      "a": "Searching by an indexed key (like <code>emp_id</code>) allows the database optimizer to perform an **Index Seek** directly to the physical row location. Modifying by a text field (like <code>name</code>) forces the database to perform a slow **Full Table Scan**, reading every single row from disk."
+    },
+    {
+      "q": "Why should you run a SELECT query before running a DELETE or UPDATE statement?",
+      "a": "It is an industry best-practice. Running <code>SELECT * FROM employees WHERE [condition];</code> allows you to preview the exact rows that will be modified or deleted, preventing accidental column overrides or deletions caused by logical errors in your WHERE condition."
+    }
+  ],
+  
+  "assignmentContent": "\n    <h3>Day 4 Practical Homework & Assignments</h3>\n    <div class=\"mistake-comparison\">\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-code icon-cyan\"></i> Coding Exercises</h5>\n        <ul>\n          <li><strong>Exercise 1:</strong> Write an SQL statement inserting 5 rows into an <code>employees</code> table (emp_id, name, department, salary).</li>\n          <li><strong>Exercise 2:</strong> Write a query to increase Bob's salary to 60,000 (Bob has ID 102).</li>\n          <li><strong>Exercise 3:</strong> Write a query to increase salaries of all employees in the IT department by 10%.</li>\n          <li><strong>Exercise 4:</strong> Write a query to delete all records belonging to the HR department.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card bad\" style=\"border-color: var(--neon-purple); background: rgba(189, 0, 255, 0.01);\">\n        <h5><i class=\"fa-solid fa-file-pen icon-purple\"></i> Business Scenarios</h5>\n        <ul>\n          <li><strong>Scenario 1:</strong> A customer changes their email address. Write the query to execute the change.</li>\n          <li><strong>Scenario 2:</strong> Amazon runs a 10% price markdown on the products table for all items under the 'Books' category. Write the UPDATE statement.</li>\n        </ul>\n      </div>\n      <div class=\"mistake-card good\" style=\"border-color: var(--neon-emerald); background: rgba(0, 255, 102, 0.01); width: 100%; grid-column: span 2; margin-top: 1.5rem;\">\n        <h5><i class=\"fa-solid fa-cubes icon-emerald\"></i> Mini Project: Student Management System Data Populator</h5>\n        <p>Design and populate a student database:</p>\n        <ol style=\"padding-left:1.25rem; line-height:1.6;\">\n          <li>Write 15 separate <code>INSERT INTO</code> queries adding student profiles.</li>\n          <li>Write 10 different <code>UPDATE</code> statements adjusting dates of birth and course enrollments.</li>\n          <li>Write 10 separate <code>DELETE</code> queries removing graduated or inactive students.</li>\n        </ol>\n        <p style=\"margin-top:0.75rem;\">Run the queries sequentially in your local MySQL instance and verify that rows are manipulated correctly.</p>\n      </div>\n    </div>\n  ",
+  
+  "miniProject": {
+    "title": "Employee Data Manipulation Tasks",
+    "description": "Populate employee tables, execute departmental promotions and salary raises, remove resigned employees, and trace row states.",
+    "outputMock": "Queries run successfully:\n- 10 Employees inserted.\n- Salaries raised by 10% for category = 'IT'.\n- 2 Resigned employees deleted from table employees.\n- Verification select matches final row counts."
+  }
+}
