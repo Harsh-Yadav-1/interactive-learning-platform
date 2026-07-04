@@ -1,5 +1,7 @@
 # 🚀 Multi-Course LMS + Creator Studio (CMS) Platform
 
+👉 **Live Hosted Website:** [interactive-learning-platform-ashen.vercel.app](https://interactive-learning-platform-ashen.vercel.app)
+
 A professional, dynamic Learning Management System (LMS) and Content Management System (CMS) designed for programming instruction and recording tutorial videos for YouTube. The platform decouples curriculum data from the presentation UI, loading lesson files dynamically and writing edits directly to disk via local REST APIs.
 
 ---
